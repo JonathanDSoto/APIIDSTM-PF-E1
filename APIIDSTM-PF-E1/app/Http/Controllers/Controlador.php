@@ -34,4 +34,16 @@ class Controlador extends Controller
     {
         return view('layouts.carEdit');
     }
+    public function userList()
+    {
+        return view('layouts.userList');
+    }
+    public function userFake()
+    {
+        return view('fakeUser.violet');
+    }
+    public function newClient()
+    {
+        return view('layouts.newClient');
+    }
 }

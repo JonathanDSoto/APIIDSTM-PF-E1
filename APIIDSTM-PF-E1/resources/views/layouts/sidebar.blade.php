@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li class="menu-item">
-                <a href="{{ url('/caredit') }}" class="menu-link">
+                <a href="{{ url('/carform') }}" class="menu-link">
                     <div data-i18n="Editar">Editar</div>
                 </a>
             </li>
@@ -31,23 +31,18 @@
         </a>
         <ul class="menu-sub">
             <li class="menu-item">
+                <a href="{{ url('/userlist') }}" class="menu-link">
+                    <div data-i18n="Lista de Clientes">Lista de clientes</div>
+                </a>
+            </li>
+            <li class="menu-item">
                 <a href="{{ url('/clients') }}" class="menu-link">
                     <div data-i18n="Historial de rentas">Historial de rentas</div>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="app-academy-course.html" class="menu-link">
+                <a href="{{ url('/newclient') }}" class="menu-link">
                     <div data-i18n="Registrar">Registrar</div>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="app-academy-course-details.html" class="menu-link">
-                    <div data-i18n="Editar">Editar</div>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="app-academy-course-details.html" class="menu-link">
-                    <div data-i18n="Eliminar">Eliminar</div>
                 </a>
             </li>
         </ul>
@@ -56,7 +51,7 @@
     <li class="menu-item">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class='menu-icon tf-icons ti ti-file-dollar'></i>
-            
+
             <div data-i18n="Rentas">Rentas</div>
         </a>
         <ul class="menu-sub">
