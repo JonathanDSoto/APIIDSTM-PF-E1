@@ -69,8 +69,8 @@
                                 <td>Ferrari</td>
                                 <td>LaFerrari</td>
                                 <td>Deportivo</td>
-                                <td>Disponible</td>
                                 <td>200.00</td>
+                                <td>Disponible</td>
                             </tr>
                             <tr>
                                 <td>22</td>
@@ -78,8 +78,8 @@
                                 <td>Jeep</td>
                                 <td>Wrangler</td>
                                 <td>SUV</td>
-                                <td>Disponible</td>
                                 <td>65.99</td>
+                                <td>Disponible</td>
                             </tr>
                             <tr>
                                 <td>23</td>
@@ -87,8 +87,8 @@
                                 <td>Volvo</td>
                                 <td>XC90</td>
                                 <td>SUV</td>
-                                <td>Disponible</td>
                                 <td>75.50</td>
+                                <td>Disponible</td>
                             </tr>
                             <tr>
                                 <td>24</td>
@@ -96,8 +96,8 @@
                                 <td>Mazda</td>
                                 <td>CX-5</td>
                                 <td>SUV</td>
-                                <td>Disponible</td>
                                 <td>55.80</td>
+                                <td>Disponible</td>
                             </tr>
                             <tr>
                                 <td>25</td>
@@ -105,8 +105,8 @@
                                 <td>Hyundai</td>
                                 <td>Tucson</td>
                                 <td>SUV</td>
-                                <td>Disponible</td>
                                 <td>48.90</td>
+                                <td>Disponible</td>
                             </tr>
                             <tr>
                                 <td>26</td>
@@ -114,8 +114,8 @@
                                 <td>Subaru</td>
                                 <td>Outback</td>
                                 <td>Station Wagon</td>
-                                <td>Disponible</td>
                                 <td>42.75</td>
+                                <td>Disponible</td>
                             </tr>
                             <tr>
                                 <td>27</td>
@@ -123,8 +123,8 @@
                                 <td>Kia</td>
                                 <td>Soul</td>
                                 <td>Hatchback</td>
-                                <td>Disponible</td>
                                 <td>38.50</td>
+                                <td>Disponible</td>
                             </tr>
                             <tr>
                                 <td>28</td>
@@ -132,8 +132,8 @@
                                 <td>Jaguar</td>
                                 <td>F-PACE</td>
                                 <td>SUV</td>
-                                <td>No disponible</td>
                                 <td>85.20</td>
+                                <td>No disponible</td>
                             </tr>
                             <tr>
                                 <td>29</td>
@@ -141,8 +141,8 @@
                                 <td>Chrysler</td>
                                 <td>Pacifica</td>
                                 <td>Minivan</td>
-                                <td>Disponible</td>
                                 <td>60.25</td>
+                                <td>Disponible</td>
                             </tr>
                             <tr>
                                 <td>30</td>
@@ -150,8 +150,8 @@
                                 <td>Lexus</td>
                                 <td>RX</td>
                                 <td>SUV</td>
-                                <td>Disponible</td>
                                 <td>70.90</td>
+                                <td>Disponible</td>
                             </tr>
                         </tbody>
                     </table>
