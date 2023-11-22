@@ -1,49 +1,29 @@
 <ul class="menu-inner py-1">
     <!-- Apps & Pages -->
-
     <!-- e-commerce-app menu start -->
     <li class="menu-item">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
-            <i class='menu-icon tf-icons ti ti-truck'></i>
+            <i class="menu-icon tf-icons ti ti-truck"></i>
             <div data-i18n="Vehículos">Vehículos</div>
         </a>
         <ul class="menu-sub">
             <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link menu-toggle">
-                    <div data-i18n="Consultar">Rentas ---Checar</div>
+                <a href="{{ url('/vehicles') }}" class="menu-link">
+                    <div data-i18n="Consultas">Consultas</div>
                 </a>
-                <ul class="menu-sub">
-                    <li class="menu-item">
-                        <a href="app-ecommerce-product-list.html" class="menu-link">
-                            <div data-i18n="Historial de rentas">Historial de rentas</div>
-                        </a>
-                    </li>
-                    <li class="menu-item">
-                        <a href="app-ecommerce-product-add.html" class="menu-link">
-                            <div data-i18n="Tarifas">Tarifas</div>
-                        </a>
-                    </li>
-                </ul>
             </li>
             <li class="menu-item">
-                <a href="app-ecommerce-manage-reviews.html" class="menu-link">
+                <a href="{{ url('/carform') }}" class="menu-link">
                     <div data-i18n="Registrar">Registrar</div>
                 </a>
             </li>
             <li class="menu-item">
-                <a href="app-ecommerce-referral.html" class="menu-link">
+                <a href="{{ url('/caredit') }}" class="menu-link">
                     <div data-i18n="Editar">Editar</div>
-                </a>
-            </li>
-            <li class="menu-item">
-                <a href="app-ecommerce-referral.html" class="menu-link">
-                    <div data-i18n="Eliminar">Eliminar</div>
                 </a>
             </li>
         </ul>
     </li>
-    <!-- e-commerce-app menu end -->
-    <!-- Academy menu start -->
     <li class="menu-item">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
             <i class="menu-icon tf-icons ti ti-users"></i>

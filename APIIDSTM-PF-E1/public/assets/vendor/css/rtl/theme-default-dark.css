@@ -115,10 +115,10 @@ html:not([dir="rtl"])
     border-radius: 0 0.375rem 0.375rem 0;
 }
 body {
-    background: #25293c;
+    background: #045999;
 }
 .bg-body {
-    background: #25293c !important;
+    background: #151B33 !important;
 }
 .text-primary {
     color: #7367f0 !important;
@@ -1525,7 +1525,7 @@ li.ui-timepicker-selected,
     background-color: rgba(115, 103, 240, 0.05);
 }
 .bg-navbar-theme {
-    background-color: rgba(47, 51, 73, 0.95) !important;
+    background-color: rgba(21, 27, 51, 0.90) !important;
     color: #b6bee3;
 }
 .bg-navbar-theme .navbar-brand,
@@ -1616,7 +1616,7 @@ li.ui-timepicker-selected,
     mask: linear-gradient(#25293c, #25293c 18%, transparent 100%);
 }
 .bg-menu-theme {
-    background-color: #2f3349 !important;
+    background-color: #151B33 !important;
     color: #b6bee3;
 }
 .bg-menu-theme.menu-horizontal {

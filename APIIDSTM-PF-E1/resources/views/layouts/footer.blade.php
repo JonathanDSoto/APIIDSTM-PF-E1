@@ -1,20 +1,14 @@
-
-<footer class="content-footer footer bg-footer-theme fixed-bottom">
-    <div class="container-xxl">
-        <div class="footer-container d-flex align-items-center justify-content-between py-2 flex-md-row flex-column">
-            <div>
-                ©
-                <script>
-                    document.write(new Date().getFullYear())
-                </script>
-                , made with ❤️ by <a href="https://pixinvent.com" target="_blank" class="fw-medium">Pixinvent</a>
-            </div>
-            <div class="d-none d-lg-inline-block">
-                <a href="https://themeforest.net/licenses/standard" class="footer-link me-4" target="_blank">License</a>
-                <a href="https://1.envato.market/pixinvent_portfolio" target="_blank" class="footer-link me-4">More Themes</a>
-                <a href="../../documentation/index.html" target="_blank" class="footer-link me-4">Documentation</a>
-                <a href="https://pixinvent.ticksy.com/" target="_blank" class="footer-link d-none d-sm-inline-block">Support</a>
-            </div>
+<footer class="footer fixed-bottom" style="background-color: RGBA(21,27,51,0.90); color: #fff;">
+    <div class="container-fluid d-flex flex-md-row flex-column justify-content-between align-items-md-center gap-1 container-p-x py-3">
+        <div>
+            
+        </div>
+        <div>
+            <a href="https://github.com/alexisortega66" class="footer-link me-4" target="_blank">Manuel Alexis Ortega Macias</a>
+            <a href="https://github.com/hcamacho1203" class="footer-link me-4" target="_blank">Hannia Martha Camacho Delgado</a>
+            <a href="https://github.com/Javierdma" class="footer-link me-4" target="_blank">Javier Esteban Dominguez Avila</a>
+            <a href="https://github.com/Kakura1" class="footer-link me-4" target="_blank">Jose Ramon Villavicencio Alvarez</a>
+            <a href="https://github.com/Olucerouabcs" class="footer-link me-4" target="_blank">Osvaldo Eliseo Lucero Robles</a>
         </div>
     </div>
 </footer>

@@ -11,32 +11,27 @@
     <link rel="canonical" href="https://1.envato.market/vuexy_admin">
     <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
     <script>
-        (fun cti on(w, d,
-            s, l, i) {
-            w[l] =
-                w[l] || [];
-            w[l].push({
-                ' gtm.star
-                t ':  new  D ate().getTime(),
-                e ' g tm.js'
-            });
-            var f = d.getEl e m ents ByTagNa m e(s)[0],
-                j = d.createElement(s),
-                dl = l! = 'd ataLayer' ? '&l=' + l : '';
-            async = true;
-            j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-            f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-5J3LMKC');
+    (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+            'gtm.start': new Date().getTime(),
+            event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+            j = d.createElement(s),
+            dl = (l !== 'dataLayer') ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5J3LMKC');
     </script>
     <!-- End Google Tag Manager -->
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../../assets/img/favicon/public\assets\img\favicon\logo_small_icon_only_inverted-_2.ico" />
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;ampdisplay=swap" 
-    rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&amp;ampdisplay=swap" rel="stylesheet">
     <!-- Icons -->
     <link rel="stylesheet" href="../../assets/vendor/fonts/fontawesome.css" />
     <link rel="stylesheet" href="../../assets/vendor/fonts/tabler-icons.css" />
@@ -73,53 +68,47 @@
     <div class="layout-wrapper layout-content-navbar  ">
         <div class="layout-container">
             <!-- Menu -->
-            <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-                <a href="index.html" class="app-brand-link">
-                    <span class="app-brand-logo demo">
-                        <div class="app-brand demo ">
-                            <svg width="32" height="22" viewBox="0 0 32 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" 
-                                d="M0.00172773 0V6.85398C0.00172773 6.85398 -0.133178 9.01207 1.98092 10.8388L13.6912 21.9964L19.7809 21.9181L18.8042 9.88248L16.4951 7.17289L9.23799 0H0.00172773Z" 
-                                fill="#7367F0" />
-                                <path opacity="0.06" fill-rule="evenodd" clip-rule="evenodd" 
-                                d="M7.69824 16.4364L12.5199 3.23696L16.5541 7.25596L7.69824 16.4364Z" fill="#161616" />
-                                <path opacity="0.06" fill-rule="evenodd" clip-rule="evenodd" d="M8.07751 15.9175L13.9419 4.63989L16.5849 7.28475L8.07751 15.9175Z" fill="#161616" />
-                                <path fill-rule="evenodd" clip-rule="evenodd" 
-                                d="M7.77295 16.3566L23.6563 0H32V6.88383C32 6.88383 31.8262 9.17836 30.6591 10.4057L19.7824 22H13.6938L7.77295 16.3566Z" fill="#7367F0" />
-                            </svg>
-                    </span>
-                    <span class="app-brand-text demo menu-text fw-bold">Vuexy</span>
-                </a>
-                <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
-                    <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
-                    <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
-                </a>
-        </div>
-        <div class="menu-inner-shadow"></div>
-        @yield('menu')
-        <!-- / Menu -->
-        <!-- Layout container -->
-        <div class="layout-page">
-            <!-- Navbar -->
-            @yield('searchbar')
-            <!-- / Navbar -->
-            <!-- Content wrapper -->
-            <div class="content-wrapper">
-                @yield('content')
-                <!-- / Content -->
-                <!-- Footer -->
-                @yield('footer')
-                <!-- / Footer -->
-                <div class="content-backdrop fade"></div>
+            <div class="layout-container">
+                <!-- Menu -->
+                <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+                    <a href="/index" class="app-brand-link">
+                        <span class="app-brand-logo demo">
+                            <div class="app-brand demo ">
+                        </span>
+                        <span class="app-brand-text demo menu-text fw-bold">
+                            <img src="../assets/img/brand/logo_large (4).png" alt="Logo" width="auto" height="40">
+                        </span>
+                    </a>
+                    <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+                        <i class="ti menu-toggle-icon d-none d-xl-block ti-sm align-middle"></i>
+                        <i class="ti ti-x d-block d-xl-none ti-sm align-middle"></i>
+                    </a>
             </div>
-            <!-- Content wrapper -->
+            <div class="menu-inner-shadow"></div>
+            @yield('menu')
+            <!-- / Menu -->
+            <!-- Layout container -->
+            <div class="layout-page">
+                <!-- Navbar -->
+                @yield('searchbar')
+                <!-- / Navbar -->
+                <!-- Content wrapper -->
+                <div class="content-wrapper">
+                    @yield('content')
+                    <!-- / Content -->
+                    <!-- Footer -->
+                    @yield('footer')
+                    <!-- / Footer -->
+                    <div class="content-backdrop fade"></div>
+                </div>
+                <!-- Content wrapper -->
+            </div>
+            <!-- / Layout page -->
         </div>
-        <!-- / Layout page -->
-    </div>
-    <!-- Overlay -->
-    <div class="layout-overlay layout-menu-toggle"></div>
-    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
-    <div class="drag-target"></div>
+        <!-- Overlay -->
+        <div class="layout-overlay layout-menu-toggle"></div>
+        <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+        <div class="drag-target"></div>
     </div>
 
     <!-- Core JS -->
