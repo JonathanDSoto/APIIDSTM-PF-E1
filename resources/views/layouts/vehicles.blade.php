@@ -1,6 +1,8 @@
 @extends ('layouts.template')
+
 @section('menu')
 @include('layouts.sidebar')
+
 @endsection
 @section('searchbar')
 @include('layouts.searchbar')
@@ -175,7 +177,7 @@
     <script src="../../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
     <script src="../../assets/vendor/libs/moment/moment.js"></script>
     <script src="../../assets/vendor/libs/flatpickr/flatpickr.js"></script>
-    <!-- <script src="../../assets/js/tables-datatables-basic.js"></script> -->
+    <script src="../../assets/js/tables-datatables-basic.js"></script>
 
 
 
