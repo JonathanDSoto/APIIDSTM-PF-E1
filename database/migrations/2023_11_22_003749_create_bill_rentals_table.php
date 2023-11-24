@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('bill_rentals', function (Blueprint $table) {
             $table->id()->foreign('rental.id');
             $table->bigInteger('id_renta');
-            $table->enum('metodo_pago');
+            $table->enum('metodo_pago', ['efectivo', 'tarjeta', 'paypal', 'transferencia']);
             $table->timestamps();
         });
     }

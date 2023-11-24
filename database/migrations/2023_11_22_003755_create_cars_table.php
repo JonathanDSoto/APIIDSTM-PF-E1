@@ -16,13 +16,10 @@ return new class extends Migration
         Schema::create('cars', function (Blueprint $table) {
             $table->id();
             $table->string('model');
-            $table->bigInteger('id_marca');
-            $table->foreign('id_marca')->references('id')->on('trademarks');
-            $table->bigInteger('id_categoria');
-            $table->foreign('id_categoria')->references('id')->on('categories');
+            $table->foreignId('trademarks_id')->constrained();
+            $table->foreignId('categories_id')->constrained();
             $table->boolean('is_avaliable')->default(true);
-            $table->integer('tarifa');
-            $table->foreign('tarifa')->references('tarifa')->on('rates');
+            $table->foreignId('rates_tarifa')->constrained();
             $table->text('image');
             $table->timestamps();
         });

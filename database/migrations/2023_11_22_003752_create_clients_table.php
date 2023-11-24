@@ -19,8 +19,7 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('email')->unique();
             $table->bigInteger('phone');
-            $table->bigInteger('id_address');
-            $table->foreign('id_address')->references('id')->on('address');
+            $table->foreignId('address_id')->constrained();
             $table->timestamps();
         });
 
