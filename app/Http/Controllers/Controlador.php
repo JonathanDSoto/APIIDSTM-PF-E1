@@ -14,6 +14,10 @@ class Controlador extends Controller
     {
         return view('layouts.login');
     }
+    public function registro()
+    {
+        return view('layouts.userRegister.register');
+    }
     public function logout()
     {
         return view('layouts.login');
