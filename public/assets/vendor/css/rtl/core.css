@@ -42,7 +42,7 @@
     --bs-white-rgb: 255, 255, 255;
     --bs-black-rgb: 75, 70, 92;
     --bs-body-color-rgb: 111, 107, 125;
-    --bs-body-bg-rgb: 248, 247, 250;
+    --bs-body-bg-rgb:107, 189, 250;
     --bs-font-sans-serif: "Public Sans", -apple-system, BlinkMacSystemFont,
         "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
         "Helvetica Neue", sans-serif;
@@ -59,7 +59,7 @@
     --bs-body-font-weight: 400;
     --bs-body-line-height: 1.47;
     --bs-body-color: #6f6b7d;
-    --bs-body-bg: #f8f7fa;
+    --bs-body-bg: #6BBDFA;
     --bs-border-width: 1px;
     --bs-border-style: solid;
     --bs-border-color: #dbdade;
@@ -13512,7 +13512,7 @@ html:not([dir="rtl"]) .card .card-separator {
 }
 .bg-body {
     --bs-bg-opacity: 1;
-    background-color: #f8f7fa !important;
+    background-color: #6BBDFA !important;
 }
 .bg-transparent {
     --bs-bg-opacity: 1;
@@ -19265,7 +19265,7 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
     .navbar-search-wrapper
     .navbar-search-suggestion
     .suggestion.active {
-    background: #f8f7fa;
+    background: #6BBDFA;
     color: #6f6b7d;
 }
 .layout-navbar
@@ -21485,7 +21485,7 @@ html:not([dir="rtl"]) .switches-stacked .switch {
 }
 .timeline .timeline-item .timeline-indicator i,
 .timeline .timeline-item .timeline-indicator-advanced i {
-    background-color: #f8f7fa;
+    background-color: #6BBDFA;
 }
 .card .timeline .timeline-item .timeline-indicator i,
 .card .timeline .timeline-item .timeline-indicator-advanced i {
