@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('remember_passwords', function (Blueprint $table) {
-            $table->id()->foreign('users.id');
-            $table->bigInteger('id_user');
+            $table->id();
+            $table->foreignId('users_id')->constrained();
             $table->string('email');
             $table->string('new_password');
             $table->timestamps();
