@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
+            $table->string('descripcion');
             $table->integer('tarifa');
             $table->timestamps();
         });

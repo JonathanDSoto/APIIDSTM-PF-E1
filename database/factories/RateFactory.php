@@ -21,6 +21,7 @@ class RateFactory extends Factory
     public function definition(): array
     {
         return [
+            'descripcion' => $this->faker->sentence,
             'tarifa' => $this->faker->numberBetween(-10000, 10000),
         ];
     }

@@ -14,22 +14,45 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         $category = new Category();
-        $category->categoria = 'Camioneta';
+        $category->categoria = 'Clase A: Autos pequeños';
         $category->save();
 
         
         $category = new Category();
-        $category->categoria = 'Deportivo';
+        $category->categoria = 'Clase B: Autos pequeños';
         $category->save();
 
         
         $category = new Category();
-        $category->categoria = 'Automovil';
+        $category->categoria = 'Clase C: Autos medianos';
         $category->save();
 
         
         $category = new Category();
-        $category->categoria = 'Pick up';
+        $category->categoria = 'Clase D: Autos grandes';
+        $category->save();
+
+        
+        $category = new Category();
+        $category->categoria = 'Clase E: Autos de gama alta';
+        $category->save();
+
+        
+        $category = new Category();
+        $category->categoria = 'Clase F: Autos de lujo';
+        $category->save();
+
+        
+        $category = new Category();
+        $category->categoria = 'CLase J: Vehículos SUV con equipamiento deportivo';
+        $category->save();
+
+        $category = new Category();
+        $category->categoria = 'Clase M: MPV vehiculos polivalentes';
+        $category->save();
+
+        $category = new Category();
+        $category->categoria = 'Clase S: Vehículos deportivos';
         $category->save();
     }
 }
