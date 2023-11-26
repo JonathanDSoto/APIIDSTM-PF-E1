@@ -93,11 +93,11 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         columns: [
                             { data: "" },
                             { data: "id" },
-                            { data: "photo" },
-                            { data: "branch" },
-                            { data: "model" },
-                            { data: "category" },
-                            { data: "cost_day" },
+                            { data: "id" },
+                            { data: "full_name" },
+                            { data: "email" },
+                            { data: "start_date" },
+                            { data: "salary" },
                             { data: "status" },
                             { data: "" },
                         ],
@@ -138,28 +138,28 @@ document.addEventListener("DOMContentLoaded", function (e) {
                                         '<div class="d-flex justify-content-start align-items-center user-name"><div class="avatar-wrapper"><div class="avatar me-2">' +
                                         (n
                                             ? '<img src="' +
-                                            assetsPath +
-                                            "img/avatars/" +
-                                            n +
-                                            '" alt="Avatar" class="rounded-circle">'
+                                              assetsPath +
+                                              "img/avatars/" +
+                                              n +
+                                              '" alt="Avatar" class="rounded-circle">'
                                             : '<span class="avatar-initial rounded-circle bg-label-' +
-                                            [
-                                                "success",
-                                                "danger",
-                                                "warning",
-                                                "info",
-                                                "primary",
-                                                "secondary",
-                                            ][Math.floor(6 * Math.random())] +
-                                            '">' +
-                                            (n = (
-                                                ((n =
-                                                    (l = a.full_name).match(
-                                                        /\b\w/g
-                                                    ) || []).shift() || "") +
-                                                (n.pop() || "")
-                                            ).toUpperCase()) +
-                                            "</span>") +
+                                              [
+                                                  "success",
+                                                  "danger",
+                                                  "warning",
+                                                  "info",
+                                                  "primary",
+                                                  "secondary",
+                                              ][Math.floor(6 * Math.random())] +
+                                              '">' +
+                                              (n = (
+                                                  ((n =
+                                                      (l = a.full_name).match(
+                                                          /\b\w/g
+                                                      ) || []).shift() || "") +
+                                                  (n.pop() || "")
+                                              ).toUpperCase()) +
+                                              "</span>") +
                                         '</div></div><div class="d-flex flex-column"><span class="emp_name text-truncate">' +
                                         l +
                                         '</span><small class="emp_post text-truncate text-muted">' +
@@ -198,10 +198,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
                                     return void 0 === n[a]
                                         ? e
                                         : '<span class="badge ' +
-                                        n[a].class +
-                                        '">' +
-                                        n[a].title +
-                                        "</span>";
+                                              n[a].class +
+                                              '">' +
+                                              n[a].title +
+                                              "</span>";
                                 },
                             },
                             {
@@ -230,36 +230,36 @@ document.addEventListener("DOMContentLoaded", function (e) {
                                         text: '<i class="ti ti-printer me-1" ></i>Print',
                                         className: "dropdown-item",
                                         exportOptions: {
-                                            columns: [3, 4, 5, 6, 7, 8],
+                                            columns: [3, 4, 5, 6, 7],
                                             format: {
                                                 body: function (e, t, a) {
                                                     var s;
                                                     return e.length <= 0
                                                         ? e
                                                         : ((e = $.parseHTML(e)),
-                                                            (s = ""),
-                                                            $.each(
-                                                                e,
-                                                                function (e, t) {
-                                                                    void 0 !==
-                                                                        t.classList &&
-                                                                        t.classList.contains(
-                                                                            "user-name"
-                                                                        )
-                                                                        ? (s +=
+                                                          (s = ""),
+                                                          $.each(
+                                                              e,
+                                                              function (e, t) {
+                                                                  void 0 !==
+                                                                      t.classList &&
+                                                                  t.classList.contains(
+                                                                      "user-name"
+                                                                  )
+                                                                      ? (s +=
                                                                             t
                                                                                 .lastChild
                                                                                 .firstChild
                                                                                 .textContent)
-                                                                        : void 0 ===
-                                                                            t.innerText
-                                                                            ? (s +=
-                                                                                t.textContent)
-                                                                            : (s +=
-                                                                                t.innerText);
-                                                                }
-                                                            ),
-                                                            s);
+                                                                      : void 0 ===
+                                                                        t.innerText
+                                                                      ? (s +=
+                                                                            t.textContent)
+                                                                      : (s +=
+                                                                            t.innerText);
+                                                              }
+                                                          ),
+                                                          s);
                                                 },
                                             },
                                         },
@@ -303,29 +303,29 @@ document.addEventListener("DOMContentLoaded", function (e) {
                                                     return e.length <= 0
                                                         ? e
                                                         : ((e = $.parseHTML(e)),
-                                                            (s = ""),
-                                                            $.each(
-                                                                e,
-                                                                function (e, t) {
-                                                                    void 0 !==
-                                                                        t.classList &&
-                                                                        t.classList.contains(
-                                                                            "user-name"
-                                                                        )
-                                                                        ? (s +=
+                                                          (s = ""),
+                                                          $.each(
+                                                              e,
+                                                              function (e, t) {
+                                                                  void 0 !==
+                                                                      t.classList &&
+                                                                  t.classList.contains(
+                                                                      "user-name"
+                                                                  )
+                                                                      ? (s +=
                                                                             t
                                                                                 .lastChild
                                                                                 .firstChild
                                                                                 .textContent)
-                                                                        : void 0 ===
-                                                                            t.innerText
-                                                                            ? (s +=
-                                                                                t.textContent)
-                                                                            : (s +=
-                                                                                t.innerText);
-                                                                }
-                                                            ),
-                                                            s);
+                                                                      : void 0 ===
+                                                                        t.innerText
+                                                                      ? (s +=
+                                                                            t.textContent)
+                                                                      : (s +=
+                                                                            t.innerText);
+                                                              }
+                                                          ),
+                                                          s);
                                                 },
                                             },
                                         },
@@ -342,29 +342,29 @@ document.addEventListener("DOMContentLoaded", function (e) {
                                                     return e.length <= 0
                                                         ? e
                                                         : ((e = $.parseHTML(e)),
-                                                            (s = ""),
-                                                            $.each(
-                                                                e,
-                                                                function (e, t) {
-                                                                    void 0 !==
-                                                                        t.classList &&
-                                                                        t.classList.contains(
-                                                                            "user-name"
-                                                                        )
-                                                                        ? (s +=
+                                                          (s = ""),
+                                                          $.each(
+                                                              e,
+                                                              function (e, t) {
+                                                                  void 0 !==
+                                                                      t.classList &&
+                                                                  t.classList.contains(
+                                                                      "user-name"
+                                                                  )
+                                                                      ? (s +=
                                                                             t
                                                                                 .lastChild
                                                                                 .firstChild
                                                                                 .textContent)
-                                                                        : void 0 ===
-                                                                            t.innerText
-                                                                            ? (s +=
-                                                                                t.textContent)
-                                                                            : (s +=
-                                                                                t.innerText);
-                                                                }
-                                                            ),
-                                                            s);
+                                                                      : void 0 ===
+                                                                        t.innerText
+                                                                      ? (s +=
+                                                                            t.textContent)
+                                                                      : (s +=
+                                                                            t.innerText);
+                                                              }
+                                                          ),
+                                                          s);
                                                 },
                                             },
                                         },
@@ -381,29 +381,29 @@ document.addEventListener("DOMContentLoaded", function (e) {
                                                     return e.length <= 0
                                                         ? e
                                                         : ((e = $.parseHTML(e)),
-                                                            (s = ""),
-                                                            $.each(
-                                                                e,
-                                                                function (e, t) {
-                                                                    void 0 !==
-                                                                        t.classList &&
-                                                                        t.classList.contains(
-                                                                            "user-name"
-                                                                        )
-                                                                        ? (s +=
+                                                          (s = ""),
+                                                          $.each(
+                                                              e,
+                                                              function (e, t) {
+                                                                  void 0 !==
+                                                                      t.classList &&
+                                                                  t.classList.contains(
+                                                                      "user-name"
+                                                                  )
+                                                                      ? (s +=
                                                                             t
                                                                                 .lastChild
                                                                                 .firstChild
                                                                                 .textContent)
-                                                                        : void 0 ===
-                                                                            t.innerText
-                                                                            ? (s +=
-                                                                                t.textContent)
-                                                                            : (s +=
-                                                                                t.innerText);
-                                                                }
-                                                            ),
-                                                            s);
+                                                                      : void 0 ===
+                                                                        t.innerText
+                                                                      ? (s +=
+                                                                            t.textContent)
+                                                                      : (s +=
+                                                                            t.innerText);
+                                                              }
+                                                          ),
+                                                          s);
                                                 },
                                             },
                                         },
@@ -420,29 +420,29 @@ document.addEventListener("DOMContentLoaded", function (e) {
                                                     return e.length <= 0
                                                         ? e
                                                         : ((e = $.parseHTML(e)),
-                                                            (s = ""),
-                                                            $.each(
-                                                                e,
-                                                                function (e, t) {
-                                                                    void 0 !==
-                                                                        t.classList &&
-                                                                        t.classList.contains(
-                                                                            "user-name"
-                                                                        )
-                                                                        ? (s +=
+                                                          (s = ""),
+                                                          $.each(
+                                                              e,
+                                                              function (e, t) {
+                                                                  void 0 !==
+                                                                      t.classList &&
+                                                                  t.classList.contains(
+                                                                      "user-name"
+                                                                  )
+                                                                      ? (s +=
                                                                             t
                                                                                 .lastChild
                                                                                 .firstChild
                                                                                 .textContent)
-                                                                        : void 0 ===
-                                                                            t.innerText
-                                                                            ? (s +=
-                                                                                t.textContent)
-                                                                            : (s +=
-                                                                                t.innerText);
-                                                                }
-                                                            ),
-                                                            s);
+                                                                      : void 0 ===
+                                                                        t.innerText
+                                                                      ? (s +=
+                                                                            t.textContent)
+                                                                      : (s +=
+                                                                            t.innerText);
+                                                              }
+                                                          ),
+                                                          s);
                                                 },
                                             },
                                         },
@@ -450,8 +450,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
                                 ],
                             },
                             {
-                                // text: '<i class="ti ti-plus me-sm-1"></i> <span class="d-none d-sm-inline-block">Add New Record</span>',
-                                // className: "create-new btn btn-primary",
+                                 text: '<i class="ti ti-plus me-sm-1"></i> <span class="d-none d-sm-inline-block">Add New Record</span>',
+                                 className: "create-new btn btn-primary",
                             },
                         ],
                         responsive: {
@@ -470,14 +470,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
                                     a = $.map(a, function (e, t) {
                                         return "" !== e.title
                                             ? '<tr data-dt-row="' +
-                                            e.rowIndex +
-                                            '" data-dt-column="' +
-                                            e.columnIndex +
-                                            '"><td>' +
-                                            e.title +
-                                            ":</td> <td>" +
-                                            e.data +
-                                            "</td></tr>"
+                                                  e.rowIndex +
+                                                  '" data-dt-column="' +
+                                                  e.columnIndex +
+                                                  '"><td>' +
+                                                  e.title +
+                                                  ":</td> <td>" +
+                                                  e.data +
+                                                  "</td></tr>"
                                             : "";
                                     }).join("");
                                     return (
@@ -490,10 +490,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
                             },
                         },
                     })),
-                        $("div.head-label").html(
-                            '<h5 class="card-title mb-0">Vehículos</h5>'
-                        )),
-                    101);
+                    $("div.head-label").html(
+                        '<h5 class="card-title mb-0">Vehículos</h5>'
+                    )),
+                101);
         fv.on("core.form.valid", function () {
             var e = $(".add-new-record .dt-full-name").val(),
                 t = $(".add-new-record .dt-post").val(),
@@ -512,8 +512,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
                         status: 5,
                     })
                     .draw(),
-                    r++,
-                    offCanvasEl.hide());
+                r++,
+                offCanvasEl.hide());
         }),
             $(".datatables-basic tbody").on(
                 "click",
@@ -523,190 +523,190 @@ document.addEventListener("DOMContentLoaded", function (e) {
                 }
             ),
             a.length &&
-            a.DataTable({
-                ajax: assetsPath + "json/table-datatable.json",
-                columns: [
-                    { data: "full_name" },
-                    { data: "email" },
-                    { data: "city" },
-                    { data: "post" },
-                    { data: "salary" },
-                    { data: "status" },
-                    { data: "" },
-                ],
-                columnDefs: [
-                    {
-                        targets: -2,
-                        render: function (e, t, a, s) {
-                            var a = a.status,
-                                n = {
-                                    1: {
-                                        title: "Current",
-                                        class: "bg-label-primary",
-                                    },
-                                    2: {
-                                        title: "Professional",
-                                        class: " bg-label-success",
-                                    },
-                                    3: {
-                                        title: "Rejected",
-                                        class: " bg-label-danger",
-                                    },
-                                    4: {
-                                        title: "Resigned",
-                                        class: " bg-label-warning",
-                                    },
-                                    5: {
-                                        title: "Applied",
-                                        class: " bg-label-info",
-                                    },
-                                };
-                            return void 0 === n[a]
-                                ? e
-                                : '<span class="badge ' +
-                                n[a].class +
-                                '">' +
-                                n[a].title +
-                                "</span>";
-                        },
-                    },
-                    {
-                        targets: -1,
-                        title: "Actions",
-                        orderable: !1,
-                        render: function (e, t, a, s) {
-                            return '<div class="d-inline-block"><a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="text-primary ti ti-dots-vertical"></i></a><div class="dropdown-menu dropdown-menu-end m-0"><a href="javascript:;" class="dropdown-item">Details</a><a href="javascript:;" class="dropdown-item">Archive</a><div class="dropdown-divider"></div><a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a></div></div><a href="javascript:;" class="btn btn-sm btn-icon item-edit"><i class="text-primary ti ti-pencil"></i></a>';
-                        },
-                    },
-                ],
-                dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>><"table-responsive"t><"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
-                displayLength: 7,
-                lengthMenu: [7, 10, 25, 50, 75, 100],
-            }),
-            s.length &&
-            ((t = s.DataTable({
-                ajax: assetsPath + "json/table-datatable.json",
-                columns: [
-                    { data: "" },
-                    { data: "full_name" },
-                    { data: "post" },
-                    { data: "email" },
-                    { data: "city" },
-                    { data: "start_date" },
-                    { data: "salary" },
-                    { data: "status" },
-                    { data: "" },
-                ],
-                columnDefs: [
-                    {
-                        className: "control",
-                        orderable: !1,
-                        targets: 0,
-                        searchable: !1,
-                        render: function (e, t, a, s) {
-                            return "";
-                        },
-                    },
-                    { visible: !1, targets: 2 },
-                    {
-                        targets: -2,
-                        render: function (e, t, a, s) {
-                            var a = a.status,
-                                n = {
-                                    1: {
-                                        title: "Current",
-                                        class: "bg-label-primary",
-                                    },
-                                    2: {
-                                        title: "Professional",
-                                        class: " bg-label-success",
-                                    },
-                                    3: {
-                                        title: "Rejected",
-                                        class: " bg-label-danger",
-                                    },
-                                    4: {
-                                        title: "Resigned",
-                                        class: " bg-label-warning",
-                                    },
-                                    5: {
-                                        title: "Applied",
-                                        class: " bg-label-info",
-                                    },
-                                };
-                            return void 0 === n[a]
-                                ? e
-                                : '<span class="badge ' +
-                                n[a].class +
-                                '">' +
-                                n[a].title +
-                                "</span>";
-                        },
-                    },
-                    {
-                        targets: -1,
-                        title: "Actions",
-                        orderable: !1,
-                        searchable: !1,
-                        render: function (e, t, a, s) {
-                            return '<div class="d-inline-block"><a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="text-primary ti ti-dots-vertical"></i></a><div class="dropdown-menu dropdown-menu-end m-0"><a href="javascript:;" class="dropdown-item">Details</a><a href="javascript:;" class="dropdown-item">Archive</a><div class="dropdown-divider"></div><a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a></div></div><a href="javascript:;" class="btn btn-sm btn-icon item-edit"><i class="text-primary ti ti-pencil"></i></a>';
-                        },
-                    },
-                ],
-                order: [[2, "asc"]],
-                dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
-                displayLength: 7,
-                lengthMenu: [7, 10, 25, 50, 75, 100],
-                drawCallback: function (e) {
-                    var t = this.api(),
-                        a = t.rows({ page: "current" }).nodes(),
-                        s = null;
-                    t.column(2, { page: "current" })
-                        .data()
-                        .each(function (e, t) {
-                            s !== e &&
-                                ($(a)
-                                    .eq(t)
-                                    .before(
-                                        '<tr class="group"><td colspan="8">' +
-                                        e +
-                                        "</td></tr>"
-                                    ),
-                                    (s = e));
-                        });
-                },
-                responsive: {
-                    details: {
-                        display: $.fn.dataTable.Responsive.display.modal({
-                            header: function (e) {
-                                return "Details of " + e.data().full_name;
+                a.DataTable({
+                    ajax: assetsPath + "json/table-datatable.json",
+                    columns: [
+                        { data: "full_name" },
+                        { data: "email" },
+                        { data: "city" },
+                        { data: "post" },
+                        { data: "salary" },
+                        { data: "status" },
+                        { data: "" },
+                    ],
+                    columnDefs: [
+                        {
+                            targets: -2,
+                            render: function (e, t, a, s) {
+                                var a = a.status,
+                                    n = {
+                                        1: {
+                                            title: "Current",
+                                            class: "bg-label-primary",
+                                        },
+                                        2: {
+                                            title: "Professional",
+                                            class: " bg-label-success",
+                                        },
+                                        3: {
+                                            title: "Rejected",
+                                            class: " bg-label-danger",
+                                        },
+                                        4: {
+                                            title: "Resigned",
+                                            class: " bg-label-warning",
+                                        },
+                                        5: {
+                                            title: "Applied",
+                                            class: " bg-label-info",
+                                        },
+                                    };
+                                return void 0 === n[a]
+                                    ? e
+                                    : '<span class="badge ' +
+                                          n[a].class +
+                                          '">' +
+                                          n[a].title +
+                                          "</span>";
                             },
-                        }),
-                        type: "column",
-                        renderer: function (e, t, a) {
-                            a = $.map(a, function (e, t) {
-                                return "" !== e.title
-                                    ? '<tr data-dt-row="' +
-                                    e.rowIndex +
-                                    '" data-dt-column="' +
-                                    e.columnIndex +
-                                    '"><td>' +
-                                    e.title +
-                                    ":</td> <td>" +
-                                    e.data +
-                                    "</td></tr>"
-                                    : "";
-                            }).join("");
-                            return (
-                                !!a &&
-                                $('<table class="table"/><tbody />').append(
-                                    a
-                                )
-                            );
+                        },
+                        {
+                            targets: -1,
+                            title: "Actions",
+                            orderable: !1,
+                            render: function (e, t, a, s) {
+                                return '<div class="d-inline-block"><a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="text-primary ti ti-dots-vertical"></i></a><div class="dropdown-menu dropdown-menu-end m-0"><a href="javascript:;" class="dropdown-item">Details</a><a href="javascript:;" class="dropdown-item">Archive</a><div class="dropdown-divider"></div><a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a></div></div><a href="javascript:;" class="btn btn-sm btn-icon item-edit"><i class="text-primary ti ti-pencil"></i></a>';
+                            },
+                        },
+                    ],
+                    dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>><"table-responsive"t><"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                    displayLength: 7,
+                    lengthMenu: [7, 10, 25, 50, 75, 100],
+                }),
+            s.length &&
+                ((t = s.DataTable({
+                    ajax: assetsPath + "json/table-datatable.json",
+                    columns: [
+                        { data: "" },
+                        { data: "full_name" },
+                        { data: "post" },
+                        { data: "email" },
+                        { data: "city" },
+                        { data: "start_date" },
+                        { data: "salary" },
+                        { data: "status" },
+                        { data: "" },
+                    ],
+                    columnDefs: [
+                        {
+                            className: "control",
+                            orderable: !1,
+                            targets: 0,
+                            searchable: !1,
+                            render: function (e, t, a, s) {
+                                return "";
+                            },
+                        },
+                        { visible: !1, targets: 2 },
+                        {
+                            targets: -2,
+                            render: function (e, t, a, s) {
+                                var a = a.status,
+                                    n = {
+                                        1: {
+                                            title: "Current",
+                                            class: "bg-label-primary",
+                                        },
+                                        2: {
+                                            title: "Professional",
+                                            class: " bg-label-success",
+                                        },
+                                        3: {
+                                            title: "Rejected",
+                                            class: " bg-label-danger",
+                                        },
+                                        4: {
+                                            title: "Resigned",
+                                            class: " bg-label-warning",
+                                        },
+                                        5: {
+                                            title: "Applied",
+                                            class: " bg-label-info",
+                                        },
+                                    };
+                                return void 0 === n[a]
+                                    ? e
+                                    : '<span class="badge ' +
+                                          n[a].class +
+                                          '">' +
+                                          n[a].title +
+                                          "</span>";
+                            },
+                        },
+                        {
+                            targets: -1,
+                            title: "Actions",
+                            orderable: !1,
+                            searchable: !1,
+                            render: function (e, t, a, s) {
+                                return '<div class="d-inline-block"><a href="javascript:;" class="btn btn-sm btn-icon dropdown-toggle hide-arrow" data-bs-toggle="dropdown"><i class="text-primary ti ti-dots-vertical"></i></a><div class="dropdown-menu dropdown-menu-end m-0"><a href="javascript:;" class="dropdown-item">Details</a><a href="javascript:;" class="dropdown-item">Archive</a><div class="dropdown-divider"></div><a href="javascript:;" class="dropdown-item text-danger delete-record">Delete</a></div></div><a href="javascript:;" class="btn btn-sm btn-icon item-edit"><i class="text-primary ti ti-pencil"></i></a>';
+                            },
+                        },
+                    ],
+                    order: [[2, "asc"]],
+                    dom: '<"row"<"col-sm-12 col-md-6"l><"col-sm-12 col-md-6 d-flex justify-content-center justify-content-md-end"f>>t<"row"<"col-sm-12 col-md-6"i><"col-sm-12 col-md-6"p>>',
+                    displayLength: 7,
+                    lengthMenu: [7, 10, 25, 50, 75, 100],
+                    drawCallback: function (e) {
+                        var t = this.api(),
+                            a = t.rows({ page: "current" }).nodes(),
+                            s = null;
+                        t.column(2, { page: "current" })
+                            .data()
+                            .each(function (e, t) {
+                                s !== e &&
+                                    ($(a)
+                                        .eq(t)
+                                        .before(
+                                            '<tr class="group"><td colspan="8">' +
+                                                e +
+                                                "</td></tr>"
+                                        ),
+                                    (s = e));
+                            });
+                    },
+                    responsive: {
+                        details: {
+                            display: $.fn.dataTable.Responsive.display.modal({
+                                header: function (e) {
+                                    return "Details of " + e.data().full_name;
+                                },
+                            }),
+                            type: "column",
+                            renderer: function (e, t, a) {
+                                a = $.map(a, function (e, t) {
+                                    return "" !== e.title
+                                        ? '<tr data-dt-row="' +
+                                              e.rowIndex +
+                                              '" data-dt-column="' +
+                                              e.columnIndex +
+                                              '"><td>' +
+                                              e.title +
+                                              ":</td> <td>" +
+                                              e.data +
+                                              "</td></tr>"
+                                        : "";
+                                }).join("");
+                                return (
+                                    !!a &&
+                                    $('<table class="table"/><tbody />').append(
+                                        a
+                                    )
+                                );
+                            },
                         },
                     },
-                },
-            })),
+                })),
                 $(".dt-row-grouping tbody").on(
                     "click",
                     "tr.group",
@@ -770,10 +770,10 @@ document.addEventListener("DOMContentLoaded", function (e) {
                             return void 0 === n[a]
                                 ? e
                                 : '<span class="badge ' +
-                                n[a].class +
-                                '">' +
-                                n[a].title +
-                                "</span>";
+                                      n[a].class +
+                                      '">' +
+                                      n[a].title +
+                                      "</span>";
                         },
                     },
                     {
@@ -804,14 +804,14 @@ document.addEventListener("DOMContentLoaded", function (e) {
                             a = $.map(a, function (e, t) {
                                 return "" !== e.title
                                     ? '<tr data-dt-row="' +
-                                    e.rowIndex +
-                                    '" data-dt-column="' +
-                                    e.columnIndex +
-                                    '"><td>' +
-                                    e.title +
-                                    ":</td> <td>" +
-                                    e.data +
-                                    "</td></tr>"
+                                          e.rowIndex +
+                                          '" data-dt-column="' +
+                                          e.columnIndex +
+                                          '"><td>' +
+                                          e.title +
+                                          ":</td> <td>" +
+                                          e.data +
+                                          "</td></tr>"
                                     : "";
                             }).join("");
                             return (

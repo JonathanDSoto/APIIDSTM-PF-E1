@@ -290,6 +290,3 @@
 <script src="../../assets/js/app-user-list.js"></script>
 
 @endsection
-@section('footer')
-@include('layouts.footer')
-@endsection

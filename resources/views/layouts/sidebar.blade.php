@@ -1,10 +1,10 @@
+
 @php
 function isActive($url)
 {
 return request()->url() == url($url);
 }
 @endphp
-
 <ul class="menu-inner py-1">
     <!-- Primer elemento del menú -->
     <li class="menu-item{{ isActive('/vehicles')|| isActive('/carform') || isActive('/carform') ? ' active open' : '' }}">

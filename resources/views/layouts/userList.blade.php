@@ -110,7 +110,6 @@
                         <td>mail@example.com</td>
                         
                     </tr>
-
                     <tr>
                         <td></td>
                         <td>José</td>
@@ -259,10 +258,7 @@
 <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
 <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
 <script src="../../assets/vendor/js/menu.js"></script>
-
 <!-- endbuild -->
-
-
 <!-- Vendors JS -->
 <script src="../../assets/vendor/libs/moment/moment.js"></script>
 <script src="../../assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js"></script>
@@ -272,15 +268,8 @@
 <script src="../../assets/vendor/libs/@form-validation/umd/plugin-auto-focus/index.min.js"></script>
 <script src="../../assets/vendor/libs/cleavejs/cleave.js"></script>
 <script src="../../assets/vendor/libs/cleavejs/cleave-phone.js"></script>
-
 <!-- Main JS -->
 <script src="../../assets/js/main.js"></script>
-
-
 <!-- Page JS -->
 <script src="../../assets/js/app-user-list.js"></script>
-
-@endsection
-@section('footer')
-@include('layouts.footer')
 @endsection

@@ -12,11 +12,19 @@ class Controlador extends Controller
     }
     public function mostrarLogin()
     {
-        return view('layouts.login');
+        return view('layouts.userRegister.login');
     }
     public function registro()
     {
         return view('layouts.userRegister.register');
+    }
+    public function forgotpassword()
+    {
+        return view('layouts.userRegister.forgotPassword');
+    }
+    public function resetpassword()
+    {
+        return view('layouts.userRegister.resetPassword');
     }
     public function logout()
     {

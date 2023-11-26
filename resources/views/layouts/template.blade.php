@@ -96,9 +96,7 @@
                 <div class="content-wrapper">
                     @yield('content')
                     <!-- / Content -->
-                    <!-- Footer -->
-                    @yield('footer')
-                    <!-- / Footer -->
+
                     <div class="content-backdrop fade"></div>
                 </div>
                 <!-- Content wrapper -->

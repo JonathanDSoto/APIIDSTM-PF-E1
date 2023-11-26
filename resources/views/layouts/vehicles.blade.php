@@ -2,172 +2,178 @@
 
 @section('menu')
 @include('layouts.sidebar')
-
 @endsection
 @section('searchbar')
 @include('layouts.searchbar')
 @endsection
 @section('content')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofP+WI5P5Gn9We8eW5tOWNE4uPmk/P9Em" crossorigin="anonymous">
-
-<link rel="stylesheet" href="../../assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css">
 <div class="container-xxl flex-grow-1 container-p-y">
-    <div class="card-body">
-        <div class="card">
-            <div class="card-body text-center">
-                <div class="btn-container">
-                    <a href="/carform">
-                        <button type="button" class="btn btn-info" style="width: 150px; height: 40px;">Nuevo Registro</button>
-                    </a>
-                    <a href="/carform">
-                        <button type="button" class="btn btn-secondary" style="width: 150px; height: 40px;">Editar Registros</button>
-                    </a>
-
-                    <div class="demo-inline-spacing">
-                        <button type="button" class="btn btn-danger" style="width: 150px; height: 40px;" data-bs-toggle="modal" data-bs-target="#smallModal">
-                            Eliminar Registro
-                        </button>
-                        <div class="modal fade" id="smallModal" tabindex="-1" aria-hidden="true">
-                            <div class="modal-dialog modal-sm" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="row">
-                                            <div class="col mb-3">
-                                                <label for="nameSmall" class="form-label">Incresa id del vehiculo a eliminar</label>
-                                                <input type="text" id="nameSmall" class="form-control" placeholder="ID">
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-danger">Eliminar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-datatable table-responsive pt-0">
-                    <table class="datatables-basic table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Foto</th>
-                                <th>Marca</th>
-                                <th>Modelo</th>
-                                <th>Categoria</th>
-                                <th>Tarifa</th>
-                                <th>Disponibilidad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>21</td>
-                                <td> <img src="..\assets\img\svgs\ferrari.svg" alt="Descripción del SVG"></td>
-                                <td>Ferrari</td>
-                                <td>LaFerrari</td>
-                                <td>Deportivo</td>
-                                <td>200.00</td>
-                                <td>Disponible</td>
-                            </tr>
-                            <tr>
-                                <td>22</td>
-                                <td> <img src="..\assets\img\svgs\jeep.svg" alt="Descripción del SVG"></td>
-                                <td>Jeep</td>
-                                <td>Wrangler</td>
-                                <td>SUV</td>
-                                <td>65.99</td>
-                                <td>Disponible</td>
-                            </tr>
-                            <tr>
-                                <td>23</td>
-                                <td> <img src="..\assets\img\svgs\volvo.svg" alt="Descripción del SVG"></td>
-                                <td>Volvo</td>
-                                <td>XC90</td>
-                                <td>SUV</td>
-                                <td>75.50</td>
-                                <td>Disponible</td>
-                            </tr>
-                            <tr>
-                                <td>24</td>
-                                <td> <img src="..\assets\img\svgs\mazda.svg" alt="Descripción del SVG"></td>
-                                <td>Mazda</td>
-                                <td>CX-5</td>
-                                <td>SUV</td>
-                                <td>55.80</td>
-                                <td>Disponible</td>
-                            </tr>
-                            <tr>
-                                <td>25</td>
-                                <td> <img src="..\assets\img\svgs\hyundai.svg" alt="Descripción del SVG"></td>
-                                <td>Hyundai</td>
-                                <td>Tucson</td>
-                                <td>SUV</td>
-                                <td>48.90</td>
-                                <td>Disponible</td>
-                            </tr>
-                            <tr>
-                                <td>26</td>
-                                <td> <img src="..\assets\img\svgs\subaru.svg" alt="Descripción del SVG"></td>
-                                <td>Subaru</td>
-                                <td>Outback</td>
-                                <td>Station Wagon</td>
-                                <td>42.75</td>
-                                <td>Disponible</td>
-                            </tr>
-                            <tr>
-                                <td>27</td>
-                                <td> <img src="..\assets\img\svgs\kia.svg" alt="Descripción del SVG"></td>
-                                <td>Kia</td>
-                                <td>Soul</td>
-                                <td>Hatchback</td>
-                                <td>38.50</td>
-                                <td>Disponible</td>
-                            </tr>
-                            <tr>
-                                <td>28</td>
-                                <td> <img src="..\assets\img\svgs\jaguar.svg" alt="Descripción del SVG"></td>
-                                <td>Jaguar</td>
-                                <td>F-PACE</td>
-                                <td>SUV</td>
-                                <td>85.20</td>
-                                <td>No disponible</td>
-                            </tr>
-                            <tr>
-                                <td>29</td>
-                                <td> <img src="..\assets\img\svgs\chrysler.svg" alt="Descripción del SVG"></td>
-                                <td>Chrysler</td>
-                                <td>Pacifica</td>
-                                <td>Minivan</td>
-                                <td>60.25</td>
-                                <td>Disponible</td>
-                            </tr>
-                            <tr>
-                                <td>30</td>
-                                <td> <img src="..\assets\img\svgs\lexus.svg" alt="Descripción del SVG"></td>
-                                <td>Lexus</td>
-                                <td>RX</td>
-                                <td>SUV</td>
-                                <td>70.90</td>
-                                <td>Disponible</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-
-            </div>
-        </div>
+    <h4 class="py-3 mb-4">
+      <span class="text-muted fw-light">DataTables /</span> Basic
+    </h4>
+    <!-- DataTable with Buttons -->
+    <div class="card">
+      <div class="card-datatable table-responsive pt-0">
+        <table class="datatables-basic table">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th>id</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Date</th>
+              <th>Salary</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
     </div>
+    <!-- Modal to add new record -->
+    <div class="offcanvas offcanvas-end" id="add-new-record">
+      <div class="offcanvas-header border-bottom">
+        <h5 class="offcanvas-title" id="exampleModalLabel">New Record</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body flex-grow-1">
+        <form class="add-new-record pt-0 row g-2" id="form-add-new-record" onsubmit="return false">
+          <div class="col-sm-12">
+            <label class="form-label" for="basicFullname">Full Name</label>
+            <div class="input-group input-group-merge">
+              <span id="basicFullname2" class="input-group-text"><i class="ti ti-user"></i></span>
+              <input type="text" id="basicFullname" class="form-control dt-full-name" name="basicFullname" placeholder="John Doe" aria-label="John Doe" aria-describedby="basicFullname2" />
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <label class="form-label" for="basicPost">Post</label>
+            <div class="input-group input-group-merge">
+              <span id="basicPost2" class="input-group-text"><i class='ti ti-briefcase'></i></span>
+              <input type="text" id="basicPost" name="basicPost" class="form-control dt-post" placeholder="Web Developer" aria-label="Web Developer" aria-describedby="basicPost2" />
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <label class="form-label" for="basicEmail">Email</label>
+            <div class="input-group input-group-merge">
+              <span class="input-group-text"><i class="ti ti-mail"></i></span>
+              <input type="text" id="basicEmail" name="basicEmail" class="form-control dt-email" placeholder="john.doe@example.com" aria-label="john.doe@example.com" />
+            </div>
+            <div class="form-text">
+              You can use letters, numbers & periods
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <label class="form-label" for="basicDate">Joining Date</label>
+            <div class="input-group input-group-merge">
+              <span id="basicDate2" class="input-group-text"><i class='ti ti-calendar'></i></span>
+              <input type="text" class="form-control dt-date" id="basicDate" name="basicDate" aria-describedby="basicDate2" placeholder="MM/DD/YYYY" aria-label="MM/DD/YYYY" />
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <label class="form-label" for="basicSalary">Salary</label>
+            <div class="input-group input-group-merge">
+              <span id="basicSalary2" class="input-group-text"><i class='ti ti-currency-dollar'></i></span>
+              <input type="number" id="basicSalary" name="basicSalary" class="form-control dt-salary" placeholder="12000" aria-label="12000" aria-describedby="basicSalary2" />
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary data-submit me-sm-3 me-1">Submit</button>
+            <button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="offcanvas">Cancel</button>
+          </div>
+        </form>
+    
+      </div>
+    </div>
+    <!--/ DataTable with Buttons -->
+    <hr class="my-5">
+    <!-- Complex Headers -->
+    <div class="card">
+      <h5 class="card-header">Complex Headers</h5>
+      <div class="card-datatable text-nowrap">
+        <table class="dt-complex-header table table-bordered">
+          <thead>
+            <tr>
+              <th rowspan="2">Name</th>
+              <th colspan="2">Contact</th>
+              <th colspan="3">HR Information</th>
+              <th rowspan="2">Action</th>
+            </tr>
+            <tr>
+              <th>E-mail</th>
+              <th>City</th>
+              <th>Position</th>
+              <th>Salary</th>
+              <th class="border-1">Status</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <!--/ Complex Headers -->
+    <hr class="my-5">
+    <!-- Row grouping -->
+    <div class="card">
+      <h5 class="card-header">Row Grouping</h5>
+      <div class="card-datatable table-responsive">
+        <table class="dt-row-grouping table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Email</th>
+              <th>City</th>
+              <th>Date</th>
+              <th>Salary</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Email</th>
+              <th>City</th>
+              <th>Date</th>
+              <th>Salary</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <!--/ Row grouping -->
+    <hr class="my-5">
+    <!-- Multilingual -->
+    <div class="card">
+      <h5 class="card-header">Multilingual</h5>
+      <div class="card-datatable table-responsive">
+        <table class="dt-multilingual table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Email</th>
+              <th>Date</th>
+              <th>Salary</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+        </table>
+      </div>
+    </div>
+    <!--/ Multilingual -->
+              </div>
 
 
     <script src="../../assets/vendor/libs/jquery/jquery.js"></script>
     <script src="../../assets/vendor/libs/popper/popper.js"></script>
-    <!-- <script src="../../assets/vendor/js/bootstrap.js"></script> -->
     <script src="../../assets/vendor/libs/node-waves/node-waves.js"></script>
     <script src="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
@@ -182,7 +188,4 @@
 
 
 
-    @endsection
-    @section('footer')
-    @include('layouts.footer')
     @endsection
