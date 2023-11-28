@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controlador;
-
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RememberPasswordController;
+use App\Models\RememberPassword;
 
 // Auth Routes
 Route::get('/', function () {
@@ -12,6 +14,15 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('userRegister.register');
 })->name('register');
+
+Route::get('/rememberPassword', function () {
+    return view('userRegister.resetPassword');
+})->name('rememberPassword');
+
+Route::post('/register', [UserController::class, 'store'])->name('register');
+
+Route::post('/rememberPassword', [RememberPasswordController::class, 'store'])->name('rememberPassword');
+
 
 // Vehicles Routes
 Route::get('/vehicles', function () {
