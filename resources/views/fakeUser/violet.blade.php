@@ -23,7 +23,7 @@
             </div>
           </div>
           <div class="d-flex justify-content-around flex-wrap mt-3 pt-3 pb-4 border-bottom">
-            
+
           </div>
           <p class="mt-4 small text-uppercase text-muted">Detalles</p>
           <div class="info-container">

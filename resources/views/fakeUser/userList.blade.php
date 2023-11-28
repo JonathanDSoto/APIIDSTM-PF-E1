@@ -108,7 +108,6 @@
                         <td>Calle 123, Ciudad A</td>
                         <td>555-1234</td>
                         <td>mail@example.com</td>
-                        
                     </tr>
                     <tr>
                         <td></td>

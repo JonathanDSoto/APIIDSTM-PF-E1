@@ -86,7 +86,7 @@
                         <p class="mb-4">
                             Rápido, fácil y siempre a tu medida.
                         </p>
-                        <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+                        <form id="formAuthentication" class="mb-3" action="{{ route('vehicles.index')}}">
                             <div class="mb-3">
                                 <label for="username" class="form-label">Nombre de Usuario</label>
                                 <input type="text" class="form-control" id="username" name="username"
@@ -112,7 +112,7 @@
                         </form>
                         <p class="text-center">
                             <span>Tiene cuenta?</span>
-                            <a href="{{ url('/login') }}">
+                            <a href="{{ route('login')}}">
                                 <span>Ingrese aquí</span>
                             </a>
                         </p>
