@@ -15,12 +15,12 @@ class BillRentalSeeder extends Seeder
     {
         $bill = new BillRental();
         $bill->id_renta = 1;
-        $bill->address_id = 1;
+        $bill->metodo_pago = 'efectivo';
         $bill->save();
 
         $bill = new BillRental();
         $bill->id_renta = 2;
-        $bill->address_id = 2;
+        $bill->metodo_pago = 'tarjeta';
         $bill->save();
     }
 }

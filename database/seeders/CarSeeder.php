@@ -18,7 +18,7 @@ class CarSeeder extends Seeder
         $car->trademarks_id = 1;
         $car->categories_id = 1; // Clase A
         $car->is_avaliable = false;
-        $car->rates_tarifa = 4; // Clasificación para Clase A
+        $car->rates_id = 4; // Clasificación para Clase A
         $car->image = '';
         $car->save();
 
@@ -27,7 +27,7 @@ class CarSeeder extends Seeder
         $car->trademarks_id = 1;
         $car->categories_id = 2; // Clase B
         $car->is_avaliable = false;
-        $car->rates_tarifa = 7; // Clasificación para Clase B
+        $car->rates_id = 7; // Clasificación para Clase B
         $car->image = '';
         $car->save();
 
@@ -36,7 +36,7 @@ class CarSeeder extends Seeder
         $car->trademarks_id = 1;
         $car->categories_id = 3; // Clase C
         $car->is_avaliable = true;
-        $car->rates_tarifa = 11; // Clasificación para Clase C
+        $car->rates_id = 11; // Clasificación para Clase C
         $car->image = '';
         $car->save();
 
@@ -45,7 +45,7 @@ class CarSeeder extends Seeder
         $car->trademarks_id = 1;
         $car->categories_id = 4; // Clase D
         $car->is_avaliable = true;
-        $car->rates_tarifa = 15; // Clasificación para Clase D
+        $car->rates_id = 15; // Clasificación para Clase D
         $car->image = '';
         $car->save();
 
@@ -54,7 +54,7 @@ class CarSeeder extends Seeder
         $car->trademarks_id = 1;
         $car->categories_id = 5; // Clase E
         $car->is_avaliable = true;
-        $car->rates_tarifa = 20; // Clasificación para Clase E
+        $car->rates_id = 20; // Clasificación para Clase E
         $car->image = '';
         $car->save();
 
@@ -63,7 +63,7 @@ class CarSeeder extends Seeder
         $car->trademarks_id = 2;
         $car->categories_id = 1; // Clase A
         $car->is_avaliable = true;
-        $car->rates_tarifa = 4; // Clasificación para Clase A
+        $car->rates_id = 4; // Clasificación para Clase A
         $car->image = '';
         $car->save();
 
@@ -72,7 +72,7 @@ class CarSeeder extends Seeder
         $car->trademarks_id = 2;
         $car->categories_id = 2; // Clase B
         $car->is_avaliable = true;
-        $car->rates_tarifa = 7; // Clasificación para Clase B
+        $car->rates_id = 7; // Clasificación para Clase B
         $car->image = '';
         $car->save();
 
@@ -81,7 +81,7 @@ class CarSeeder extends Seeder
         $car->trademarks_id = 2;
         $car->categories_id = 3; // Clase C
         $car->is_avaliable = true;
-        $car->rates_tarifa = 11; // Clasificación para Clase C
+        $car->rates_id = 11; // Clasificación para Clase C
         $car->image = '';
         $car->save();
 
@@ -90,7 +90,7 @@ class CarSeeder extends Seeder
         $car->trademarks_id = 2;
         $car->categories_id = 4; // Clase D
         $car->is_avaliable = true;
-        $car->rates_tarifa = 15; // Clasificación para Clase D
+        $car->rates_id = 15; // Clasificación para Clase D
         $car->image = '';
         $car->save();
 
@@ -99,7 +99,7 @@ class CarSeeder extends Seeder
         $car->trademarks_id = 2;
         $car->categories_id = 5; // Clase E
         $car->is_avaliable = true;
-        $car->rates_tarifa = 20; // Clasificación para Clase E
+        $car->rates_id = 20; // Clasificación para Clase E
         $car->image = '';
         $car->save();
     }

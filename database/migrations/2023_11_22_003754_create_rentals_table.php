@@ -16,13 +16,10 @@ return new class extends Migration
         Schema::create('rentals', function (Blueprint $table) {
             $table->id()->foreign('cars.id');
             $table->foreignId('client_id')->constrained();
-            $table->bigInteger('id_vehiculo');
-            $table->bigInteger('id_tarifa');
+            $table->bigInteger('id_vehiculo')->constrained('cars', 'id');
             $table->foreignId('rates_id')->constrained();
             $table->dateTime('initial_day');
             $table->dateTime('delivery_day');
-            $table->tinyInteger('days');
-            $table->integer('total');
             $table->timestamps();
         });
 

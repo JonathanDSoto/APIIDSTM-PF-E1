@@ -14,19 +14,19 @@ class RentalSeeder extends Seeder
     public function run(): void
     {
         $rental = new Rental();
-        $rental->id_client = 1;
-        $rental->id_vehicle = 1;
-        $rental->id_rate = 4;
-        $rental->start_date = '2023-11-23';
-        $rental->end_date = '2024-12-23';
+        $rental->client_id = 1;
+        $rental->id_vehiculo = 1;
+        $rental->rates_id = 4;
+        $rental->initial_day = '2023-11-23';
+        $rental->delivery_day = '2024-12-23';
         $rental->save();
 
         $rental = new Rental();
-        $rental->id_client = 2;
-        $rental->id_vehicle = 2;
-        $rental->id_rate = 1;
-        $rental->start_date = '2023-11-23';
-        $rental->end_date = '2023-12-23';
+        $rental->client_id = 2;
+        $rental->id_vehiculo = 2;
+        $rental->rates_id = 1;
+        $rental->initial_day = '2023-11-23';
+        $rental->delivery_day = '2023-12-23';
         $rental->save();
     }
 }

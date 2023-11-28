@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('bill_rentals', function (Blueprint $table) {
-            $table->id()->foreign('rental.id');
-            $table->bigInteger('id_renta');
+            $table->id();
+            $table->bigInteger('id_renta')->constrained('rentals', 'id');
             $table->enum('metodo_pago', ['efectivo', 'tarjeta', 'paypal', 'transferencia']);
             $table->timestamps();
         });
