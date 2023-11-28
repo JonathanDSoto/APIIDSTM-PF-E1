@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('trademarks_id')->constrained();
             $table->foreignId('categories_id')->constrained();
             $table->boolean('is_avaliable')->default(true);
-            $table->foreignId('rates_tarifa')->constrained();
+            $table->foreignId('rates_id')->constrained();
             $table->text('image');
             $table->timestamps();
         });
