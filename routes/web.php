@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controlador;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RememberPasswordController;
+use App\Http\Controllers\ClientController;
 use App\Models\RememberPassword;
 
 // Auth Routes
@@ -38,9 +39,8 @@ Route::get('/vehicles/tax', function () {
 })->name('vehicles.tax');
 
 // Clients Routes
-Route::get('/clients', function () {
-    return view('clients.index');
-})->name('clients.index');
+Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
+
 
 Route::get('/clients/history', function () {
     return view('clients.history');
