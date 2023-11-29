@@ -36,6 +36,6 @@ class Client extends Model
 
     public function idAddress(): BelongsTo
     {
-        return $this->belongsTo(Address::class);
+        return $this->belongsTo(Address::class, 'id_address');
     }
 }

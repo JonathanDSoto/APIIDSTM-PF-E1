@@ -34,13 +34,15 @@
                     <tbody>
                     @foreach ($clients as $client)
                         <tr>
-                            <th scope="row">{{ $client->id }}</th>
                             <td>{{ $client->name }}</td>
                             <td>{{ $client->lastname }}</td>
                             <td>{{ $client->email }}</td>
                             <td>{{ $client->phone }}</td>
                             
-                            <!-- Asumiendo que hay una relación con la dirección en tu modelo Client-->
+                            <!-- Asumiendo que hay una relación con la dirección en tu modelo Client -->
+                            <td>{{ $client->idAddress->address }}</td>
+                            <td>{{ $client->idAddress->code_postal }}</td>
+                            <td>{{ $client->idAddress->residence_number }}</td>
                             
                             <td>
                                 <div>
