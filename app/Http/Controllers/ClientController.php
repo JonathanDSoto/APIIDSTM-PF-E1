@@ -35,6 +35,6 @@ class ClientController extends Controller
         $client->id_address = $address->id;
         $client->save();
         
-        return redirect()->route('clients.show', compact('client'));
+        return redirect()->route('clients.index', compact('client'));
     }
 }

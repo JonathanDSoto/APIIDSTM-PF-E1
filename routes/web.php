@@ -26,21 +26,22 @@ Route::post('/rememberPassword', [RememberPasswordController::class, 'store'])->
 
 
 // Vehicles Routes
-Route::get('/vehicles', function () {
-    return view('vehicles.index');
-})->name('vehicles.index');
+Route::get('/vehicles', [CarController::class, 'index'])->name('vehicles.index');
 
-Route::get('/vehicles/history', function () {
-    return view('vehicles.history');
-})->name('vehicles.history');
+Route::post('/vehicles', [CarController::class, 'create']);
 
-Route::get('/vehicles/tax', function () {
-    return view('vehicles.tax');
-})->name('vehicles.tax');
+Route::get('/vehicles/{car}', [CarController::class, 'show'])->name('vehicles.show');
+
+Route::put('/vehicles/{car}/edit', [CarController::class, 'update']);
+
+Route::get('/vehicles/history/{car}', [CarController::class, 'history'])->name('vehicles.history');
+
+Route::get('/vehicules/{car}/tax', [CarController::class, 'tax'])->name('vehicles.tax');
+
+Route::delete('/vehicles/{car}', [CarController::class, 'drop'])->name('vehicles.drop');
 
 // Clients Routes
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
-
 
 Route::get('/clients/history', function () {
     return view('clients.history');

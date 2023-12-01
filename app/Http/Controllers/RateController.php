@@ -25,6 +25,11 @@ class RateController extends Controller
         $rate->tarifa = $request->tarifa;
         $rate->save();
         
-        return redirect()->route('rates.show', compact('rate'));
+        return redirect()->route('rates.index');
+    }
+
+    public function drop(Rate $rate){ // Elimina una tarifa en específico
+        $rate->delete();
+        return redirect()->route('rates.index');
     }
 }

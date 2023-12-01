@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Http\Controllers\Controller;
+use App\Models\Car;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -25,6 +26,16 @@ class CategoryController extends Controller
         $category->categoria = $request->categoria;
         $category->save();
         
-        return redirect()->route('categories.show', compact('category'));
+        return redirect()->route('categories.index', compact('category'));
+    }
+
+    public function drop(Category $category){ // Elimina una categoria en específico
+        $category->delete();
+        return redirect()->route('categories.index');
+    }
+
+    public function categoryCars(Category $category){ // Muestra los vehiculos de una categoria en específico
+        $cars = Car::where('categories_id', $category->id)->get();
+        return view('categories.categoryCars', compact('cars', 'category'));
     }
 }

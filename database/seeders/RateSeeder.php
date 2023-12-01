@@ -14,218 +14,254 @@ class RateSeeder extends Seeder
     public function run(): void
     {
         $rate = new Rate();
-        $rate->descripcion = 'Clase A por dia';
+        $rate->descripcion = 'Diario';
         $rate->tarifa = 100;
+        $rate->categoria = 'Clase A: Autos pequeños';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase A por semana';
+        $rate->descripcion = 'Semanal';
         $rate->tarifa = 500;
+        $rate->categoria = 'Clase A: Autos pequeños';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase A por mes';
+        $rate->descripcion = 'Mensual';
         $rate->tarifa = 1500;
+        $rate->categoria = 'Clase A: Autos pequeños';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase A anual';
+        $rate->descripcion = 'Anual';
         $rate->tarifa = 15000;
+        $rate->categoria = 'Clase A: Autos pequeños';
         $rate->save();
         
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase B por dia';
+        $rate->descripcion = 'Diario';
         $rate->tarifa = 150;
+        $rate->categoria = 'Clase B: Autos pequeños';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase B por semana';
+        $rate->descripcion = 'Semanal';
         $rate->tarifa = 750;
+        $rate->categoria = 'Clase B: Autos pequeños';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase B por mes';
+        $rate->descripcion = 'Mensual';
         $rate->tarifa = 2250;
+        $rate->categoria = 'Clase B: Autos pequeños';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase B anual';
+        $rate->descripcion = 'Anual';
         $rate->tarifa = 20000;
+        $rate->categoria = 'Clase B: Autos pequeños';
         $rate->save();
         
 
         $rate = new Rate();
-        $rate->descripcion = 'Clase C por dia';
+        $rate->descripcion = 'Diario';
         $rate->tarifa = 200;
+        $rate->categoria = 'Clase C: Autos medianos';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase C por semana';
+        $rate->descripcion = 'Semanal';
         $rate->tarifa = 1000;
+        $rate->categoria = 'Clase C: Autos medianos';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase C por mes';
+        $rate->descripcion = 'Mensual';
         $rate->tarifa = 3000;
+        $rate->categoria = 'Clase C: Autos medianos';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase C anual';
+        $rate->descripcion = 'Anual';
         $rate->tarifa = 30000;
+        $rate->categoria = 'Clase C: Autos medianos';
         $rate->save();
         
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase D por dia';
+        $rate->descripcion = 'Diario';
         $rate->tarifa = 250;
+        $rate->categoria = 'Clase D: Autos grandes';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase D por semana';
+        $rate->descripcion = 'Semanal';
         $rate->tarifa = 1250;
+        $rate->categoria = 'Clase D: Autos grandes';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase D por mes';
+        $rate->descripcion = 'Mensual';
         $rate->tarifa = 3750;
+        $rate->categoria = 'Clase D: Autos grandes';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase D anual';
+        $rate->descripcion = 'Anual';
         $rate->tarifa = 37500;
+        $rate->categoria = 'Clase D: Autos grandes';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase E por dia';
+        $rate->descripcion = 'Diario';
         $rate->tarifa = 500;
+        $rate->categoria = 'Clase E: Autos de gama alta';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase E por semana';
+        $rate->descripcion = 'Semanal';
         $rate->tarifa = 2500;
+        $rate->categoria = 'Clase E: Autos de gama alta';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase E por mes';
+        $rate->descripcion = 'Mensual';
         $rate->tarifa = 7500;
+        $rate->categoria = 'Clase E: Autos de gama alta';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase E anual';
+        $rate->descripcion = 'Anual';
         $rate->tarifa = 75000;
+        $rate->categoria = 'Clase E: Autos de gama alta';
         $rate->save();
         
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase F por dia';
+        $rate->descripcion = 'Diario';
         $rate->tarifa = 600;
+        $rate->categoria = 'Clase F: Autos de lujo';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase F por semana';
+        $rate->descripcion = 'Semanal';
         $rate->tarifa = 3000;
+        $rate->categoria = 'Clase F: Autos de lujo';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase F por mes';
+        $rate->descripcion = 'Mensual';
         $rate->tarifa = 9000;
+        $rate->categoria = 'Clase F: Autos de lujo';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase F anual';
+        $rate->descripcion = 'Anual';
         $rate->tarifa = 90000;
+        $rate->categoria = 'Clase F: Autos de lujo';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase J por dia';
+        $rate->descripcion = 'Diario';
         $rate->tarifa = 800;
+        $rate->categoria = 'Clase J: Vehículos SUV con equipamiento deportivo';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase J por semana';
+        $rate->descripcion = 'Semanal';
         $rate->tarifa = 4000;
+        $rate->categoria = 'Clase J: Vehículos SUV con equipamiento deportivo';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase J por mes';
+        $rate->descripcion = 'Mesual';
         $rate->tarifa = 12000;
+        $rate->categoria = 'Clase J: Vehículos SUV con equipamiento deportivo';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase J anual';
+        $rate->descripcion = 'Anual';
         $rate->tarifa = 120000;
+        $rate->categoria = 'Clase J: Vehículos SUV con equipamiento deportivo';
         $rate->save();
         
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase M por dia';
+        $rate->descripcion = 'Diario';
         $rate->tarifa = 1000;
+        $rate->categoria = 'Clase M: MPV vehiculos polivalentes';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase M por semana';
+        $rate->descripcion = 'Semanal';
         $rate->tarifa = 5000;
+        $rate->categoria = 'Clase M: MPV vehiculos polivalentes';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase M por mes';
+        $rate->descripcion = 'Mensual';
         $rate->tarifa = 15000;
+        $rate->categoria = 'Clase M: MPV vehiculos polivalentes';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase M anual';
+        $rate->descripcion = 'Anual';
         $rate->tarifa = 150000;
+        $rate->categoria = 'Clase M: MPV vehiculos polivalentes';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase S por dia';
+        $rate->descripcion = 'Diario';
         $rate->tarifa = 1500;
+        $rate->categoria = 'Clase S: Vehículos deportivos';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase S por semana';
+        $rate->descripcion = 'Semanal';
         $rate->tarifa = 7500;
+        $rate->categoria = 'Clase S: Vehículos deportivos';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase S por mes';
+        $rate->descripcion = 'Mensual';
         $rate->tarifa = 22500;
+        $rate->categoria = 'Clase S: Vehículos deportivos';
         $rate->save();
 
         
         $rate = new Rate();
-        $rate->descripcion = 'Clase S anual';
+        $rate->descripcion = 'Anual';
         $rate->tarifa = 225000;
+        $rate->categoria = 'Clase S: Vehículos deportivos';
         $rate->save();
     }
 }

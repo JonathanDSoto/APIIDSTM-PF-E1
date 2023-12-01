@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('rates', function (Blueprint $table) {
             $table->id();
             $table->string('descripcion');
+            $table->enum('categoria', ['Clase A: Autos pequeños', 'Clase B: Autos pequeños', 'Clase C: Autos medianos', 'Clase D: Autos grandes', 'Clase E: Autos de gama alta', 'Clase F: Autos de lujo', 'Clase J: Vehículos SUV con equipamiento deportivo', 'Clase M: MPV vehiculos polivalentes', 'Clase S: Vehículos deportivos']);
             $table->integer('tarifa');
             $table->timestamps();
         });
