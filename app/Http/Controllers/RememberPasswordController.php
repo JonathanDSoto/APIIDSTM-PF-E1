@@ -18,7 +18,6 @@ class RememberPasswordController extends Controller
 
         $user = User::find($request->id_user);
         $user->password = $request->new_password;
-        $user->save();
         
         return redirect()->route('login');
     }

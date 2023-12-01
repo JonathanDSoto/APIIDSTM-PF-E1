@@ -6,26 +6,17 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RememberPasswordController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TrademarkController;
-use App\Models\RememberPassword;
-use App\Models\Trademark;
+use App\Http\Controllers\CategoryController;
 
 // Auth Routes
-Route::get('/', function () {
-    return view('userRegister.login');
-})->name('login');
 
-Route::get('/register', function () {
-    return view('userRegister.register');
-})->name('register');
+Route::get('/', [UserController::class, 'index'])->name('login');
 
-Route::get('/rememberPassword', function () {
-    return view('userRegister.resetPassword');
-})->name('rememberPassword');
+Route::get('/register', [UserController::class, 'register'])->name('register');
 
 Route::post('/register', [UserController::class, 'store'])->name('register');
 
 Route::post('/rememberPassword', [RememberPasswordController::class, 'store'])->name('rememberPassword');
-
 
 // Vehicles Routes
 Route::get('/vehicles', [CarController::class, 'index'])->name('vehicles.index');
@@ -91,16 +82,16 @@ Route::delete('/categories/{category}', [CategoryController::class, 'drop'])->na
 
 // Brand routes
 
-Route::get('/brands', [Trademark::class, 'index'])->name('brands.index');
+Route::get('/brands', [TrademarkController::class, 'index'])->name('brands.index');
 
-Route::post('/brands', [Trademark::class, 'create']);
+Route::post('/brands', [TrademarkController::class, 'create']);
 
-Route::get('/brands/{trademark}', [Trademark::class, 'show'])->name('brands.show');
+Route::get('/brands/{trademark}', [TrademarkController::class, 'show'])->name('brands.show');
 
-Route::put('/brands/{trademark}/edit', [Trademark::class, 'update']);
+Route::put('/brands/{trademark}/edit', [TrademarkController::class, 'update']);
 
-Route::delete('/brands', [Trademark::class, 'drop'])->name('brands.drop');
+Route::delete('/brands', [TrademarkController::class, 'drop'])->name('brands.drop');
 
-Route::delete('/brands/{trademark}', [Trademark::class, 'drop'])->name('brands.drop');
+Route::delete('/brands/{trademark}', [TrademarkController::class, 'drop'])->name('brands.drop');
 
-Route::get('/brands/view', [Trademark::class, 'view'])->name('brands.view');
+Route::get('/brands/view', [TrademarkController::class, 'view'])->name('brands.view');
