@@ -47,7 +47,6 @@ class CarController extends Controller
         $car->is_avaliable = $request->is_avaliable;
         $car->rates_id = $request->rates_id;
         $car->image = $request->image;
-        $car->save();
         
         return redirect()->route('vehicles.index', compact('car'));
     }

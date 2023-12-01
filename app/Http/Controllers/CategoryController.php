@@ -24,7 +24,6 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $category){ // Actualiza una categoria en específico y regresa a la vista con la categoria actualizada
         $category->categoria = $request->categoria;
-        $category->save();
         
         return redirect()->route('categories.index', compact('category'));
     }

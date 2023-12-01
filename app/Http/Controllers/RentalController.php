@@ -15,6 +15,19 @@ class RentalController extends Controller
         return view('rentals.index', compact('rentals'));
     }
 
+    public function create(Request $request){ // Crea un alquiler y regresa a la vista alquileres
+        $rental = new Rental();
+        $rental->id_cliente = $request->id_cliente;
+        $rental->id_vehiculo = $request->id_vehiculo;
+        $rental->id_tarifa = $request->id_tarifa;
+        $rental->fecha_inicio = $request->fecha_inicio;
+        $rental->fecha_fin = $request->fecha_fin;
+        $rental->total = $request->total;
+        $rental->save();
+        
+        return view('rentals.index');
+    }
+
     public function show(Rental $rental){ // Muestra un alquiler en específico en una vista
         return redirect()->route('rentals.show', compact('rental'));
     }

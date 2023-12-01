@@ -5,7 +5,9 @@ use App\Http\Controllers\Controlador;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RememberPasswordController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\TrademarkController;
 use App\Models\RememberPassword;
+use App\Models\Trademark;
 
 // Auth Routes
 Route::get('/', function () {
@@ -38,34 +40,67 @@ Route::get('/vehicles/history/{car}', [CarController::class, 'history'])->name('
 
 Route::get('/vehicules/{car}/tax', [CarController::class, 'tax'])->name('vehicles.tax');
 
+Route::delete('/vehicles', [CarController::class, 'drop'])->name('vehicles.drop');
+
 Route::delete('/vehicles/{car}', [CarController::class, 'drop'])->name('vehicles.drop');
 
 // Clients Routes
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
 
-Route::get('/clients/history', function () {
-    return view('clients.history');
-})->name('clients.history');
+Route::post('/clients', [ClientController::class, 'create']);
+
+Route::get('/clients/{client}', [ClientController::class, 'show'])->name('clients.show');
+
+Route::put('/clients/{client}/edit', [ClientController::class, 'update']);
+
+Route::get('/clients/{client}/history', [ClientController::class, 'history'])->name('clients.history');
+
+Route::delete('/clients', [ClientController::class, 'drop'])->name('clients.drop');
+
+Route::delete('/clients/{client}', [ClientController::class, 'drop'])->name('clients.drop');
 
 // Rental routes
-Route::get('/rentals', function () {
-    return view('rentals.index');
-})->name('rentals.index');
+
+Route::get('/rentals', [RentalController::class, 'index'])->name('rentals.index');
+
+Route::post('/rentals', [RentalController::class, 'create']);
+
+Route::get('/rentals/{rental}', [RentalController::class, 'show'])->name('rentals.show');
+
+Route::put('/rentals/{rental}/edit', [RentalController::class, 'update']);
+
+Route::get('/rentals/{rental}/history', [RentalController::class, 'history'])->name('rentals.history');
+
+Route::delete('/rentals', [RentalController::class, 'drop'])->name('rentals.drop');
+
+Route::delete('/rentals/{rental}', [RentalController::class, 'drop'])->name('rentals.drop');
 
 // Categories routes
-Route::get('/categories', function () {
-    return view('categories.index');
-})->name('categories.index');
 
-Route::get('/categories/view', function () {
-    return view('categories.view');
-})->name('categories.view');
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+
+Route::post('/categories', [CategoryController::class, 'create']);
+
+Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
+
+Route::put('/categories/{category}/edit', [CategoryController::class, 'update']);
+
+Route::delete('/categories', [CategoryController::class, 'drop'])->name('categories.drop');
+
+Route::delete('/categories/{category}', [CategoryController::class, 'drop'])->name('categories.drop');
 
 // Brand routes
-Route::get('/brands', function () {
-    return view('brands.index');
-})->name('brands.index');
 
-Route::get('/brands/view', function () {
-    return view('brands.view');
-})->name('brands.view');
+Route::get('/brands', [Trademark::class, 'index'])->name('brands.index');
+
+Route::post('/brands', [Trademark::class, 'create']);
+
+Route::get('/brands/{trademark}', [Trademark::class, 'show'])->name('brands.show');
+
+Route::put('/brands/{trademark}/edit', [Trademark::class, 'update']);
+
+Route::delete('/brands', [Trademark::class, 'drop'])->name('brands.drop');
+
+Route::delete('/brands/{trademark}', [Trademark::class, 'drop'])->name('brands.drop');
+
+Route::get('/brands/view', [Trademark::class, 'view'])->name('brands.view');
