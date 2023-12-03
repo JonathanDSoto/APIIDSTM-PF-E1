@@ -39,7 +39,6 @@
                             <td>{{ $client->email }}</td>
                             <td>{{ $client->phone }}</td>
                             
-                            <!-- Asumiendo que hay una relación con la dirección en tu modelo Client -->
                             <td>{{ $client->idAddress->address }}</td>
                             <td>{{ $client->idAddress->code_postal }}</td>
                             <td>{{ $client->idAddress->residence_number }}</td>
@@ -54,13 +53,13 @@
                                             <i class="ti ti-eye me-1"></i>
                                             Ver
                                         </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#editClient">
+                                        <button type="button" class="dropdown-item edit-client-btn" data-client-id="{{ $client->id }}" 
+                                            data-bs-toggle="modal" data-bs-target="#editClient">
                                             <i class="ti ti-edit me-1"></i>
                                             Editar
                                         </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#deleteClient">
+                                        <button type="button" class="dropdown-item delete-client-btn" data-client-id="{{ $client->id }}"
+                                            data-bs-toggle="modal" data-bs-target="#deleteClient">
                                             <i class="ti ti-trash me-1"></i>
                                             Eliminar
                                         </button>
@@ -74,7 +73,7 @@
             </div>
         </div>
 
-        <!-- Create Vehicle Modal -->
+        <!-- Create Client Modal -->
         <div class="modal fade" id="createClient" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-simple modal-edit-user">
                 <div class="modal-content p-3 p-md-5">
@@ -83,45 +82,46 @@
                         <div class="text-center mb-4">
                             <h3 class="mb-2">Agregar cliente</h3>
                         </div>
-                        <form id="editModalForm" class="row g-3" onsubmit="return false">
+                        <form id="createClientForm" class="row g-3" action="{{ route('clients.create') }}" method="POST">
+                        @csrf
                             <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalShowMarca">Nombres</label>
-                                <input type="text" id="modalEditMarca" name="modalEditMarca"
-                                    class="form-control modal-edit-marca-id" placeholder="Nombres"/>
+                                <label class="form-label" for="name">Nombres</label>
+                                <input type="text" id="name" name="name"
+                                    class="form-control modal-edit-marca-id" placeholder="Nombres" required/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Apellido Paterno</label>
-                                <input type="text" id="modalEditMarca" name="modalEditMarca"
+                                <input type="text" id="lastname" name="lastname"
                                     class="form-control modal-edit-marca-id" placeholder="Apellido Paterno"/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Correo electrónico</label>
-                                <input type="email" id="modalEditMarca" name="modalEditMarca"
+                                <input type="email" id="email" name="email"
                                     class="form-control modal-edit-marca-id" placeholder="Correo electrónico"/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Teléfono</label>
-                                <input type="number" id="modalEditMarca" name="modalEditMarca"
+                                <input type="number" id="phone" name="phone"
                                     class="form-control modal-edit-marca-id" placeholder="Teléfono"/>
                             </div>
                             <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalShowMarca">Dirección</label>
-                                <input type="text" id="modalEditMarca" name="modalEditMarca"
-                                    class="form-control modal-edit-marca-id" placeholder="Dirección"/>
+                                <label class="form-label" for="address">Dirección</label>
+                                <input type="text" id="address" name="address"
+                                    class="form-control modal-edit-marca-id" placeholder="Dirección" required/>
                             </div>
                             <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalShowMarca">Código postal</label>
-                                <input type="number" id="modalEditMarca" name="modalEditMarca"
-                                    class="form-control modal-edit-marca-id" placeholder="Código postal"/>
+                                <label class="form-label" for="code_postal">Código postal</label>
+                                <input type="number" id="code_postal" name="code_postal"
+                                    class="form-control modal-edit-marca-id" placeholder="Código postal" required/>
                             </div>
 
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Número de exterior</label>
-                                <input type="number" id="modalEditMarca" name="modalEditMarca"
+                                <input type="number" id="residence_number" name="residence_number"
                                     class="form-control modal-edit-marca-id" placeholder="Número de exterior"/>
                             </div>
                             <div class="col-12 text-center d-flex gap-2 justify-content-center">
-                                <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="modal"
+                                <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal"
                                     aria-label="Close">Cancelar</button>
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
                             </div>
@@ -141,48 +141,46 @@
                         <div class="text-center mb-4">
                             <h3 class="mb-2">Ver información del cliente</h3>
                         </div>
-                        <form id="editModalForm" class="row g-3" onsubmit="return false">
+                        <form id="showClientForm" class="row g-3">
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Nombres</label>
-                                <input type="text" id="modalEditMarca" name="modalEditMarca"
+                                <input type="text" id="showName" name="showName"
                                     class="form-control modal-edit-marca-id" placeholder="Nombres" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Apellido Paterno</label>
-                                <input type="text" id="modalEditMarca" name="modalEditMarca"
+                                <input type="text" id="showLastname" name="showLastname"
                                     class="form-control modal-edit-marca-id" placeholder="Apellido Paterno" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Correo electrónico</label>
-                                <input type="email" id="modalEditMarca" name="modalEditMarca"
+                                <input type="email" id="showEmail" name="showEmail"
                                     class="form-control modal-edit-marca-id" placeholder="Correo electrónico" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Teléfono</label>
-                                <input type="number" id="modalEditMarca" name="modalEditMarca"
+                                <input type="number" id="showPhone" name="showPhone"
                                     class="form-control modal-edit-marca-id" placeholder="Teléfono" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Dirección</label>
-                                <input type="text" id="modalEditMarca" name="modalEditMarca"
+                                <input type="text" id="showAddress" name="showAddress"
                                     class="form-control modal-edit-marca-id" placeholder="Dirección" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Código postal</label>
-                                <input type="number" id="modalEditMarca" name="modalEditMarca"
+                                <input type="number" id="showCodePostal" name="showCodePostal"
                                     class="form-control modal-edit-marca-id" placeholder="Código postal" disabled/>
                             </div>
 
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Número de exterior</label>
-                                <input type="number" id="modalEditMarca" name="modalEditMarca"
+                                <input type="number" id="showResidenceNumber" name="showResidenceNumber"
                                     class="form-control modal-edit-marca-id" placeholder="Número de exterior" disabled/>
                             </div>
-                            <div class="col-12 text-center d-flex gap-2 justify-content-center">
-                                <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="modal"
-                                    aria-label="Close">Cancelar</button>
+                            <!--/div class="col-12 text-center d-flex gap-2 justify-content-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Aceptar</button>
-                            </div>
+                            </div-->
                         </form>
                     </div>
                 </div>
@@ -199,47 +197,50 @@
                         <div class="text-center mb-4">
                             <h3 class="mb-2">Editar información del cliente</h3>
                         </div>
-                        <form id="editModalForm" class="row g-3" onsubmit="return false">
+                        <form id="editModalForm" class="row g-3" action="{{ route('clients.update', ['client' => $client->id]) }}" method="POST">
+                            @csrf
+                            @method('PUT')
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Nombres</label>
-                                <input type="text" id="modalEditMarca" name="modalEditMarca"
+                                <input type="text" id="nameEdit" name="nameEdit"
                                     class="form-control modal-edit-marca-id" placeholder="Nombres"/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Apellido Paterno</label>
-                                <input type="text" id="modalEditMarca" name="modalEditMarca"
+                                <input type="text" id="lastnameEdit" name="lastnameEdit"
                                     class="form-control modal-edit-marca-id" placeholder="Apellido Paterno"/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Correo electrónico</label>
-                                <input type="email" id="modalEditMarca" name="modalEditMarca"
+                                <input type="email" id="emailEdit" name="emailEdit"
                                     class="form-control modal-edit-marca-id" placeholder="Correo electrónico"/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Teléfono</label>
-                                <input type="number" id="modalEditMarca" name="modalEditMarca"
+                                <input type="number" id="phoneEdit" name="phoneEdit"
                                     class="form-control modal-edit-marca-id" placeholder="Teléfono"/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Dirección</label>
-                                <input type="text" id="modalEditMarca" name="modalEditMarca"
+                                <input type="text" id="addressEdit" name="addressEdit"
                                     class="form-control modal-edit-marca-id" placeholder="Dirección"/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Código postal</label>
-                                <input type="number" id="modalEditMarca" name="modalEditMarca"
+                                <input type="number" id="code_postalEdit" name="code_postalEdit"
                                     class="form-control modal-edit-marca-id" placeholder="Código postal"/>
                             </div>
 
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Número de exterior</label>
-                                <input type="number" id="modalEditMarca" name="modalEditMarca"
+                                <input type="number" id="residence_numberEdit" name="residence_numberEdit"
                                     class="form-control modal-edit-marca-id" placeholder="Número de exterior"/>
                             </div>
+                            <input type="hidden" name="client_id" value="{{ $client->id }}">
                             <div class="col-12 text-center d-flex gap-2 justify-content-center">
-                                <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="modal"
-                                    aria-label="Close">Cancelar</button>
-                                <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar cambios</button>
+                            <button type="reset" class="btn btn-label-secondary" 
+                                data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary me-sm-3 me-1" id="saveEditButton">Guardar cambios</button>
                             </div>
                         </form>
                     </div>
@@ -257,8 +258,9 @@
                         <div class="text-center mb-4">
                             <h3 class="mb-2">¿Deseas eliminar el cliente?</h3>
                         </div>
-                        <form id="addNewCCForm" class="row g-3" onsubmit="return false">
-                            <input type="hidden">
+                        <form id="deleteClientForm" method="POST" onsubmit="return false">
+                            @csrf
+                            @method('DELETE')
                             <div class="col-12 text-center">
                                 <button type="reset" class="btn btn-label-secondary btn-reset" data-bs-dismiss="modal"
                                     aria-label="Close">Cancelar</button>
@@ -270,6 +272,125 @@
             </div>
         </div>
         <!--/ Delete Client Modal -->
-
     </div>
+    <!--Sección de JavaScript -->
+    @if(session('toast'))
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            Swal.fire({
+                icon: '{{ session('toast.type') }}',
+                title: '{{ session('toast.message') }}',
+                timer: 3000,
+                showConfirmButton: false,
+            });
+        });
+    </script>
+    @endif
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const editButtons = document.querySelectorAll('.edit-client-btn');
+            const editModalForm = document.getElementById('editModalForm');
+            const saveEditButton = document.getElementById('saveEditButton');
+
+            editButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const clientId = this.getAttribute('data-client-id');
+
+                fetch(`/clients/${clientId}/edit-data`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('name').value = data.name;
+                        document.getElementById('lastname').value = data.lastname;
+                        document.getElementById('email').value = data.email;
+                        document.getElementById('phone').value = data.phone;
+                        document.getElementById('address').value = data.idAddress.address;
+                        document.getElementById('code_postal').value = data.idAddress.code_postal;
+                        document.getElementById('residence_number').value = data.idAddress.residence_number;
+                    });
+                    const row = this.closest('tr');
+                    
+                    const name = row.cells[0].textContent.trim();
+                    const lastname = row.cells[1].textContent.trim();
+                    const email = row.cells[2].textContent.trim();
+                    const phone = row.cells[3].textContent.trim();
+                    const address = row.cells[4].textContent.trim();
+                    const code_postal = row.cells[5].textContent.trim();
+                    const residence_number = row.cells[6].textContent.trim();
+
+                    document.getElementById('nameEdit').value = name;
+                    document.getElementById('lastnameEdit').value = lastname;
+                    document.getElementById('emailEdit').value = email;
+                    document.getElementById('phoneEdit').value = phone;
+                    document.getElementById('addressEdit').value = address;
+                    document.getElementById('code_postalEdit').value = code_postal;
+                    document.getElementById('residence_numberEdit').value = residence_number;
+
+                    const editClientModal = new bootstrap.Modal(document.getElementById('editClient'));
+                    editClientModal.show();
+                });
+            });
+
+            saveEditButton.addEventListener('click', function () {
+                const clientId = document.getElementById('client_id').value;
+
+                fetch(`/clients/${clientId}/edit`, {
+                method: 'PUT',
+                body: new FormData(editModalForm),
+                }).then(response => {
+                    if (response.ok) {
+                        console.log('Cliente actualizado exitosamente');
+                    } else {
+                        console.error('Error al actualizar el cliente');
+                    }
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const deleteButtons = document.querySelectorAll('.delete-client-btn');
+            const deleteClientModal = new bootstrap.Modal(document.getElementById('deleteClient'));
+            const deleteForm = document.getElementById('deleteClientForm');
+
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const clientId = this.getAttribute('data-client-id');
+                    const deleteClientUrl = `/clients/${clientId}`;
+
+                    deleteForm.setAttribute('action', deleteClientUrl);
+                    deleteClientModal.show();
+                });
+            });
+
+            deleteForm.addEventListener('submit', function () {
+                const deleteClientUrl = deleteForm.getAttribute('action');
+
+                fetch(deleteClientUrl, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    },
+                })
+                .then(response => {
+                    if (response.ok) {
+                        console.log('Cliente eliminado exitosamente');
+                        window.location.reload();
+                    } else {
+                        console.error('Error al eliminar el cliente');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error en la petición DELETE:', error);
+                });
+            });
+        });
+    </script>
+
+
+
+
 @endsection
+

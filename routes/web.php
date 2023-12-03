@@ -7,6 +7,7 @@ use App\Http\Controllers\RememberPasswordController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TrademarkController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CarController;
 
 // Auth Routes
 
@@ -36,13 +37,14 @@ Route::delete('/vehicles', [CarController::class, 'drop'])->name('vehicles.drop'
 Route::delete('/vehicles/{car}', [CarController::class, 'drop'])->name('vehicles.drop');
 
 // Clients Routes
+
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
 
-Route::post('/clients', [ClientController::class, 'create']);
+Route::post('/clients', [ClientController::class, 'create'])->name('clients.create');
 
 Route::get('/clients/{client}', [ClientController::class, 'show'])->name('clients.show');
 
-Route::put('/clients/{client}/edit', [ClientController::class, 'update']);
+Route::put('/clients/{client}/edit', [ClientController::class, 'update'])->name('clients.update');
 
 Route::get('/clients/{client}/history', [ClientController::class, 'history'])->name('clients.history');
 
