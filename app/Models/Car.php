@@ -16,12 +16,13 @@ class Car extends Model
      * @var array
      */
     protected $fillable = [
-        'model',
-        'id_marca',
-        'id_categoria',
+/*         'model', */
+        'v_models_id',
+        'trademarks_id',
+        'categories_id',
         'is_avaliable',
         'tarifa',
-        'image',
+/*         'image', */
     ];
 
     /**
@@ -35,6 +36,11 @@ class Car extends Model
         'id_categoria' => 'integer',
         'is_avaliable' => 'boolean',
     ];
+
+    public function vmodel(): BelongsTo
+    {
+        return $this->belongsTo(VModel::class);
+    }
 
     public function idMarca(): BelongsTo
     {

@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
         $user->lastname = 'Admin';
         $user->phone = '123456789';
         $user->email = 'Admin@gmail.com';
-        $user->password = bcrypt('123456789');
+        $user->password = '123456789';
         $user->save();
 
         $user = new User();
@@ -26,9 +26,9 @@ class UserSeeder extends Seeder
         $user->lastname = 'Villavicencio Alvarez';
         $user->phone = '987654321';
         $user->email = 'joseramonv_20@alu.uabcs.mx';
-        $user->password = bcrypt('123456789');
+        $user->password = '123456789';
         $user->save();
-        
+
         User::factory()->count(8)->create();
     }
 }

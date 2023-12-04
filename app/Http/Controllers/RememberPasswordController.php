@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class RememberPasswordController extends Controller
 {
-    public function store(REQUEST $request){ // Registra un cambio de contraseña en la base de datos y redirige a la vista de login
+    public function store(Request $request){ 
         $rememberPassword = new RememberPassword();
         $rememberPassword->id_user = $request->id_user;
         $rememberPassword->email = $request->email;
@@ -18,7 +18,7 @@ class RememberPasswordController extends Controller
 
         $user = User::find($request->id_user);
         $user->password = $request->new_password;
-        
+
         return redirect()->route('login');
     }
 }

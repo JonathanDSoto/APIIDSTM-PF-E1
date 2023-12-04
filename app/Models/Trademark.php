@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Trademark extends Model
 {
@@ -27,4 +28,10 @@ class Trademark extends Model
     protected $casts = [
         'id' => 'integer',
     ];
+
+    public function trademark(): HasMany
+    {
+        return $this->hasMany(VModel::class);
+    }
+
 }

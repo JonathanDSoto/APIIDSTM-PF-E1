@@ -11,20 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::disableForeignKeyConstraints();
-
-        Schema::create('cars', function (Blueprint $table) {
+        Schema::create('v_models', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('v_models_id')->constrained();
+            $table->string('nombre');
             $table->foreignId('trademarks_id')->constrained();
-            $table->foreignId('categories_id')->constrained();
-            $table->boolean('is_avaliable')->default(true);
-            $table->foreignId('rates_id')->constrained();
-            $table->text('image')->nullable();
             $table->timestamps();
         });
-
-        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -32,7 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cars');
+        Schema::dropIfExists('v_models');
     }
 };
-

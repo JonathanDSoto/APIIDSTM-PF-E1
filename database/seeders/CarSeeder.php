@@ -14,7 +14,7 @@ class CarSeeder extends Seeder
     public function run(): void
     {
         $car = new Car();
-        $car->model = 'Acura MDX';
+        $car->v_models_id = 1;
         $car->trademarks_id = 1;
         $car->categories_id = 1; // Clase A
         $car->is_avaliable = false;
@@ -23,7 +23,7 @@ class CarSeeder extends Seeder
         $car->save();
 
         $car = new Car();
-        $car->model = 'Acura RDX';
+        $car->v_models_id = 2;
         $car->trademarks_id = 1;
         $car->categories_id = 2; // Clase B
         $car->is_avaliable = false;
@@ -32,7 +32,7 @@ class CarSeeder extends Seeder
         $car->save();
 
         $car = new Car();
-        $car->model = 'Acura ILX';
+        $car->v_models_id = 3;
         $car->trademarks_id = 1;
         $car->categories_id = 3; // Clase C
         $car->is_avaliable = true;
@@ -41,7 +41,7 @@ class CarSeeder extends Seeder
         $car->save();
 
         $car = new Car();
-        $car->model = 'Acura TLX';
+        $car->v_models_id = 1;
         $car->trademarks_id = 1;
         $car->categories_id = 4; // Clase D
         $car->is_avaliable = true;
@@ -50,7 +50,7 @@ class CarSeeder extends Seeder
         $car->save();
 
         $car = new Car();
-        $car->model = 'Acura NSX';
+        $car->v_models_id = 2;
         $car->trademarks_id = 1;
         $car->categories_id = 5; // Clase E
         $car->is_avaliable = true;
@@ -59,7 +59,7 @@ class CarSeeder extends Seeder
         $car->save();
 
         $car = new Car();
-        $car->model = 'Alfa Romeo Giulia';
+        $car->v_models_id = 4;
         $car->trademarks_id = 2;
         $car->categories_id = 1; // Clase A
         $car->is_avaliable = true;
@@ -68,7 +68,7 @@ class CarSeeder extends Seeder
         $car->save();
 
         $car = new Car();
-        $car->model = 'Alfa Romeo Stelvio';
+        $car->v_models_id = 5;
         $car->trademarks_id = 2;
         $car->categories_id = 2; // Clase B
         $car->is_avaliable = true;
@@ -77,7 +77,7 @@ class CarSeeder extends Seeder
         $car->save();
 
         $car = new Car();
-        $car->model = 'Alfa Romeo 4C';
+        $car->v_models_id = 6;
         $car->trademarks_id = 2;
         $car->categories_id = 3; // Clase C
         $car->is_avaliable = true;
@@ -86,7 +86,7 @@ class CarSeeder extends Seeder
         $car->save();
 
         $car = new Car();
-        $car->model = 'Alfa Romeo Giulietta';
+        $car->v_models_id = 4;
         $car->trademarks_id = 2;
         $car->categories_id = 4; // Clase D
         $car->is_avaliable = true;
@@ -95,7 +95,7 @@ class CarSeeder extends Seeder
         $car->save();
 
         $car = new Car();
-        $car->model = 'Alfa Romeo 8C Spider';
+        $car->v_models_id = 5;
         $car->trademarks_id = 2;
         $car->categories_id = 5; // Clase E
         $car->is_avaliable = true;

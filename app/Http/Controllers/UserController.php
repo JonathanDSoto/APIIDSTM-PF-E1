@@ -8,24 +8,24 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index(){ // Muestra la vista de inicio
+    public function index(){ 
         return view('userRegister.login');
     }
 
-    public function login(Request $request){ // Muestra la vista de inicio
+    public function login(Request $request){ 
         $user = User::where('email', $request->email)->first();
         if ($user->password == $request->password) {
-            return redirect()->route('index');
+            return redirect()->route('vehicles.index');
         } else {
-            return redirect()->route('login');
+            return redirect()->route('index');
         }
     }
 
-    public function register(){ // Redirige a la vista de registro
-        return redirect()->route('register');
+    public function register(){ 
+        return view('userRegister.register');
     }
 
-    public function store(REQUEST $request){ // Registra un usuario en la base de datos y redirige a la vista de login
+    public function store(Request $request){ 
         $user = new User();
         $user->name = $request->name;
         $user->lastname = $request->lastname;
@@ -33,10 +33,11 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = $request->password;
         $user->save();
-        return redirect()->route('login');
+
+        return redirect()->route('vehicles.index');
     }
 
-    public function rememberPassword(){ // Redirige a la vista de recordar contraseña
+    public function rememberPassword(){
         return redirect()->route('rememberPassword');
     }
 }

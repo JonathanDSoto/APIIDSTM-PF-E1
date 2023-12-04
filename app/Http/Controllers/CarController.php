@@ -7,63 +7,129 @@ use App\models\BillRental;
 use App\Models\Category;
 use App\Models\Rate;
 use App\Http\Controllers\Controller;
+use App\Models\Trademark;
+use App\Models\VModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CarController extends Controller
 {
-    public function index(Category $category = null){ // Muestra todos los vehículos en una vista
-        if($category != null){
-            $cars = Car::where('categories_id', $category->id)->get();
-            return view('vehicules.index', compact('cars'));
-        }
-        $cars = Car::all();
-        return view('vehicles.index', compact('cars'));
+    public function index()
+    {
+        // Muestra todos los vehículos en una vista
+        $cars = DB::table('cars')
+            ->join('v_models', 'cars.v_models_id', '=', 'v_models.id')
+            ->join('trademarks', 'cars.trademarks_id', '=', 'trademarks.id')
+            ->join('categories', 'cars.categories_id', '=', 'categories.id')
+            ->join('rates', 'cars.rates_id', '=', 'rates.id')
+            ->select(
+                'cars.id',
+                'v_models.nombre',
+                'trademarks.marca',
+                'categories.categoria',
+                'cars.is_avaliable',
+                'cars.trademarks_id',
+                'cars.v_models_id',
+                'cars.categories_id',
+                'cars.rates_id',
+                'rates.tarifa',
+                'cars.image',
+                'cars.created_at',
+                'cars.updated_at'
+            )
+            ->get();
+
+        $models = VModel::all();
+        $trademarks = Trademark::all();
+        $categories = Category::all();
+        $rates = Rate::all();
+        $data = ['cars' => $cars, 'models' => $models, 'trademarks' => $trademarks, 'categories' => $categories, 'rates' => $rates];
+
+        return view('vehicles.index', compact('data'));
     }
 
-    public function create(Request $request){ // Redirige a la vista de crear un vehículo
+    public function store(Request $request)
+    {
+        // Redirige a la vista de crear un vehículo
         $car = new Car();
-        $car->model = $request->model;
+        $car->v_models_id = $request->v_models_id;
         $car->trademarks_id = $request->trademarks_id;
         $car->categories_id = $request->categories_id;
-        $car->is_avaliable = $request->is_avaliable;
+/*         $car->is_avaliable = $request->is_avaliable;1 */
         $car->rates_id = $request->rates_id;
-        $car->image = $request->image;
+/*         $car->image = $request->image; */
         $car->save();
-        return view('vehicles.index');
-    }    
-
-    public function show(Car $car){ // Muestra un vehículo en específico en una vista
-        return redirect()->route('vehicles.show', compact('car'));
+        return redirect()->route('vehicles.index');
     }
 
-    public function edit(Car $car){ // Redirige a la vista de editar un vehículo
+    public function show($id)
+    {
+        // Muestra un vehículo en específico en una vista
+
+        $car = DB::table('cars')
+        ->join('v_models', 'cars.v_models_id', '=', 'v_models.id')
+        ->join('trademarks', 'cars.trademarks_id', '=', 'trademarks.id')
+        ->join('categories', 'cars.categories_id', '=', 'categories.id')
+        ->join('rates', 'cars.rates_id', '=', 'rates.id')
+        ->select(
+            'cars.id',
+            'v_models.nombre',
+            'trademarks.marca',
+            'categories.categoria',
+            'cars.is_avaliable',
+            'cars.trademarks_id',
+            'cars.v_models_id',
+            'cars.categories_id',
+            'cars.rates_id',
+            'rates.tarifa',
+            'cars.image',
+            'cars.created_at',
+            'cars.updated_at'
+        )
+        ->where('cars.id', $id)
+        ->first();
+
+        return $car;
+    }
+
+    public function edit(Car $car)
+    {
+        // Redirige a la vista de editar un vehículo
         return redirect()->route('vehicles.edit', compact('car'));
     }
 
-    public function update(Request $request, Car $car){ // Actualiza un vehículo en específico y regresa a la vista con el vehiculo actualizado
-        $car->model = $request->model;
-        $car->trademarks_id = $request->trademarks_id;
-        $car->categories_id = $request->categories_id;
-        $car->is_avaliable = $request->is_avaliable;
-        $car->rates_id = $request->rates_id;
-        $car->image = $request->image;
-        
-        return redirect()->route('vehicles.index', compact('car'));
+    public function update(Request $request,  $id)
+    {
+
+        Car::where('id', $id)->update([
+            'v_models_id' => $request->v_models_id,
+            'trademarks_id' => $request->trademarks_id,
+            'categories_id' => $request->categories_id,
+            'is_avaliable' => $request->is_avaliable,
+            'rates_id' => $request->rates_id,
+        ]);
+
+        return redirect()->route('vehicles.index');
     }
 
-    public function drop(Car $car){ // Elimina un vehículo en específico
+    public function destroy($id)
+    {
+        // Elimina un vehículo en específico
+        $car = Car::findOrFail($id);
         $car->delete();
         return redirect()->route('vehicles.index');
     }
 
-    public function history(Car $car){ // Muestra el historial de un vehículo en específico
-        $billRentals = BillRental::where('cars_id', $car->id)->get();
+    public function history(Car $car)
+    { // Muestra el historial de un vehículo en específico
+        //$billRentals = BillRental::where('cars_id', $car->id)->get();
         return view('vehicles.history', compact('billRentals', 'car'));
     }
 
-    public function tax(Car $car){ // Muestra la vista de impuestos
-        $category = Category::where('id', $car->categories_id)->get();
-        $rate = Rate::where('categoria', $category->categoria)->get();
+    public function tax(Car $car)
+    { // Muestra la vista de impuestos
         return view('vehicles.tax', compact('rate', 'car'));
+        //$category = Category::where('id', $car->categories_id)->get();
+        //$rate = Rate::where('categoria', $category->categoria)->get();
     }
 }
