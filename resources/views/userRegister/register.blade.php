@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="light-style layout-wide customizer-hide" dir="ltr" data-theme="theme-default"
     data-assets-path="../../assets/" data-template="vertical-menu-template">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport"
@@ -12,7 +13,7 @@
     <link rel="canonical" href="https://1.envato.market/vuexy_admin" />
     <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
     <script>
-        (function (w, d, s, l, i) {
+        (function(w, d, s, l, i) {
             w[l] = w[l] || [];
             w[l].push({
                 "gtm.start": new Date().getTime(),
@@ -60,6 +61,7 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="../../assets/js/config.js"></script>
 </head>
+
 <body>
     <!-- ?PROD Only: Google Tag Manager (noscript) (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5DDHKGP" height="0" width="0"
@@ -76,9 +78,10 @@
                         <div class="app-brand justify-content-center mb-4 mt-2">
                             <a class="app-brand-link gap-2">
                                 <span class="app-brand-logo demo">
-                                    <img src="../../assets/img/brand/logo_small_icon_only.png" alt="Logo Small" width="92" height="82"></img>
+                                    <img src="../../assets/img/brand/logo_small_icon_only.png" alt="Logo Small"
+                                        width="92" height="82"></img>
                                 </span>
-                            <span class="app-brand-text demo text-body fw-bold ms-1">AutoExpress</span>
+                                <span class="app-brand-text demo text-body fw-bold ms-1">AutoExpress</span>
                             </a>
                         </div>
                         <!-- /Logo -->
@@ -86,11 +89,22 @@
                         <p class="mb-4">
                             Rápido, fácil y siempre a tu medida.
                         </p>
-                        <form id="formAuthentication" class="mb-3" action="{{ route('vehicles.index')}}">
+                        <form id="formAuthentication" class="mb-3" action="{{ route('users.store') }}" method="POST">
+                            @csrf
                             <div class="mb-3">
-                                <label for="username" class="form-label">Nombre de Usuario</label>
-                                <input type="text" class="form-control" id="username" name="username"
-                                    placeholder="Ingrese nombre de usuario" autofocus />
+                                <label for="username" class="form-label">Nombre del Usuario</label>
+                                <input type="text" class="form-control" id="username" name="name"
+                                    placeholder="Ingrese el nombre del usuario" autofocus />
+                            </div>
+                            <div class="mb-3">
+                                <label for="lastname" class="form-label">Apellido del usuario</label>
+                                <input type="text" class="form-control" id="lastname" name="lastname"
+                                    placeholder="Ingrese el apellido del usuario" autofocus />
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Teléfono del usuario</label>
+                                <input type="text" class="form-control" id="phone" name="phone"
+                                    placeholder="Ingrese su teléfono" autofocus />
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Correo Electrónico</label>
@@ -112,7 +126,7 @@
                         </form>
                         <p class="text-center">
                             <span>Tiene cuenta?</span>
-                            <a href="{{ route('login')}}">
+                            <a href="{{ route('index') }}">
                                 <span>Ingrese aquí</span>
                             </a>
                         </p>
