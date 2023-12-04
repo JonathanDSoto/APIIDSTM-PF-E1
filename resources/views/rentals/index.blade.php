@@ -20,7 +20,6 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th># id</th>
                             <th>Cliente</th>
                             <th>Vehiculo</th>
                             <th>Fecha de prestamo</th>
@@ -34,356 +33,47 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>
-                                <div>
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
-                                    <div class="dropdown-menu">
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#showRental">
-                                            <i class="ti ti-eye me-1"></i>
-                                            Ver
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#editRental">
-                                            <i class="ti ti-edit me-1"></i>
-                                            Editar
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#deleteRental">
-                                            <i class="ti ti-trash me-1"></i>
-                                            Eliminar
-                                        </button>
+                        @foreach($rentals as $rental)
+                            <tr>
+                                <td>{{ $rental->client_id }}</td>
+                                <td>{{ $rental->id_vehiculo }}</td>
+                                <td>{{ $rental->initial_day }}</td>
+                                <td>{{ $rental->delivery_day }}</td>
+                                <td>{{ $rental->dias_diferencia }}</td>
+                                <td>@if($rental->idTarifa) 
+                                        {{ $rental->idTarifa->tarifa }}
+                                    @else
+                                        Sin tarifa
+                                    @endif
+                                </td>
+                                <td>tarjeta</td>
+                                <td>11</td>
+                                <td>activo</td>
+                                <td>
+                                    <div>
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                            data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
+                                        <div class="dropdown-menu">
+                                            <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                                data-bs-target="#showRental">
+                                                <i class="ti ti-eye me-1"></i>
+                                                Ver
+                                            </button>
+                                            <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                                data-bs-target="#editRental">
+                                                <i class="ti ti-edit me-1"></i>
+                                                Editar
+                                            </button>
+                                            <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                                data-bs-target="#deleteRental">
+                                                <i class="ti ti-trash me-1"></i>
+                                                Eliminar
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>
-                                <div>
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
-                                    <div class="dropdown-menu">
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#showRental">
-                                            <i class="ti ti-eye me-1"></i>
-                                            Ver
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#editRental">
-                                            <i class="ti ti-edit me-1"></i>
-                                            Editar
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#deleteRental">
-                                            <i class="ti ti-trash me-1"></i>
-                                            Eliminar
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>
-                                <div>
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
-                                    <div class="dropdown-menu">
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#showRental">
-                                            <i class="ti ti-eye me-1"></i>
-                                            Ver
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#editRental">
-                                            <i class="ti ti-edit me-1"></i>
-                                            Editar
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#deleteRental">
-                                            <i class="ti ti-trash me-1"></i>
-                                            Eliminar
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">4</th>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>
-                                <div>
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
-                                    <div class="dropdown-menu">
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#showRental">
-                                            <i class="ti ti-eye me-1"></i>
-                                            Ver
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#editRental">
-                                            <i class="ti ti-edit me-1"></i>
-                                            Editar
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#deleteRental">
-                                            <i class="ti ti-trash me-1"></i>
-                                            Eliminar
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5</th>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>
-                                <div>
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
-                                    <div class="dropdown-menu">
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#showRental">
-                                            <i class="ti ti-eye me-1"></i>
-                                            Ver
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#editRental">
-                                            <i class="ti ti-edit me-1"></i>
-                                            Editar
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#deleteRental">
-                                            <i class="ti ti-trash me-1"></i>
-                                            Eliminar
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">6</th>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>
-                                <div>
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
-                                    <div class="dropdown-menu">
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#showRental">
-                                            <i class="ti ti-eye me-1"></i>
-                                            Ver
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#editRental">
-                                            <i class="ti ti-edit me-1"></i>
-                                            Editar
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#deleteRental">
-                                            <i class="ti ti-trash me-1"></i>
-                                            Eliminar
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">7</th>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>
-                                <div>
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
-                                    <div class="dropdown-menu">
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#showRental">
-                                            <i class="ti ti-eye me-1"></i>
-                                            Ver
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#editRental">
-                                            <i class="ti ti-edit me-1"></i>
-                                            Editar
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#deleteRental">
-                                            <i class="ti ti-trash me-1"></i>
-                                            Eliminar
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">8</th>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>
-                                <div>
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
-                                    <div class="dropdown-menu">
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#showRental">
-                                            <i class="ti ti-eye me-1"></i>
-                                            Ver
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#editRental">
-                                            <i class="ti ti-edit me-1"></i>
-                                            Editar
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#deleteRental">
-                                            <i class="ti ti-trash me-1"></i>
-                                            Eliminar
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">9</th>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>
-                                <div>
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
-                                    <div class="dropdown-menu">
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#showRental">
-                                            <i class="ti ti-eye me-1"></i>
-                                            Ver
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#editRental">
-                                            <i class="ti ti-edit me-1"></i>
-                                            Editar
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#deleteRental">
-                                            <i class="ti ti-trash me-1"></i>
-                                            Eliminar
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">10</th>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>Table cell</td>
-                            <td>
-                                <div>
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
-                                    <div class="dropdown-menu">
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#showRental">
-                                            <i class="ti ti-eye me-1"></i>
-                                            Ver
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#editRental">
-                                            <i class="ti ti-edit me-1"></i>
-                                            Editar
-                                        </button>
-                                        <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#deleteRental">
-                                            <i class="ti ti-trash me-1"></i>
-                                            Eliminar
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
@@ -399,23 +89,16 @@
                             <h3 class="mb-2">Crear renta de vehículo</h3>
                         </div>
                         <form id="editModalForm" class="row g-3" onsubmit="return false">
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditMarca">Cliente</label>
-                                <select id="modalEditMarca" name="modalEditMarca" class="select2 form-select"
-                                    data-allow-clear="true">
-                                    <option value="">Cliente</option>
-                                    <option value="ty">Toyota</option>
-                                    <option value="hnda">Honda</option>
-                                    <option value="ford">Ford</option>
-                                    <option value="chv">Chevrolet</option>
-                                    <option value="nis">Nissan</option>
-                                    <option value="bmw">BMW</option>
-                                    <option value="mer">Mercedes-Benz</option>
-                                    <option value="audi">Audi</option>
-                                    <option value="volk">Volkswagen</option>
-                                    <option value="tesla">Tesla</option>
-                                </select>
-                            </div>
+                        <div class="col-12 col-md-6">
+                            <label class="form-label" for="modalEditMarca">Cliente</label>
+                            <select id="modalEditMarca" name="modalEditMarca" class="select2 form-select" data-allow-clear="true">
+                                <option value="">Selecciona un cliente</option>
+                                @foreach($clients as $client)
+                                    <option value="{{ $client->id }}">{{ $client->name }} {{ $client->lastname }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalEditMarca">Vehículo</label>
                                 <select id="modalEditMarca" name="modalEditMarca" class="select2 form-select"

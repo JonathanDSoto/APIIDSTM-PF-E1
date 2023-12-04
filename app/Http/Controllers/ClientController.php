@@ -30,7 +30,12 @@ class ClientController extends Controller
         $client->id_address = $address->id;
         $client->save();
         
-        return view('clients.index');
+        return redirect()->route('clients.index')->with([
+            'toast' => [
+                'type' => 'success',
+                'message' => 'Cliente creado exitosamente',
+            ],
+        ]);
     }
 
     public function show(Client $client){ // Muestra un cliente en específico en una vista
@@ -40,26 +45,40 @@ class ClientController extends Controller
     public function edit(Client $client){ // Redirige a la vista de editar un cliente
         return redirect()->route('clients.edit', compact('client'));
     }
+    
 
     public function update(Request $request, Client $client, Address $address){ // Actualiza un cliente en específico y regresa a la vista con el cliente actualizado
-        $address->address = $request->address;
-        $address->code_postal = $request->code_postal;
-        $address->residence_number = $request->residence_number;
+        
+        $address = $client->idAddress ?: new Address();
+
+        $address->address = $request->addressEdit;
+        $address->code_postal = $request->code_postalEdit;
+        $address->residence_number = $request->residence_numberEdit;
         $address->save();
 
-        $client->name = $request->name;
-        $client->lastname = $request->lastname;
-        $client->email = $request->email;
-        $client->phone = $request->phone;
+        $client->name = $request->nameEdit;
+        $client->lastname = $request->lastnameEdit;
+        $client->email = $request->emailEdit;
+        $client->phone = $request->phoneEdit;
         $client->id_address = $address->id;
         $client->save();
         
-        return redirect()->route('clients.index', compact('client'));
+        return redirect()->route('clients.index', compact('client'))->with([
+            'toast' => [
+                'type' => 'success',
+                'message' => 'Cliente actualizado exitosamente',
+            ],
+        ]);
     }
 
     public function drop(Client $client){ // Elimina un cliente en específico
         $client->delete();
-        return redirect()->route('clients.index');
+        return redirect()->route('clients.index')->with([
+            'toast' => [
+                'type' => 'success',
+                'message' => 'Cliente Eliminado exitosamente',
+            ],
+        ]);
     }
 
     public function history(Client $client){ // Muestra el historial de un cliente en específico

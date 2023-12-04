@@ -7,6 +7,8 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\TrademarkController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\RentalController;
 
 // Auth Routes
 Route::get('/', [UserController::class, 'index'])->name('index');
@@ -24,12 +26,17 @@ Route::get('vehicules/tax', [CarController::class, 'tax'])->name('vehicles.tax')
 Route::delete('vehicles/{car}', [CarController::class, 'destroy'])->name('vehicles.destroy');
 
 // Clients Routes
+
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
-Route::post('/clients', [ClientController::class, 'create']);
+
+Route::post('/clients', [ClientController::class, 'create'])->name('clients.create');
+
 Route::get('/clients/{client}', [ClientController::class, 'show'])->name('clients.show');
-Route::put('/clients/{client}/edit', [ClientController::class, 'update']);
-//Route::get('/clients/{client}/history', [ClientController::class, 'history'])->name('clients.history');
-Route::get('/clients/history', [ClientController::class, 'history'])->name('clients.history');
+
+Route::put('/clients/{client}/edit', [ClientController::class, 'update'])->name('clients.update');
+
+Route::get('/clients/{client}/history', [ClientController::class, 'history'])->name('clients.history');
+
 Route::delete('/clients', [ClientController::class, 'drop'])->name('clients.drop');
 Route::delete('/clients/{client}', [ClientController::class, 'drop'])->name('clients.drop');
 

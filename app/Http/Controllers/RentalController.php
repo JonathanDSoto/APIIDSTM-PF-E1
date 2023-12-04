@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+
 use App\Models\Rental;
 use App\Models\Car;
 use App\Models\Rate;
+use App\Models\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -12,7 +15,11 @@ class RentalController extends Controller
 {
     public function index(){ // Muestra todos los alquileres en una vista
         $rentals = Rental::all();
-        return view('rentals.index', compact('rentals'));
+        $clients = Client::all();
+        foreach ($rentals as $rental) {
+            $rental->dias_diferencia = Carbon::parse($rental->delivery_day)->diffInDays($rental->initial_day);
+        }
+        return view('rentals.index', compact('rentals','clients'));
     }
 
     public function create(Request $request){ // Crea un alquiler y regresa a la vista alquileres
