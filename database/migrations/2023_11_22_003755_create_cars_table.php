@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('v_models_id')->constrained();
             $table->foreignId('trademarks_id')->constrained();
-            $table->foreignId('categories_id')->constrained();
+            $table->unsignedBigInteger('categories_id');
             $table->boolean('is_avaliable')->default(true);
             $table->foreignId('rates_id')->constrained();
             $table->text('image')->nullable();
+
+            $table->foreign('categories_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -35,4 +37,3 @@ return new class extends Migration
         Schema::dropIfExists('cars');
     }
 };
-

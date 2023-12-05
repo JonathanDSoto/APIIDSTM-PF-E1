@@ -45,7 +45,7 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                            data-bs-target="#showVehicle{{ $car->id }}" {{-- onclick="obtenerDatos({{ $car->id }}) --}}">
+                                            data-bs-target="#showVehicle{{ $car->id }}" {{-- onclick="obtenerDatos({{ $car->id }})" --}}>
                                             <i class="ti ti-eye me-1"></i> Ver
                                         </button>
                                         <button type="button" class="dropdown-item" data-bs-toggle="modal"
@@ -70,8 +70,8 @@
                                         <div class="text-center mb-4">
                                             <h3 class="mb-2">¿Deseas eliminar el vehículo?</h3>
                                         </div>
-                                        <form action="{{ route('vehicles.destroy', $car->id) }}" class="row g-3" method="post"
-                                            enctype="multipart/form-data">
+                                        <form action="{{ route('vehicles.destroy', $car->id) }}" class="row g-3"
+                                            method="post" enctype="multipart/form-data">
                                             @method('delete')
                                             @csrf
                                             <div class="col-12 text-center">
@@ -96,36 +96,43 @@
                                             <h3 class="mb-2">Ver información del vehiculo</h3>
                                         </div>
                                         <form id="showModalForm" class="row g-3">
-                                            <div class="col-12 col-md-6">
-                                                <label class="form-label" for="modalShowMarca">Marca</label>
-                                                <input type="text" id="showMarca" name="modalEditMarca"
-                                                    class="form-control modal-edit-marca-id" value="{{ $car->marca }}"
-                                                    placeholder="Marca" disabled />
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <label class="form-label" for="modalShowMarca">Marca</label>
+                                                    <input type="text" id="showMarca" name="modalEditMarca"
+                                                        class="form-control modal-edit-marca-id" value="{{ $car->marca }}"
+                                                        placeholder="Marca" disabled />
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <label class="form-label" for="modalShowModelo">Modelo</label>
+                                                    <input type="text" id="showModelo" name="modalEditModelo"
+                                                        class="form-control modal-edit-modelo-id"
+                                                        value="{{ $car->nombre }}" placeholder="Modelo" disabled />
+                                                </div>
                                             </div>
-                                            <div class="col-12 col-md-6">
-                                                <label class="form-label" for="modalShowModelo">Modelo</label>
-                                                <input type="text" id="showModelo" name="modalEditModelo"
-                                                    class="form-control modal-edit-modelo-id" value="{{ $car->nombre }}"
-                                                    placeholder="Modelo" disabled />
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <label class="form-label" for="modalShowCategory">Categoría</label>
+                                                    <input type="text" id="showCategoria" name="modalEditCategory"
+                                                        class="form-control modal-edit-category-id"
+                                                        value="{{ $car->categoria }}"placeholder="Categoría" disabled />
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <label class="form-label" for="modalShowStatus">Estado</label>
+                                                    <input type="text" id="showEstado" name="modalShowStatus"
+                                                        class="form-control modal-edit-status-id"
+                                                        value="{{ $car->is_avaliable ? 'Disponible' : 'No disponible' }}"
+                                                        placeholder="Estado" disabled />
+                                                </div>
                                             </div>
-                                            <div class="col-12 col-md-6">
-                                                <label class="form-label" for="modalShowCategory">Categoría</label>
-                                                <input type="text" id="showCategoria" name="modalEditCategory"
-                                                    class="form-control modal-edit-category-id"
-                                                    value="{{ $car->categoria }}"placeholder="Categoría" disabled />
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <label class="form-label" for="modalShowStatus">Estado</label>
-                                                <input type="text" id="showEstado" name="modalShowStatus"
-                                                    class="form-control modal-edit-status-id"
-                                                    value="{{ $car->is_avaliable ? 'Disponible' : 'No disponible' }}"
-                                                    placeholder="Estado" disabled />
-                                            </div>
-                                            <div class="col-12 col-md-6">
-                                                <label class="form-label" for="modalEditTarifa">Tarifa</label>
-                                                <input type="text" id="showTarifa" name="modalEditTarifa"
-                                                    class="form-control modal-edit-tax-id" value="{{ $car->tarifa }}"
-                                                    placeholder="Ingresa la tarifa" disabled />
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <label class="form-label" for="modalEditTarifa">Tarifa</label>
+                                                    <input type="text" id="showTarifa" name="modalEditTarifa"
+                                                        class="form-control modal-edit-tax-id"
+                                                        value="{{ $car->tarifa }}" placeholder="Ingresa la tarifa"
+                                                        disabled />
+                                                </div>
                                             </div>
                                             <div class="col-12 text-center mt-5">
                                                 <button type="reset" class="btn btn-primary me-sm-3 me-1"
@@ -153,35 +160,39 @@
                                             enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
-                                            <div class="col-12 col-md-6">
-                                                <label class="form-label" for="modalEditMarca">Marca</label>
-                                                <select id="modalEditMarca" name="trademarks_id"
-                                                    class="select2 form-select" data-allow-clear="true" required>
-                                                    <option value="{{ $car->trademarks_id }}" selected>
-                                                        {{ $car->marca }}</option>
-
-                                                    @foreach ($data['trademarks'] as $trademark)
-                                                        @if (!$car->trademarks_id || $car->trademarks_id !== $trademark->id)
-                                                            <option value="{{ $trademark->id }}">{{ $trademark->marca }}
-                                                            </option>
-                                                        @endif
-                                                    @endforeach
-                                                </select>
+                                            <div class="row">
+                                                <div class="col-12 col-md-6">
+                                                    <label class="form-label" for="modalEditMarca">Marca</label>
+                                                    <select id="modalEditMarca" name="trademarks_id"
+                                                        class="select2 form-select" data-allow-clear="true" required>
+                                                        <option value="{{ $car->trademarks_id }}" selected>
+                                                            {{ $car->marca }}</option>
+    
+                                                        @foreach ($data['trademarks'] as $trademark)
+                                                            @if (!$car->trademarks_id || $car->trademarks_id !== $trademark->id)
+                                                                <option value="{{ $trademark->id }}">{{ $trademark->marca }}
+                                                                </option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="col-12 col-md-6">
+                                                    <label class="form-label" for="modalEditMarca">Modelo</label>
+                                                    <select id="modalEditMarca" name="v_models_id"
+                                                        class="select2 form-select" data-allow-clear="true" required>
+                                                        <option value="{{ $car->v_models_id }}" selected>{{ $car->nombre }}
+                                                        </option>
+    
+                                                        @foreach ($data['models'] as $model)
+                                                            @if (!$car->v_models_id || $car->v_models_id !== $model->id)
+                                                                <option value="{{ $model->id }}">{{ $model->nombre }}
+                                                                </option>
+                                                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="col-12 col-md-6">
-                                                <label class="form-label" for="modalEditMarca">Modelo</label>
-                                                <select id="modalEditMarca" name="v_models_id"
-                                                    class="select2 form-select" data-allow-clear="true" required>
-                                                    <option value="{{ $car->v_models_id }}" selected>{{ $car->nombre }}
-                                                    </option>
-
-                                                    @foreach ($data['models'] as $model)
-                                                        @if (!$car->v_models_id || $car->v_models_id !== $model->id)
-                                                            <option value="{{ $model->id }}">{{ $model->nombre }}
-                                                            </option>
-                                                        @endif
-                                                    @endforeach
-                                                </select>
+                                            <div class="row">
                                                 <div class="col-12 col-md-6">
                                                     <label class="form-label" for="modalEditCategoria">Categoría</label>
                                                     <select id="modalEditCategoria" name="categories_id"
@@ -213,11 +224,12 @@
                                                         @endif
                                                     </select>
                                                 </div>
+                                            </div>
+                                            <div class="row mb-5">
                                                 <div class="col-12 col-md-6">
                                                     <label class="form-label" for="modalEditStatus">Tarifa</label>
-                                                    <select id="modalEditStatus" name="rates_id"
-                                                        class="select2 form-select" aria-label="Default select example"
-                                                        required>
+                                                    <select id="modalEditStatus" name="rates_id" class="select2 form-select"
+                                                        aria-label="Default select example" required>
                                                         <option value="{{ $car->rates_id }}" selected>{{ $car->tarifa }}
                                                         </option>
 
@@ -229,12 +241,13 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                                <div class="col-12 text-center">
-                                                    <button type="reset" class="btn btn-label-secondary"
-                                                        data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
-                                                    <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar
-                                                        Cambios</button>
-                                                </div>
+                                            </div>
+                                            <div class="col-12 text-center d-flex justify-content-center gap-2">
+                                                <button type="reset" class="btn btn-label-secondary"
+                                                    data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                                                <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar
+                                                    Cambios</button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
@@ -288,15 +301,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            {{--                             <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditStatus">Estado</label>
-                                <select id="modalEditStatus" name="is_avaliable" class="select2 form-select" aria-label="Default select example" required>
-                                    <option value="" disabled selected>Selecciona un estado</option>
-                                    <option value="1">Disponible</option>
-                                    <option value="0">No disponible</option>
-                                </select>
-                            </div> --}}
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-6 mb-4">
                                 <label class="form-label" for="modalEditStatus">Tarifa</label>
                                 <select id="modalEditStatus" name="rates_id" class="select2 form-select"
                                     aria-label="Default select example" required>
@@ -317,26 +322,4 @@
             </div>
         </div>
         <!--/ Create Vehicle Modal -->
-
-        {{--     </div>
-        <script>
-        function obtenerDatos(id) {
-
-            axios.get(`{{ route('vehicles.show', ['car' => ':carId']) }}`.replace(':carId', id))
-                .then(response => {
-                    data = response.data
-
-                    document.getElementById('showMarca').value = data.marca;
-                    document.getElementById('showModelo').value = data.nombre;
-                    document.getElementById('showCategoria').value = data.categoria;
-                    document.getElementById('showEstado').value = data.is_avaliable === 1 ? 'Disponible' :
-                        'No disponible';
-                    document.getElementById('showTarifa').value = data.tarifa;
-
-                })
-                .catch(error => {
-                    console.error(error.message);
-                });
-        }
-    </script> --}}
     @endsection

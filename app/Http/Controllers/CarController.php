@@ -55,14 +55,12 @@ class CarController extends Controller
         $car->v_models_id = $request->v_models_id;
         $car->trademarks_id = $request->trademarks_id;
         $car->categories_id = $request->categories_id;
-/*         $car->is_avaliable = $request->is_avaliable;1 */
         $car->rates_id = $request->rates_id;
-/*         $car->image = $request->image; */
         $car->save();
         return redirect()->route('vehicles.index');
     }
 
-    public function show($id)
+/*     public function show($id)
     {
         // Muestra un vehículo en específico en una vista
 
@@ -90,7 +88,7 @@ class CarController extends Controller
         ->first();
 
         return $car;
-    }
+    } */
 
     public function edit(Car $car)
     {
@@ -112,24 +110,22 @@ class CarController extends Controller
         return redirect()->route('vehicles.index');
     }
 
+
+    public function history()
+    {
+        return view('vehicles.history');
+    }
+
+    public function tax()
+    {
+        return view('vehicles.tax');
+    }
+
     public function destroy($id)
     {
         // Elimina un vehículo en específico
         $car = Car::findOrFail($id);
         $car->delete();
         return redirect()->route('vehicles.index');
-    }
-
-    public function history(Car $car)
-    { // Muestra el historial de un vehículo en específico
-        //$billRentals = BillRental::where('cars_id', $car->id)->get();
-        return view('vehicles.history', compact('billRentals', 'car'));
-    }
-
-    public function tax(Car $car)
-    { // Muestra la vista de impuestos
-        return view('vehicles.tax', compact('rate', 'car'));
-        //$category = Category::where('id', $car->categories_id)->get();
-        //$rate = Rate::where('categoria', $category->categoria)->get();
     }
 }
