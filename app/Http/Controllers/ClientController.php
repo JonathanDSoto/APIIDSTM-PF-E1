@@ -47,6 +47,10 @@ class ClientController extends Controller
     }
     
 
+    public function history(){ // Muestra el historial de un cliente en específico
+        return view('clients.history');
+    }
+    
     public function update(Request $request, Client $client, Address $address){ // Actualiza un cliente en específico y regresa a la vista con el cliente actualizado
         
         $address = $client->idAddress ?: new Address();
@@ -63,7 +67,7 @@ class ClientController extends Controller
         $client->id_address = $address->id;
         $client->save();
         
-        return redirect()->route('clients.index', compact('client'))->with([
+        return view('clients.index', compact('client'))->with([
             'toast' => [
                 'type' => 'success',
                 'message' => 'Cliente actualizado exitosamente',
@@ -81,8 +85,4 @@ class ClientController extends Controller
         ]);
     }
 
-    public function history(Client $client){ // Muestra el historial de un cliente en específico
-        $billRentals = BillRental::where('clients_id', $client->id)->get();
-        return view('clients.history', compact('billRentals', 'client'));
-    }
 }

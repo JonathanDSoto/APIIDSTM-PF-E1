@@ -22,8 +22,8 @@ class TrademarkController extends Controller
         return view('brands.index');
     }
 
-    public function show(Trademark $trademark){ // Muestra una marca en específico en una vista
-        return redirect()->route('brands.show', compact('trademark'));
+    public function show(){ // Muestra una marca en específico en una vista
+        return view('brands.view');
     }
 
     public function edit(Trademark $trademark){ // Redirige a la vista de editar una marca

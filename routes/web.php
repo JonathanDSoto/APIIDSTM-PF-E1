@@ -10,58 +10,60 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RentalController;
 
 // Auth Routes
-Route::get('/', [UserController::class, 'index'])->name('index');
-Route::post('login', [UserController::class, 'login'])->name('login');;
-Route::get('users/create', [UserController::class, 'register'])->name('users.create');
-Route::post('users', [UserController::class, 'store'])->name('users.store');
-Route::post('rememberPassword', [RememberPasswordController::class, 'store'])->name('rememberPassword');
-Route::get('/', [UserController::class, 'logout'])->name('logout');
+Route::controller(UserController::class)->group(function(){
+    Route::get('/', 'index')->name('index');
+    Route::post('login', 'login')->name('login');;
+    Route::get('users/create', 'register')->name('register');
+    Route::post('users', 'store')->name('users.store');
+    Route::post('rememberPassword', 'store')->name('rememberPassword');
+    Route::get('login', 'logout')->name('logout');
+});
 
 // Vehicles Routes
-Route::get('vehicles', [CarController::class, 'index'])->name('vehicles.index');
-Route::post('vehicles', [CarController::class, 'store'])->name('vehicles.store');
-Route::put('vehicles/{car}', [CarController::class, 'update'])->name('vehicles.update');
-Route::get('vehicles/history', [CarController::class, 'history'])->name('vehicles.history');
-Route::get('vehicules/tax', [CarController::class, 'tax'])->name('vehicles.tax');
-Route::delete('vehicles/{car}', [CarController::class, 'destroy'])->name('vehicles.destroy');
+Route::controller(CarController::class)->group(function(){
+    Route::get('vehicles', 'index')->name('vehicles.index');
+    Route::post('vehicles', 'store')->name('vehicles.store');
+    Route::put('vehicles/{car}', 'update')->name('vehicles.update');
+    Route::get('vehicles/history', 'history')->name('vehicles.history');
+    Route::get('vehicules/tax', 'tax')->name('vehicles.tax');
+    Route::delete('vehicles/{car}', 'destroy')->name('vehicles.destroy');
+});
 
 // Clients Routes
-
-Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
-
-Route::post('/clients', [ClientController::class, 'create'])->name('clients.create');
-
-Route::get('/clients/{client}', [ClientController::class, 'show'])->name('clients.show');
-
-Route::put('/clients/{client}/edit', [ClientController::class, 'update'])->name('clients.update');
-
-Route::get('/clients/{client}/history', [ClientController::class, 'history'])->name('clients.history');
-
-Route::delete('/clients', [ClientController::class, 'drop'])->name('clients.drop');
-Route::delete('/clients/{client}', [ClientController::class, 'drop'])->name('clients.drop');
+Route::controller(ClientController::class)->group(function(){
+    Route::get('/clients', 'index')->name('clients.index');
+    Route::post('/clients', 'create')->name('clients.create');
+    Route::get('/clients/{client}', 'show')->name('clients.show');
+    Route::put('/clients/edit/{client}', 'update')->name('clients.update');
+    Route::get('/clients/history', 'history')->name('clients.history');
+    Route::delete('/clients/{client}', 'drop')->name('clients.destroy');
+});
 
 // Rental routes
-Route::get('/rentals', [RentalController::class, 'index'])->name('rentals.index');
-Route::post('/rentals', [RentalController::class, 'create']);
-Route::get('/rentals/{rental}', [RentalController::class, 'show'])->name('rentals.show');
-Route::put('/rentals/{rental}/edit', [RentalController::class, 'update']);
-Route::get('/rentals/{rental}/history', [RentalController::class, 'history'])->name('rentals.history');
-Route::delete('/rentals', [RentalController::class, 'drop'])->name('rentals.drop');
-Route::delete('/rentals/{rental}', [RentalController::class, 'drop'])->name('rentals.drop');
+Route::controller(RentalController::class)->group(function(){
+    Route::get('/rentals', 'index')->name('rentals.index');
+    Route::post('/rentals', 'create');
+    Route::get('/rentals/{rental}', 'show')->name('rentals.show');
+    Route::put('/rentals/{rental}/edit', 'update');
+    Route::get('/rentals/{rental}/history', 'history')->name('rentals.history');
+    Route::delete('/rentals/{rental}', 'drop')->name('rentals.destroy');
+});
 
 // Categories routes
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-Route::post('/categories', [CategoryController::class, 'create']);
-Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
-Route::put('/categories/{category}/edit', [CategoryController::class, 'update']);
-Route::delete('/categories', [CategoryController::class, 'drop'])->name('categories.drop');
-Route::delete('/categories/{category}', [CategoryController::class, 'drop'])->name('categories.drop');
+Route::controller(CategoryController::class)->group(function(){
+    Route::get('/categories', 'index')->name('categories.index');
+    Route::post('/categories', 'store')->name('categories.store');
+    Route::get('/categories/{category}', 'show')->name('categories.show');
+    Route::put('/categories/{category}/edit', 'update')->name('categories.update');
+    Route::delete('/categories', 'drop')->name('categories.drop');
+    Route::delete('/categories/{category}', 'drop')->name('categories.destroy');
+});
 
 // Brand routes
-Route::get('/brands', [TrademarkController::class, 'index'])->name('brands.index');
-Route::post('/brands', [TrademarkController::class, 'create']);
-Route::get('/brands/{trademark}', [TrademarkController::class, 'show'])->name('brands.show');
-Route::put('/brands/{trademark}/edit', [TrademarkController::class, 'update']);
-Route::delete('/brands', [TrademarkController::class, 'drop'])->name('brands.drop');
-Route::delete('/brands/{trademark}', [TrademarkController::class, 'drop'])->name('brands.drop');
-Route::get('/brands/view', [TrademarkController::class, 'view'])->name('brands.view');
+Route::controller(TrademarkController::class)->group(function(){
+    Route::get('/brands', 'index')->name('brands.index');
+    Route::post('/brands', 'create');
+    Route::get('/brands/view', 'show')->name('brands.view');
+    Route::put('/brands/{trademark}/edit', 'update');
+    Route::delete('/brands/{trademark}', 'drop')->name('brands.destroy');
+});

@@ -45,11 +45,16 @@ class UserController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('index');
+        return view('userRegister.login');
     }
 
 
-    public function rememberPassword(){ // Redirige a la vista de recordar contraseña
-        return redirect()->route('rememberPassword');
+    public function rememberPassword(Request $request){ // Redirige a la vista de recordar contraseña
+        $user = User::where('email', $request->email);
+        if ($user){
+            $user->password = $request->password;
+            return redirect()->route('rememberPassword');
+        } 
+        return redirect()->route('login');
     }
 }

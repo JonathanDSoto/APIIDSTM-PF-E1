@@ -36,13 +36,13 @@ class CategoryController extends Controller
             'categoria' => $request->categoria,
         ]);
 
-        return redirect()->route('categories.index');
+        return view('categories.index');
     }
 
     public function destroy($id){ // Elimina una categoria en específico
         $category = Category::findOrFail($id);
         $category->delete();
-        return redirect()->route('categories.index');
+        return view('categories.index');
     }
 
 /*     public function categoryCars(Category $category){ // Muestra los vehiculos de una categoria en específico

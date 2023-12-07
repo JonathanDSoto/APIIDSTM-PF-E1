@@ -113,7 +113,34 @@ class CarController extends Controller
 
     public function history()
     {
-        return view('vehicles.history');
+        $cars = DB::table('cars')
+            ->join('v_models', 'cars.v_models_id', '=', 'v_models.id')
+            ->join('trademarks', 'cars.trademarks_id', '=', 'trademarks.id')
+            ->join('categories', 'cars.categories_id', '=', 'categories.id')
+            ->join('rates', 'cars.rates_id', '=', 'rates.id')
+            ->select(
+                'cars.id',
+                'v_models.nombre',
+                'trademarks.marca',
+                'categories.categoria',
+                'cars.is_avaliable',
+                'cars.trademarks_id',
+                'cars.v_models_id',
+                'cars.categories_id',
+                'cars.rates_id',
+                'rates.tarifa',
+                'cars.image',
+                'cars.created_at',
+                'cars.updated_at'
+            )
+            ->get();
+
+        $models = VModel::all();
+        $trademarks = Trademark::all();
+        $categories = Category::all();
+        $rates = Rate::all();
+        $data = ['cars' => $cars, 'models' => $models, 'trademarks' => $trademarks, 'categories' => $categories, 'rates' => $rates];
+        return view('vehicles.history', compact($data));
     }
 
     public function tax()
