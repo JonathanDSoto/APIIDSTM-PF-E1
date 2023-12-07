@@ -40,7 +40,6 @@ Route::controller(ClientController::class)->group(function(){
 });
 
 // Rental routes
-<<<<<<< HEAD
 Route::controller(RentalController::class)->group(function(){
     Route::get('/rentals', 'index')->name('rentals.index');
     Route::post('/rentals', 'create');
@@ -49,15 +48,6 @@ Route::controller(RentalController::class)->group(function(){
     Route::get('/rentals/{rental}/history', 'history')->name('rentals.history');
     Route::delete('/rentals/{rental}', 'drop')->name('rentals.destroy');
 });
-=======
-Route::get('/rentals', [RentalController::class, 'index'])->name('rentals.index');
-Route::post('/rentals', [RentalController::class, 'create'])->name('rentals.create');
-Route::get('/rentals/{rental}', [RentalController::class, 'show'])->name('rentals.show');
-Route::put('/rentals/{rental}/edit', [RentalController::class, 'update']);
-Route::get('/rentals/{rental}/history', [RentalController::class, 'history'])->name('rentals.history');
-Route::delete('/rentals', [RentalController::class, 'drop'])->name('rentals.drop');
-Route::delete('/rentals/{rental}', [RentalController::class, 'drop'])->name('rentals.drop');
->>>>>>> 53168994cb7e60585fa6481dbda01e8a37b35689
 
 // Categories routes
 Route::controller(CategoryController::class)->group(function(){
