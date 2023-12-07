@@ -39,7 +39,7 @@ class Car extends Model
 
     public function vmodel(): BelongsTo
     {
-        return $this->belongsTo(VModel::class);
+        return $this->belongsTo(VModel::class, 'id');
     }
 
     public function idMarca(): BelongsTo

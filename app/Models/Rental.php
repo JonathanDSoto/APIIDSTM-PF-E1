@@ -51,7 +51,15 @@ class Rental extends Model
     }
     public function idTarifa(): BelongsTo
     {
-        return $this->belongsTo(Rate::class, 'rates_id');
+        return $this->belongsTo(Rate::class, 'rates_id','id');
+    }
+    public function billRental()
+    {
+        return $this->hasOne(BillRental::class, 'id_renta', 'id');
+    }
+    public function car()
+    {
+        return $this->belongsTo(Car::class, 'id');
     }
     
     

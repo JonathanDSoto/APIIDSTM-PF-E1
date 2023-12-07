@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 
 use App\Models\Rental;
+use App\Models\BillRental;
 use App\Models\Car;
 use App\Models\Rate;
 use App\Models\Client;
@@ -14,25 +15,61 @@ use Illuminate\Http\Request;
 class RentalController extends Controller
 {
     public function index(){ // Muestra todos los alquileres en una vista
-        $rentals = Rental::all();
+        $rentals = Rental::with(['billRental', 'idTarifa','car.vmodel'])->get();
         $clients = Client::all();
+        $rates = Rate::all();
+        $cars = Car::where('is_avaliable', 1)->get();
+        
         foreach ($rentals as $rental) {
             $rental->dias_diferencia = Carbon::parse($rental->delivery_day)->diffInDays($rental->initial_day);
+
+            switch ($rental->idTarifa->descripcion) {
+                case 'Diario':
+                    $rental->total = $rental->dias_diferencia * $rental->idTarifa->tarifa;
+                    break;
+                case 'Semanal':
+                    $rental->total = ceil($rental->dias_diferencia / 7) * $rental->idTarifa->tarifa;
+                    break;
+                case 'Mensual':
+                    $rental->total = ceil($rental->dias_diferencia / 30) * $rental->idTarifa->tarifa;
+                    break;
+                case 'Anual':
+                    $rental->total = ceil($rental->dias_diferencia / 365) * $rental->idTarifa->tarifa;
+                    break;
+                default:
+                    $rental->total = 0; 
+            }
+           // Obtén el nombre del modelo usando la relación sin intentar modificarla
+        $modelName = $rental->car->vmodel->name ?? 'Nombre no disponible';
+
+        // Agrega el nombre del modelo como una propiedad en Rental
+        $rental->car_model_name = $modelName;
         }
-        return view('rentals.index', compact('rentals','clients'));
+        return view('rentals.index', compact('rentals','clients','cars','rates'));
     }
 
     public function create(Request $request){ // Crea un alquiler y regresa a la vista alquileres
-        $rental = new Rental();
-        $rental->id_cliente = $request->id_cliente;
-        $rental->id_vehiculo = $request->id_vehiculo;
-        $rental->id_tarifa = $request->id_tarifa;
-        $rental->fecha_inicio = $request->fecha_inicio;
-        $rental->fecha_fin = $request->fecha_fin;
-        $rental->total = $request->total;
-        $rental->save();
-        
-        return view('rentals.index');
+        // Guarda la nueva renta
+        dd($request->all());
+        DB::transaction(function () use ($request) {
+            $rental = new Rental();
+            $rental->id_cliente = $request->id_cliente;
+            $rental->id_vehiculo = $request->id_vehiculo;
+            $rental->id_tarifa = $request->id_tarifa;
+            $rental->fecha_inicio = $request->fecha_inicio;
+            $rental->fecha_fin = $request->fecha_fin;
+            $rental->total = $request->total; // Ajusta esto según tus requisitos
+            $rental->save();
+
+            // Guarda la información de la factura
+            $billRental = new BillRental();
+            $billRental->metodo_pago = $request->metodo_pago; // Ajusta esto según tus requisitos
+            // Otros campos de la factura según tus requisitos
+            $billRental->id_renta = $rental->id;
+            $billRental->save();
+        });
+
+        return redirect()->route('rentals.index');
     }
 
     public function show(Rental $rental){ // Muestra un alquiler en específico en una vista
