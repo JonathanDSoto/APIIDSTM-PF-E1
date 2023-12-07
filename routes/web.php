@@ -41,7 +41,7 @@ Route::delete('/clients/{client}', [ClientController::class, 'drop'])->name('cli
 
 // Rental routes
 Route::get('/rentals', [RentalController::class, 'index'])->name('rentals.index');
-Route::post('/rentals', [RentalController::class, 'create']);
+Route::post('/rentals', [RentalController::class, 'create'])->name('rentals.create');
 Route::get('/rentals/{rental}', [RentalController::class, 'show'])->name('rentals.show');
 Route::put('/rentals/{rental}/edit', [RentalController::class, 'update']);
 Route::get('/rentals/{rental}/history', [RentalController::class, 'history'])->name('rentals.history');
