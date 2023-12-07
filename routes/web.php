@@ -15,6 +15,7 @@ Route::post('login', [UserController::class, 'login'])->name('login');;
 Route::get('users/create', [UserController::class, 'register'])->name('users.create');
 Route::post('users', [UserController::class, 'store'])->name('users.store');
 Route::post('rememberPassword', [RememberPasswordController::class, 'store'])->name('rememberPassword');
+Route::get('/', [UserController::class, 'logout'])->name('logout');
 
 // Vehicles Routes
 Route::get('vehicles', [CarController::class, 'index'])->name('vehicles.index');
