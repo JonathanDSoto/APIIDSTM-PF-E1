@@ -2,9 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\RememberPasswordController;
 use App\Http\Controllers\ClientController;
-use App\Http\Controllers\TrademarkController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RentalController;
@@ -16,7 +14,7 @@ Route::controller(UserController::class)->group(function(){
     Route::get('users/create', 'register')->name('register');
     Route::post('users', 'store')->name('users.store');
     Route::post('rememberPassword', 'store')->name('rememberPassword');
-    Route::get('login', 'logout')->name('logout');
+    Route::get('/login', 'logout')->name('logout');
 });
 
 // Vehicles Routes

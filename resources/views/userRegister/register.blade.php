@@ -126,7 +126,7 @@
                         </form>
                         <p class="text-center">
                             <span>Tiene cuenta?</span>
-                            <a href="{{ route('index') }}">
+                            <a href="{{ route('login') }}">
                                 <span>Ingrese aquí</span>
                             </a>
                         </p>
