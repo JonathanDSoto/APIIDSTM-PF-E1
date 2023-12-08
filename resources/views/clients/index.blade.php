@@ -145,38 +145,38 @@
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Nombres</label>
                                 <input type="text" id="showName" name="showName"
-                                    class="form-control modal-edit-marca-id" placeholder="Nombres" disabled/>
+                                    class="form-control modal-edit-marca-id" value="{{ $client->name }}" placeholder="Nombres" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Apellido Paterno</label>
                                 <input type="text" id="showLastname" name="showLastname"
-                                    class="form-control modal-edit-marca-id" placeholder="Apellido Paterno" disabled/>
+                                    class="form-control modal-edit-marca-id" value="{{ $client->lastname }}" placeholder="Apellido Paterno" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Correo electrónico</label>
                                 <input type="email" id="showEmail" name="showEmail"
-                                    class="form-control modal-edit-marca-id" placeholder="Correo electrónico" disabled/>
+                                    class="form-control modal-edit-marca-id" value="{{ $client->email }}" placeholder="Correo electrónico" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Teléfono</label>
                                 <input type="number" id="showPhone" name="showPhone"
-                                    class="form-control modal-edit-marca-id" placeholder="Teléfono" disabled/>
+                                    class="form-control modal-edit-marca-id" value="{{ $client->phone }}" placeholder="Teléfono" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Dirección</label>
                                 <input type="text" id="showAddress" name="showAddress"
-                                    class="form-control modal-edit-marca-id" placeholder="Dirección" disabled/>
+                                    class="form-control modal-edit-marca-id" value="{{ $client->idAddress->address }}" placeholder="Dirección" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Código postal</label>
                                 <input type="number" id="showCodePostal" name="showCodePostal"
-                                    class="form-control modal-edit-marca-id" placeholder="Código postal" disabled/>
+                                    class="form-control modal-edit-marca-id" value="{{ $client->idAddress->code_postal }}" placeholder="Código postal" disabled/>
                             </div>
 
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Número de exterior</label>
                                 <input type="number" id="showResidenceNumber" name="showResidenceNumber"
-                                    class="form-control modal-edit-marca-id" placeholder="Número de exterior" disabled/>
+                                    class="form-control modal-edit-marca-id" value="{{ $client->idAddress->residence_number }}" placeholder="Número de exterior" disabled/>
                             </div>
                             <!--/div class="col-12 text-center d-flex gap-2 justify-content-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Aceptar</button>
@@ -393,4 +393,3 @@
 
 
 @endsection
-
