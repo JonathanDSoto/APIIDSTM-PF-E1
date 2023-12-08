@@ -48,7 +48,7 @@
         <li class="menu-item">
             <a href={{ route('categories.index') }} class="menu-link">
                 <i class="menu-icon fa-solid fa-list-check"></i>
-                <div>Categorías y Marcas</div>
+                <div>Categorías</div>
             </a>
         </li>
     </ul>

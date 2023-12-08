@@ -54,4 +54,6 @@ Route::controller(CategoryController::class)->group(function(){
     Route::get('/categories/{category}', 'show')->name('categories.show');
     Route::put('/categories/{category}/edit', 'update')->name('categories.update');
     Route::delete('/categories', 'drop')->name('categories.drop');
+    Route::delete('/categories/{category}', 'destroy')->name('categories.destroy');
+
 });

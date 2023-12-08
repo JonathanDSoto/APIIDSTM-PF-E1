@@ -212,7 +212,7 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Dirección</label>
-                                <input type="text" id="addressEdit" name="addressEdit" 
+                                <input type="text" id="addressEdit" name="addressEdit" pattern="[A-Za-z\s]*"
                                     class="form-control modal-edit-marca-id" placeholder="Dirección"/>
                             </div>
                             <div class="col-12 col-md-6">
