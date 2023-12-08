@@ -15,7 +15,9 @@ class Rate extends Model
      * @var array
      */
     protected $fillable = [
+        'descripcion',
         'tarifa',
+        'categoria',
     ];
 
     /**

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Car;
-use App\models\BillRental;
+use App\Models\Rental;
 use App\Models\Category;
 use App\Models\Rate;
 use App\Http\Controllers\Controller;
@@ -139,13 +139,24 @@ class CarController extends Controller
         $trademarks = Trademark::all();
         $categories = Category::all();
         $rates = Rate::all();
-        $data = ['cars' => $cars, 'models' => $models, 'trademarks' => $trademarks, 'categories' => $categories, 'rates' => $rates];
-        return view('vehicles.history', compact($data));
+        $rentals = Rental::all();
+        $data = ['cars' => $cars, 'models' => $models, 'trademarks' => $trademarks, 'categories' => $categories, 'rates' => $rates, 'rentals' => $rentals];
+        return view('vehicles.history', compact('data'));
     }
 
     public function tax()
     {
-        return view('vehicles.tax');
+        $rate_a = Rate::where('categoria', 'Clase A: Autos pequeños');
+        $rate_b = Rate::where('categoria', 'Clase B: Autos pequeños');
+        $rate_c = Rate::where('categoria', 'Clase C: Autos medianos');
+        $rate_d = Rate::where('categoria', 'Clase D: Autos grandes');
+        $rate_e = Rate::where('categoria', 'Clase E: Autos de gama alta');
+        $rate_f = Rate::where('categoria', 'Clase F: Autos de lujo');
+        $rate_j = Rate::where('categoria', 'Clase J: Vehículos SUV con equipamiento deportivo');
+        $rate_m = Rate::where('categoria', 'Clase M: MPV vehiculos polivalentes');
+        $rate_s = Rate::where('categoria', 'Clase S: Vehículos deportivos');
+        $data = [$rate_a,$rate_a,$rate_c,$rate_d,$rate_e,$rate_f,$rate_j,$rate_m,$rate_s];
+        return view('vehicles.tax', compact('data'));
     }
 
     public function destroy($id)

@@ -42,7 +42,7 @@ Route::controller(ClientController::class)->group(function(){
 // Rental routes
 Route::controller(RentalController::class)->group(function(){
     Route::get('/rentals', 'index')->name('rentals.index');
-    Route::post('/rentals', 'create');
+    Route::post('/rentals', 'create')->name('rentals.create');
     Route::get('/rentals/{rental}', 'show')->name('rentals.show');
     Route::put('/rentals/{rental}/edit', 'update');
     Route::get('/rentals/{rental}/history', 'history')->name('rentals.history');
@@ -56,13 +56,13 @@ Route::controller(CategoryController::class)->group(function(){
     Route::get('/categories/{category}', 'show')->name('categories.show');
     Route::put('/categories/{category}/edit', 'update')->name('categories.update');
     Route::delete('/categories', 'drop')->name('categories.drop');
-    Route::delete('/categories/{category}', 'drop')->name('categories.destroy');
+    Route::delete('/categories/{category}', 'destroy')->name('categories.destroy');
 });
 
 // Brand routes
 Route::controller(TrademarkController::class)->group(function(){
     Route::get('/brands', 'index')->name('brands.index');
-    Route::post('/brands', 'create');
+    Route::post('/brands', 'create')->name('brands.create');
     Route::get('/brands/view', 'show')->name('brands.view');
     Route::put('/brands/{trademark}/edit', 'update');
     Route::delete('/brands/{trademark}', 'drop')->name('brands.destroy');
