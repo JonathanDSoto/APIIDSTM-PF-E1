@@ -15,10 +15,14 @@ class UserController extends Controller
 
     public function login(Request $request){ // Muestra la vista de inicio
         $user = User::where('email', $request->email)->first();
-        if ($user->password == $request->password) {
+
+        if ($user && $user->password == $request->password) {
+            // Usuario encontrado y la contraseña es correcta
             return redirect()->route('vehicles.index');
         } else {
-            return redirect()->route('index');
+            // Usuario no encontrado o la contraseña es incorrecta
+            return redirect()->route('index')->with('error', 'Correo o contraseña incorrectos');
+            
         }
     }
 
@@ -48,13 +52,14 @@ class UserController extends Controller
         return view('userRegister.login');
     }
 
-
     public function rememberPassword(Request $request){ // Redirige a la vista de recordar contraseña
-        $user = User::where('email', $request->email);
+        $user = User::where('email', $request->email)->first();
+
         if ($user){
             $user->password = $request->password;
             return redirect()->route('rememberPassword');
         } 
+
         return redirect()->route('login');
     }
 }

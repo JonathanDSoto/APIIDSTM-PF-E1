@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <!-- beautify ignore:start -->
 <html lang="en" class="light-style layout-wide  customizer-hide" dir="ltr" data-theme="theme-default" data-assets-path="../../assets/" data-template="vertical-menu-template">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <title>AutoExpress</title>
-
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 5" />
     <meta name="keywords" content="dashboard, bootstrap 5 dashboard, bootstrap 5 design, bootstrap 5">
     <!-- Canonical SEO -->
     <link rel="canonical" href="https://1.envato.market/vuexy_admin">
 
-
     <!-- ? PROD Only: Google Tag Manager (Default ThemeSelection: GTM-5DDHKGP, PixInvent: GTM-5J3LMKC) -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
       new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=icons
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
       })(window,document,'script','dataLayer','GTM-5J3LMKC');</script>
     <!-- End Google Tag Manager -->
 
@@ -40,10 +37,10 @@
     <link rel="stylesheet" href="../../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
     <link rel="stylesheet" href="../../assets/vendor/libs/typeahead-js/typeahead.css" />
     <!-- Vendor -->
-<link rel="stylesheet" href="../../assets/vendor/libs/@form-validation/umd/styles/index.min.css" />
+    <link rel="stylesheet" href="../../assets/vendor/libs/@form-validation/umd/styles/index.min.css" />
     <!-- Page CSS -->
     <!-- Page -->
-<link rel="stylesheet" href="../../assets/vendor/css/pages/page-auth.css">
+    <link rel="stylesheet" href="../../assets/vendor/css/pages/page-auth.css">
     <!-- Helpers -->
     <script src="../../assets/vendor/js/helpers.js"></script>
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
@@ -77,10 +74,43 @@
           </div>
           <!-- /Logo -->
           <p class="mb-4">Inicie sesión en su cuenta y comience la aventura</p>
-          <form id="formAuthentication" class="mb-3" action="{{ route('vehicles.index')}}">
+          <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">
+            @csrf
             <div class="mb-3">
+            <div class="mb-3">
+    @if(session('error'))
+        <div id="errorMessage" class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @else
+        <div id="errorMessage" class="alert alert-danger d-none">
+            Mensaje de error
+        </div>
+    @endif
+</div>
+<!-- ... Tu código HTML anterior ... -->
+
+<script>
+    // Agregar este bloque de script al final del body o en la sección de scripts al final del HTML
+    document.addEventListener('DOMContentLoaded', function() {
+        // Obtener el elemento del mensaje de error
+        var errorMessage = document.getElementById('errorMessage');
+
+        // Mostrar el mensaje de error si no está oculto inicialmente
+        if (errorMessage && !errorMessage.classList.contains('d-none')) {
+            errorMessage.classList.remove('d-none');
+        }
+
+        // Opcionalmente, puedes ocultar el mensaje después de un tiempo determinado
+        setTimeout(function() {
+            if (errorMessage) {
+                errorMessage.classList.add('d-none');
+            }
+        }, 20000); // Ocultar después de 5 segundos (puedes ajustar este valor)
+    });
+</script>
               <label for="email" class="form-label">Correo Electrónico</label>
-              <input type="text" class="form-control" id="email" name="email-username" placeholder="Ingrese su correo electrónico" autofocus>
+              <input type="text" class="form-control" id="email" name="email" placeholder="Ingrese su correo electrónico" autofocus>
             </div>
             <div class="mb-3 form-password-toggle">
               <div class="d-flex justify-content-between">
@@ -99,6 +129,9 @@
                 </label>
               </div>
             </div>
+
+            
+
             <div class="mb-3">
               <button class="btn btn-primary d-grid w-100" type="submit">Ingresar</button>
             </div>
@@ -126,12 +159,12 @@
   <script src="../../assets/vendor/libs/hammer/hammer.js"></script>
   <script src="../../assets/vendor/libs/i18n/i18n.js"></script>
   <script src="../../assets/vendor/libs/typeahead-js/typeahead.js"></script>
-   <script src="../../assets/vendor/js/menu.js"></script>
+  <script src="../../assets/vendor/js/menu.js"></script>
   <!-- endbuild -->
   <!-- Vendors JS -->
   <script src="../../assets/vendor/libs/@form-validation/umd/bundle/popular.min.js"></script>
-<script src="../../assets/vendor/libs/@form-validation/umd/plugin-bootstrap5/index.min.js"></script>
-<script src="../../assets/vendor/libs/@form-validation/umd/plugin-auto-focus/index.min.js"></script>
+  <script src="../../assets/vendor/libs/@form-validation/umd/plugin-bootstrap5/index.min.js"></script>
+  <script src="../../assets/vendor/libs/@form-validation/umd/plugin-auto-focus/index.min.js"></script>
   <!-- Main JS -->
   <script src="../../assets/js/main.js"></script>
   <!-- Page JS -->
