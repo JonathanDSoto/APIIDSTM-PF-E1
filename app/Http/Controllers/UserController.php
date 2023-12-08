@@ -39,7 +39,7 @@ class UserController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return redirect()->route('vehicles.index');
+        return redirect()->route('login');
     }
 
     public function logout(Request $request){
