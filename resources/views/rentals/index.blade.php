@@ -109,8 +109,8 @@
                         <form id="editModalForm" class="row g-3" action="{{ route('rentals.create') }}" method="post" onsubmit="return false">
                             @csrf
                             <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditMarca">Cliente</label>
-                                <select id="modalEditMarca" name="modalEditMarca" class="select2 form-select" data-allow-clear="true">
+                                <label class="form-label" for="modalCliente">Cliente</label>
+                                <select id="modalCliente" name="modalCliente" class="select2 form-select" data-allow-clear="true">
                                     <option value="">Selecciona un cliente</option>
                                     @foreach($clients as $client)
                                         <option value="{{ $client->id }}">{{ $client->name }} {{ $client->lastname }}</option>
@@ -119,8 +119,8 @@
                             </div>
 
                             <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditMarca">Vehículo</label>
-                                <select id="modalEditMarca" name="modalEditMarca" class="select2 form-select" data-allow-clear="true">
+                                <label class="form-label" for="modalVehiculo">Vehículo</label>
+                                <select id="modalVehiculo" name="modalVehiculo" class="select2 form-select" data-allow-clear="true">
                                     <option value="">Vehículo</option>
                                     @foreach($cars as $car)
                                         @php
@@ -133,24 +133,24 @@
 
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowCategory">Fecha de prestamo</label>
-                                <input type="text" id="fechaPrestamo" name="modalEditCategory" 
+                                <input type="text" id="fechaPrestamo" name="modalprestamo" 
                                     class="form-control modal-edit-category-id" placeholder="Fecha de prestamo" />
 
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowCategory">Fecha de entrega</label>
-                                <input type="text" id="fechaEntrega" name="modalEditCategory" 
+                                <input type="text" id="fechaEntrega" name="modalEntrega" 
                                     class="form-control modal-edit-category-id flatpickr" placeholder="Fecha de entrega" />
 
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowStatus">Días</label>
-                                <input type="text" id="modalShowStatus" name="modalShowStatus" 
+                                <input type="text" id="modalDias" name="modalDias" 
                                     class="form-control modal-edit-status-id" placeholder="Días" disabled />
                             </div>
                             <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditTarifa">Tarifa</label>
-                                <select id="modalEditTarifa" name="modalEditTarifa" class="select2 form-select" aria-label="Default select example">
+                                <label class="form-label" for="modalTarifa">Tarifa</label>
+                                <select id="modalTarifa" name="modalTarifa" class="select2 form-select" aria-label="Default select example">
                                     <option value="" selected>Selecciona una tarifa</option>
                                     @foreach($rates as $rate)
                                         <option value="{{ $rate->id }}" data-descripcion="{{ $rate->descripcion }}" data-tarifa="{{ $rate->tarifa }}">
@@ -160,25 +160,26 @@
                                 </select>
                             </div>
                             <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditStatus">Método de pago</label>
-                                <select id="modalEditStatus" name="modalEditStatus" class="select2 form-select"
+                                <label class="form-label" for="modalpago">Método de pago</label>
+                                <select id="modalpago" name="modalpago" class="select2 form-select"
                                     aria-label="Default select example">
-                                    <option selected>Método de pago</option>
-                                    <option value="1">Efectivo</option>
-                                    <option value="2">Transferencia</option>
-                                    <option value="3">Tarjeta de crédito</option>
+                                    <option selected disabled>Selecciona un método de pago</option>
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="transferencia">Transferencia</option>
+                                    <option value="tarjeta">Tarjeta de crédito</option>
+                                    <option value="paypal">paypal</option>
                                 </select>
                             </div>
                             <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditTarifa">Total</label>
-                                <input type="text" id="totalModal" name="totalModal" 
+                                <label class="form-label" for="modalTotal">Total</label>
+                                <input type="text" id="modalTotal" name="modalTotal" 
                                     class="form-control modal-edit-tax-id" placeholder="Total" readonly />
                             </div>
 
                             <div class="col-12 text-center d-flex gap-2 justify-content-center">
                                 <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="modal"
                                     aria-label="Close">Cancelar</button>
-                                <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar</button>
+                                <button type="submit" class="btn btn-primary me-sm-3 me-1" onclick="guardarRenta()">Guardar</button>
                             </div>
                         </form>
                     </div>
@@ -415,7 +416,7 @@
             // Obtén los campos de fecha de préstamo, entrega y el campo de días
             var fechaPrestamoInput = document.getElementById('fechaPrestamo');
             var fechaEntregaInput = document.getElementById('fechaEntrega');
-            var diasModalInput = document.getElementById('modalShowStatus');
+            var diasModalInput = document.getElementById('modalDias');
 
             // Función para calcular y actualizar los días cuando cambian las fechas
             function actualizarDias() {
@@ -448,9 +449,9 @@
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var tarifaSelect = document.getElementById('modalEditTarifa');
-            var diasInput = document.getElementById('modalShowStatus');
-            var totalInput = document.getElementById('totalModal');
+            var tarifaSelect = document.getElementById('modalTarifa');
+            var diasInput = document.getElementById('modalDias');
+            var totalInput = document.getElementById('modalTotal');
 
             function actualizarTotal() {
                 var tarifaOption = tarifaSelect.options[tarifaSelect.selectedIndex];

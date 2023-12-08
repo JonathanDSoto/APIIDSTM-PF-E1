@@ -12,6 +12,10 @@ use App\Models\Client;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log; 
+use Illuminate\Support\Facades\Validator;
+
 class RentalController extends Controller
 {
     public function index(){ // Muestra todos los alquileres en una vista
@@ -49,27 +53,55 @@ class RentalController extends Controller
     }
 
     public function create(Request $request){ // Crea un alquiler y regresa a la vista alquileres
-        // Guarda la nueva renta
-        dd($request->all());
-        DB::transaction(function () use ($request) {
-            $rental = new Rental();
-            $rental->id_cliente = $request->id_cliente;
-            $rental->id_vehiculo = $request->id_vehiculo;
-            $rental->id_tarifa = $request->id_tarifa;
-            $rental->fecha_inicio = $request->fecha_inicio;
-            $rental->fecha_fin = $request->fecha_fin;
-            $rental->total = $request->total; // Ajusta esto según tus requisitos
-            $rental->save();
+        // Validar los datos del formulario según tus necesidades
+        Log::info('Llegó al controlador con datos: ' . json_encode($request->all()));
+       
+        /* Validación de datos
+        $validator = Validator::make($request->all(), [
+            'modalCliente' => 'required|integer',
+            'modalVehiculo' => 'required|integer',
+            'modalTarifa' => 'required|integer',
+            'modalprestamo' => 'required|date',
+            'modalEntrega' => 'required|date|',
+            'modalTotal' => 'required|string',
+            'modalpago' => 'required|integer',
+        ]);
 
-            // Guarda la información de la factura
-            $billRental = new BillRental();
-            $billRental->metodo_pago = $request->metodo_pago; // Ajusta esto según tus requisitos
-            // Otros campos de la factura según tus requisitos
-            $billRental->id_renta = $rental->id;
-            $billRental->save();
-        });
+        if ($validator->fails()) {
+            return redirect()->route('rentals.index')->with('error', 'Error de validación. Por favor, revisa los campos.');
+        }
+        */
+        try {
+            DB::transaction(function () use ($request) {
+                $rental = new Rental();
+                $rental->client_id = $request->modalCliente;
+                $rental->id_vehiculo = $request->modalVehiculo;
+                $rental->rates_id = $request->modalTarifa;
+                $rental->initial_day = $request->modalprestamo;
+                $rental->delivery_day = $request->modalEntrega;
+                $rental->save();
+        
+                // Guarda la información de la factura
+                $billRental = new BillRental();
+                $billRental->metodo_pago = $request->modalpago;
+                // Otros campos de la factura según tus requisitos
+                $billRental->id_renta = $rental->id;
+                $billRental->save();
 
-        return redirect()->route('rentals.index');
+                Log::info('Renta y factura creadas exitosamente.');
+            });
+        
+
+                
+            //});
+
+            return redirect()->route('rentals.index')->with('success', 'Renta creada exitosamente.');
+        } catch (\Exception $e) {
+            
+            Log::error('Error al crear la renta. Detalles: ' . $e->getMessage());
+
+            return redirect()->route('rentals.index')->with('error', 'Error al crear la renta. Detalles: ' . $e->getMessage());
+        }
     }
 
     public function show(Rental $rental){ // Muestra un alquiler en específico en una vista
