@@ -45,7 +45,7 @@ class RentalController extends Controller
         // Agrega el nombre del modelo como una propiedad en Rental
         $rental->car_model_name = $modelName;
         }
-        return redirect()->route('rentals.index', compact('rentals','clients','cars','rates'));
+        return view('rentals.index', compact('rentals','clients','cars','rates'));
     }
 
     public function create(Request $request){ // Crea un alquiler y regresa a la vista alquileres
