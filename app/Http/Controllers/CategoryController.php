@@ -11,8 +11,7 @@ class CategoryController extends Controller
 {
     public function index(){ // Muestra todas las categorias y Marcas en una vista
         $categories = Category::all();
-        $trademarks = Trademark::all();
-        return view('categories.index', compact('categories', 'trademarks'));
+        return view('categories.index', compact('categories'));
     }
 
     public function store(Request $request)
