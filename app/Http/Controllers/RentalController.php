@@ -84,7 +84,6 @@ class RentalController extends Controller
                 // Guarda la información de la factura
                 $billRental = new BillRental();
                 $billRental->metodo_pago = $request->modalpago;
-                // Otros campos de la factura según tus requisitos
                 $billRental->id_renta = $rental->id;
                 $billRental->save();
 
@@ -133,4 +132,18 @@ class RentalController extends Controller
             return redirect()->route('rentals.show', compact('rental'));
         }
     }
+    public function getRentalData(Rental $rental)
+{
+    $data = [
+        'client_id' => $rental->client_id,
+        'id_vehiculo' => $rental->id_vehiculo,
+        'initial_day' => $rental->initial_day,
+        'delivery_day' => $rental->delivery_day,
+        'id_tarifa' => $rental->id_tarifa,
+        'billRental' => $rental->billRental,
+    ];
+
+    return response()->json($data);
+}
+
 }

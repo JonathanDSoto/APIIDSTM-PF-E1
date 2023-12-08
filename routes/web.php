@@ -45,6 +45,8 @@ Route::controller(RentalController::class)->group(function(){
     Route::put('/rentals/{rental}/edit', 'update');
     Route::get('/rentals/{rental}/history', 'history')->name('rentals.history');
     Route::delete('/rentals/{rental}', 'drop')->name('rentals.destroy');
+    Route::get('/rentals/{rental}/data', [RentalController::class, 'getRentalData']);
+
 });
 
 // Categories and Trademarks routes

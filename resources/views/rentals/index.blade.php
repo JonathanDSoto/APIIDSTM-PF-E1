@@ -72,13 +72,9 @@
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
                                             data-bs-toggle="dropdown"><i class="ti ti-dots-vertical"></i></button>
                                         <div class="dropdown-menu">
+
                                             <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                data-bs-target="#showRental">
-                                                <i class="ti ti-eye me-1"></i>
-                                                Ver
-                                            </button>
-                                            <button type="button" class="dropdown-item" data-bs-toggle="modal"
-                                                data-bs-target="#editRental">
+                                                data-bs-target="#editRental" data-rental-id="{{ $rental->id }}">
                                                 <i class="ti ti-edit me-1"></i>
                                                 Editar
                                             </button>
@@ -188,74 +184,7 @@
         </div>
         <!--/ Create Rental Modal -->
 
-        <!-- Show Rental Modal -->
-        <div class="modal fade" id="showRental" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-lg modal-simple modal-show-vehicle">
-                <div class="modal-content p-3 p-md-5">
-                    <div class="modal-body">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        <div class="text-center mb-4">
-                            <h3 class="mb-2">Ver información de la renta</h3>
-                        </div>
-                        <form id="showModalForm" class="row g-3" onsubmit="return false">
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalShowMarca">Cliente</label>
-                                <input type="text" id="modalEditMarca" name="modalEditMarca"
-                                    class="form-control modal-edit-marca-id" placeholder="01 - Fernando de La Barrera"
-                                    disabled />
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalShowModelo">Vehiculo</label>
-                                <input type="text" id="modalEditModelo" name="modalEditModelo"
-                                    class="form-control modal-edit-modelo-id" placeholder="Vehiculo" disabled />
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalShowCategory">Fecha de prestamo</label>
-                                <input type="text" id="modalEditCategory" name="modalEditCategory"
-                                    class="form-control modal-edit-category-id" placeholder="Fecha de prestamo"
-                                    disabled />
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalShowCategory">Fecha de entrega</label>
-                                <input type="text" id="modalEditCategory" name="modalEditCategory"
-                                    class="form-control modal-edit-category-id" placeholder="Fecha de entrega" disabled />
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalShowStatus">Días</label>
-                                <input type="text" id="modalShowStatus" name="modalShowStatus"
-                                    class="form-control modal-edit-status-id" placeholder="Días" disabled />
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditTarifa">Tarifa</label>
-                                <input type="text" id="modalEditTarifa" name="modalEditTarifa"
-                                    class="form-control modal-edit-tax-id" placeholder="Ingresa la tarifa" disabled />
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditTarifa">Método de pago</label>
-                                <input type="text" id="modalEditTarifa" name="modalEditTarifa"
-                                    class="form-control modal-edit-tax-id" placeholder="Método de pago" disabled />
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditTarifa">Total</label>
-                                <input type="text" id="totalModal" name="modalEditTarifa"
-                                    class="form-control modal-edit-tax-id" placeholder="Total" disabled />
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditTarifa">Estado</label>
-                                <input type="text" id="modalEditTarifa" name="modalEditTarifa"
-                                    class="form-control modal-edit-tax-id" placeholder="Estado" disabled />
-                            </div>
-                            <div class="col-12 text-center">
-                                <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="modal"
-                                    aria-label="Close">Cancelar</button>
-                                <button type="submit" class="btn btn-primary me-sm-3 me-1">Aceptar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--/ Show Rental Modal -->
+       
 
         <!-- Edit Rental Modal -->
         <div class="modal fade" id="editRental" tabindex="-1" aria-hidden="true">
@@ -266,95 +195,80 @@
                         <div class="text-center mb-4">
                             <h3 class="mb-2">Editar información de la renta</h3>
                         </div>
-                        <form id="editModalForm" class="row g-3" onsubmit="return false">
+                        <form id="editModalForm" class="row g-3" action="{{ route('rentals.create') }}" method="post" onsubmit="return false">
+                            @csrf
                             <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditMarca">Cliente</label>
-                                <select id="modalEditMarca" name="modalEditMarca" class="select2 form-select"
-                                    data-allow-clear="true">
-                                    <option value="">Cliente</option>
-                                    <option value="ty">Toyota</option>
-                                    <option value="hnda">Honda</option>
-                                    <option value="ford">Ford</option>
-                                    <option value="chv">Chevrolet</option>
-                                    <option value="nis">Nissan</option>
-                                    <option value="bmw">BMW</option>
-                                    <option value="mer">Mercedes-Benz</option>
-                                    <option value="audi">Audi</option>
-                                    <option value="volk">Volkswagen</option>
-                                    <option value="tesla">Tesla</option>
+                                <label class="form-label" for="modalCliente">Cliente</label>
+                                <select id="modalEditCliente" name="modalEditCliente" class="select2 form-select" data-allow-clear="true">
+                                    <option value="">Selecciona un cliente</option>
+                                    @foreach($clients as $client)
+                                        <option value="{{ $client->id }}">{{ $client->name }} {{ $client->lastname }}</option>
+                                    @endforeach
                                 </select>
                             </div>
+
                             <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditMarca">Vehículo</label>
-                                <select id="modalEditMarca" name="modalEditMarca" class="select2 form-select"
-                                    data-allow-clear="true">
+                                <label class="form-label" for="modalVehiculo">Vehículo</label>
+                                <select id="modalEditVehiculo" name="modalVehiculo" class="select2 form-select" data-allow-clear="true">
                                     <option value="">Vehículo</option>
-                                    <option value="ty">Toyota</option>
-                                    <option value="hnda">Honda</option>
-                                    <option value="ford">Ford</option>
-                                    <option value="chv">Chevrolet</option>
-                                    <option value="nis">Nissan</option>
-                                    <option value="bmw">BMW</option>
-                                    <option value="mer">Mercedes-Benz</option>
-                                    <option value="audi">Audi</option>
-                                    <option value="volk">Volkswagen</option>
-                                    <option value="tesla">Tesla</option>
+                                    @foreach($cars as $car)
+                                        @php
+                                            $modelName = $car->vmodel ? $car->vmodel->nombre : 'Nombre no disponible';
+                                        @endphp
+                                        <option value="{{ $car->id }}">{{ $modelName }} - ID {{ $car->id }}</option>
+                                    @endforeach
                                 </select>
                             </div>
+
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowCategory">Fecha de prestamo</label>
-                                <input type="text" id="fechaEntrega" name="modalEditCategory" 
-                                    class="form-control modal-edit-category-id flatpickr" placeholder="Fecha de entrega" />
+                                <input type="text" id="fechaPrestamoEdit" name="modalprestamo" 
+                                    class="form-control modal-edit-category-id" placeholder="Fecha de prestamo" />
 
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowCategory">Fecha de entrega</label>
-                                <input type="text" id="modalEditCategory" name="modalEditCategory"
-                                    class="form-control modal-edit-category-id" placeholder="Fecha de entrega" />
+                                <input type="text" id="fechaEntregaEdit" name="modalEntrega" 
+                                    class="form-control modal-edit-category-id flatpickr" placeholder="Fecha de entrega" />
+
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowStatus">Días</label>
-                                <input type="text" id="modalShowStatus" name="modalShowStatus"
-                                    class="form-control modal-edit-status-id" placeholder="Días" />
+                                <input type="text" id="modalEditDias" name="modalDias" 
+                                    class="form-control modal-edit-status-id" placeholder="Días" disabled />
                             </div>
                             <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditTarifa">Tarifa</label>
-                                <div class="input-group input-group-merge">
-                                    <span class="input-group-text">$</span>
-                                    <input type="number" class="form-control" placeholder="100"
-                                        aria-label="Amount (to the nearest dollar)" />
-                                    <span class="input-group-text">.00</span>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditStatus">Método de pago</label>
-                                <select id="modalEditStatus" name="modalEditStatus" class="select2 form-select"
-                                    aria-label="Default select example">
-                                    <option selected>Método de pago</option>
-                                    <option value="1">Efectivo</option>
-                                    <option value="2">Transferencia</option>
-                                    <option value="3">Tarjeta de crédito</option>
+                                <label class="form-label" for="modalTarifa">Tarifa</label>
+                                <select id="modalEditTarifa" name="modalTarifa" class="select2 form-select" aria-label="Default select example">
+                                    <option value="" selected>Selecciona una tarifa</option>
+                                    @foreach($rates as $rate)
+                                        <option value="{{ $rate->id }}" data-descripcion="{{ $rate->descripcion }}" data-tarifa="{{ $rate->tarifa }}">
+                                            {{ $rate->descripcion }} - {{ $rate->categoria }} - ${{ $rate->tarifa }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                             <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditTarifa">Total</label>
-                                <input type="number" id="modalEditTarifa" name="modalEditTarifa"
-                                    class="form-control modal-edit-tax-id" placeholder="Total" />
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalEditStatus">Estado</label>
-                                <select id="modalEditStatus" name="modalEditStatus" class="select2 form-select"
+                                <label class="form-label" for="modalpago">Método de pago</label>
+                                <select id="modalEditpago" name="modalpago" class="select2 form-select"
                                     aria-label="Default select example">
-                                    <option selected>Estado</option>
-                                    <option value="1">Activo</option>
-                                    <option value="2">Inactivo</option>
-                                    <option value="3">Suspendido</option>
+                                    <option selected disabled>Selecciona un método de pago</option>
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="transferencia">Transferencia</option>
+                                    <option value="tarjeta">Tarjeta de crédito</option>
+                                    <option value="paypal">paypal</option>
                                 </select>
                             </div>
+                            <div class="col-12 col-md-6">
+                                <label class="form-label" for="modalTotal">Total</label>
+                                <input type="text" id="modalEditTotal" name="modalTotal" 
+                                    class="form-control modal-edit-tax-id" placeholder="Total" readonly />
+                            </div>
+
                             <div class="col-12 text-center d-flex gap-2 justify-content-center">
                                 <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="modal"
                                     aria-label="Close">Cancelar</button>
-                                <button type="submit" class="btn btn-primary me-sm-3 me-1">Guardar cambios</button>
+                                <button type="submit" class="btn btn-primary me-sm-3 me-1" onclick="guardarRenta()">Guardar</button>
                             </div>
                         </form>
                     </div>
@@ -363,28 +277,31 @@
         </div>
         <!--/ Edit Rental Modal -->
 
-        <!-- Delete Rental Modal -->
-        <div class="modal fade" id="deleteRental" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered1 modal-simple modal-add-new-cc">
-                <div class="modal-content p-3 p-md-5">
-                    <div class="modal-body">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        <div class="text-center mb-4">
-                            <h3 class="mb-2">¿Seguro que deseas eliminar la renta?</h3>
-                        </div>
-                        <form id="addNewCCForm" class="row g-3" onsubmit="return false">
-                            <input type="hidden">
-                            <div class="col-12 text-center">
-                                <button type="reset" class="btn btn-label-secondary btn-reset" data-bs-dismiss="modal"
-                                    aria-label="Close">Cancelar</button>
-                                <button type="submit" class="btn btn-primary me-sm-3 me-1">Aceptar</button>
-                            </div>
-                        </form>
-                    </div>
+       <!-- Delete Rental Modal -->
+<div class="modal fade" id="deleteRental" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered1 modal-simple modal-add-new-cc">
+        <div class="modal-content p-3 p-md-5">
+            <div class="modal-body">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="text-center mb-4">
+                    <h3 class="mb-2">¿Seguro que deseas eliminar la renta?</h3>
                 </div>
+                <form id="deleteRentalForm" class="row g-3" onsubmit="return false">
+                    @csrf
+                    @method('DELETE') <!-- Agrega este campo -->
+                    <input type="hidden" id="deleteRentalId" name="deleteRentalId" value="{{ $rental->id }}"> <!-- Campo oculto para almacenar el ID de la renta -->
+
+                    <div class="col-12 text-center">
+                        <button type="button" class="btn btn-label-secondary btn-reset" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                        <button type="submit" class="btn btn-primary me-sm-3 me-1" onclick="eliminarRenta()">Aceptar</button>
+                    </div>
+                </form>
             </div>
         </div>
-        <!--/ Delete Rental Modal -->
+    </div>
+</div>
+<!--/ Delete Rental Modal -->
+
 
     </div>    
 
@@ -393,42 +310,66 @@
     <script>
         // Script para activar flatpickr en el campo de fecha de entrega
         document.addEventListener('DOMContentLoaded', function () {
-            // Obtén el campo de entrada de fecha de entrega
             var fechaPrestamoInput = document.getElementById('fechaPrestamo');
             var fechaEntregaInput = document.getElementById('fechaEntrega');
+            var fechaEditPrestamoInput = document.getElementById('fechaPrestamoEdit');
+            var fechaEditEntregaInput = document.getElementById('fechaEntregaEdit');
 
             // Configura flatpickr para el campo de fecha de entrega
             flatpickr(fechaPrestamoInput, {
-                enableTime: false, // Puedes habilitar la hora si es necesario
+                enableTime: false, 
                 dateFormat: 'Y-m-d', // Formato de fecha deseado
                 defaultDate: 'today',
                 
             });
 
             flatpickr(fechaEntregaInput, {
-                enableTime: false, // Puedes habilitar la hora si es necesario
+                enableTime: false, 
                 dateFormat: 'Y-m-d', // Formato de fecha deseado
             });
+
+                // Configura flatpickr para el campo de fecha de entrega edicion
+                flatpickr(fechaEditPrestamoInput, {
+                enableTime: false, 
+                dateFormat: 'Y-m-d', // Formato de fecha deseado
+                defaultDate: 'today',
+                
+            });
+
+            flatpickr(fechaEditEntregaInput, {
+                enableTime: false, 
+                dateFormat: 'Y-m-d', // Formato de fecha deseado
+            });
+
+
         });
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            // Obtén los campos de fecha de préstamo, entrega y el campo de días
+            // campos de fecha de préstamo, entrega y el campo de días
             var fechaPrestamoInput = document.getElementById('fechaPrestamo');
             var fechaEntregaInput = document.getElementById('fechaEntrega');
             var diasModalInput = document.getElementById('modalDias');
 
+            var fechaEditPrestamoInput = document.getElementById('fechaPrestamoEdit');
+            var fechaEditEntregaInput = document.getElementById('fechaEntregaEdit');
+            var diasModalInput = document.getElementById('modalEditDias');
+
             // Función para calcular y actualizar los días cuando cambian las fechas
             function actualizarDias() {
-                // Obtén las fechas de préstamo y entrega
                 var fechaPrestamo = new Date(fechaPrestamoInput.value);
                 var fechaEntrega = new Date(fechaEntregaInput.value);
 
+                var fechaEditPrestamo = new Date(fechaEditPrestamoInput.value);
+                var fechaEditEntrega = new Date(fechaEditEntregaInput.value);
+
                 // Calcula la diferencia en días
                 var diasDiferencia = Math.ceil((fechaEntrega - fechaPrestamo) / (1000 * 60 * 60 * 24));
+                var diasDiferenciaEdit = Math.ceil((fechaEditEntrega - fechaEditPrestamo) / (1000 * 60 * 60 * 24));
 
                 // Actualiza el campo de días en el modal
                 diasModalInput.value = diasDiferencia;
+                diasModalInput.value = diasDiferenciaEdit;
             }
 
             // Configura flatpickr para los campos de fecha de préstamo y entrega
@@ -436,10 +377,25 @@
                 enableTime: false,
                 dateFormat: 'Y-m-d',
                 defaultDate: 'today',
-                onChange: actualizarDias, // Llama a la función cuando cambia la fecha de préstamo
+                onChange: actualizarDias, 
             });
 
             flatpickr(fechaEntregaInput, {
+                enableTime: false,
+                dateFormat: 'Y-m-d',
+                defaultDate: 'tomorrow', // Establece el día siguiente como predeterminado
+                onChange: actualizarDias, // Llama a la función cuando cambia la fecha de entrega
+            });
+
+
+            flatpickr(fechaEditPrestamo, {
+                enableTime: false,
+                dateFormat: 'Y-m-d',
+                defaultDate: 'today',
+                onChange: actualizarDias, 
+            });
+
+            flatpickr(fechaEditEntregaInput, {
                 enableTime: false,
                 dateFormat: 'Y-m-d',
                 defaultDate: 'tomorrow', // Establece el día siguiente como predeterminado
@@ -452,6 +408,7 @@
             var tarifaSelect = document.getElementById('modalTarifa');
             var diasInput = document.getElementById('modalDias');
             var totalInput = document.getElementById('modalTotal');
+            
 
             function actualizarTotal() {
                 var tarifaOption = tarifaSelect.options[tarifaSelect.selectedIndex];
@@ -489,6 +446,123 @@
             tarifaSelect.addEventListener('change', actualizarTotal);
             diasInput.addEventListener('input', actualizarTotal);
         });
+    </script>
+
+<script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var tarifaSelect = document.getElementById('modalEditTarifa');
+            var diasInput = document.getElementById('modalEditDias');
+            var totalInput = document.getElementById('modalEditTotal');
+            
+
+            function actualizarTotal() {
+                var tarifaOption = tarifaSelect.options[tarifaSelect.selectedIndex];
+
+                if (tarifaOption) {
+                    var descripcion = tarifaOption.getAttribute('data-descripcion');
+                    var tarifa = parseFloat(tarifaOption.getAttribute('data-tarifa'));
+                    var dias = parseInt(diasInput.value);
+                    console.log("descripcion: "+descripcion);
+                    console.log("tarifa: "+tarifa);
+                    console.log("dias: "+dias);
+
+                    var total = 0;
+                    switch (descripcion) {
+                        case 'Diario':
+                            total = tarifa * dias;
+                            break;
+                        case 'Semanal':
+                            total = tarifa * Math.ceil(dias / 7);
+                            break;
+                        case 'Mensual':
+                            total = tarifa * Math.ceil(dias / 30);
+                            break;
+                        case 'Anual':
+                            total = tarifa * Math.ceil(dias / 365);
+                            break;
+                    }
+
+                    totalInput.value = total.toFixed(2);
+                } else {
+                    totalInput.value = '0.00';
+                }
+            }
+
+            tarifaSelect.addEventListener('change', actualizarTotal);
+            diasInput.addEventListener('input', actualizarTotal);
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    // ...
+
+    // Listener para botones de editar
+    document.querySelectorAll('.dropdown-item.edit-rental').forEach(function (editButton) {
+        editButton.addEventListener('click', function () {
+            // Obtén el ID de la renta desde el atributo data
+            var rentalId = this.getAttribute('data-rental-id');
+
+            // Llama a la función para cargar y mostrar los datos en el modal de edición
+            cargarDatosEdicion(rentalId);
+        });
+    });
+
+    // Función para cargar y mostrar datos en el modal de edición
+    function cargarDatosEdicion(rentalId) {
+        // Realiza una solicitud AJAX para obtener los datos de la renta seleccionada
+        // Puedes usar Axios, jQuery.ajax, fetch, u otro método para hacer la solicitud
+
+        // Ejemplo usando fetch
+        fetch('/rentals/' + rentalId)
+            .then(response => response.json())
+            .then(data => {
+                // Llena los campos del modal con los datos obtenidos
+                document.getElementById('modalEditCliente').value = data.client_id;
+                document.getElementById('modalEditVehiculo').value = data.id_vehiculo;
+                document.getElementById('fechaPrestamoEdit').value = data.initial_day;
+                document.getElementById('fechaEntregaEdit').value = data.delivery_day;
+                document.getElementById('modalEditTarifa').value = data.id_tarifa;
+                document.getElementById('modalEditPago').value = data.billRental ? data.billRental.metodo_pago : '';
+
+                // Actualiza cualquier otro campo necesario
+
+                // Muestra el modal de edición
+                var editRentalModal = new bootstrap.Modal(document.getElementById('editRental'));
+                editRentalModal.show();
+            })
+            .catch(error => {
+                console.error('Error al cargar datos de la renta', error);
+            });
+    }
+});
+
+    </script>
+    <script>
+        function eliminarRenta() {
+            var rentalId = document.getElementById('deleteRentalId').value;
+            console.log('Eliminar Renta ID:', rentalId);
+
+
+            // Envía la solicitud de eliminación al servidor
+            fetch('/rentals/' + rentalId, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                },
+            }).then(response => {
+                if (response.ok) {
+                    // La renta se eliminó con éxito, puedes recargar la página o actualizar la lista de rentas de otra manera.
+                    location.reload();
+                } else {
+                    // La eliminación falló, puedes manejar el error de otra manera.
+                    console.error('Error al eliminar la renta');
+                }
+            }).catch(error => {
+                console.error('Error al eliminar la renta', error);
+            });
+        }
+
     </script>
 
 
