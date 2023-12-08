@@ -22,16 +22,7 @@
                         <div>Dashboard</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href={{ route('vehicles.history') }} class="menu-link">
-                        <div>Historial de rentas</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href={{ route('vehicles.tax') }} class="menu-link">
-                        <div>Tarifas de vehiculos</div>
-                    </a>
-                </li>
+                
             </ul>
         </li>
         <!-- Clients -->
@@ -44,11 +35,6 @@
                 <li class="menu-item">
                     <a href={{ route('clients.index') }} class="menu-link">
                         <div>Dashboard</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href={{ route('clients.history') }} class="menu-link">
-                        <div>Historial de rentas</div>
                     </a>
                 </li>
             </ul>
