@@ -72,3 +72,11 @@
 
 {{-- Axios --}}
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!-- Agrega esto en la sección de head -->
+<script>
+    function guardarRenta() {
+        console.log("Guardando renta");
+        document.getElementById("editModalForm").submit();
+    }
+</script>
