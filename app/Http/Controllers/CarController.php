@@ -146,16 +146,22 @@ class CarController extends Controller
 
     public function tax()
     {
-        $rate_a = Rate::where('categoria', 'Clase A: Autos pequeños');
-        $rate_b = Rate::where('categoria', 'Clase B: Autos pequeños');
-        $rate_c = Rate::where('categoria', 'Clase C: Autos medianos');
-        $rate_d = Rate::where('categoria', 'Clase D: Autos grandes');
-        $rate_e = Rate::where('categoria', 'Clase E: Autos de gama alta');
-        $rate_f = Rate::where('categoria', 'Clase F: Autos de lujo');
-        $rate_j = Rate::where('categoria', 'Clase J: Vehículos SUV con equipamiento deportivo');
-        $rate_m = Rate::where('categoria', 'Clase M: MPV vehiculos polivalentes');
-        $rate_s = Rate::where('categoria', 'Clase S: Vehículos deportivos');
-        $data = [$rate_a,$rate_a,$rate_c,$rate_d,$rate_e,$rate_f,$rate_j,$rate_m,$rate_s];
+        $cars = DB::table('cars')
+            ->join('v_models', 'cars.v_models_id', '=', 'v_models.id')
+            ->join('trademarks', 'cars.trademarks_id', '=', 'trademarks.id')
+            ->join('categories', 'cars.categories_id', '=', 'categories.id')
+            ->join('rates', 'cars.rates_id', '=', 'rates.id')
+            ->select(
+                'cars.id',
+                'v_models.nombre',
+                'trademarks.marca',
+                'categories.categoria',
+                'cars.is_avaliable',
+                'rates.tarifa'
+
+            )
+            ->get();
+        $data = ['cars' => $cars,];
         return view('vehicles.tax', compact('data'));
     }
 
