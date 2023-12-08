@@ -84,12 +84,12 @@
                         @csrf
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="name">Nombres</label>
-                                <input type="text" id="name" name="name"
+                                <input type="text" id="name" name="name" pattern="[A-Za-z\s]*"
                                     class="form-control modal-edit-marca-id" placeholder="Nombres" required/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Apellido Paterno</label>
-                                <input type="text" id="lastname" name="lastname"
+                                <input type="text" id="lastname" name="lastname" pattern="[A-Za-z\s]*"
                                     class="form-control modal-edit-marca-id" placeholder="Apellido Paterno"/>
                             </div>
                             <div class="col-12 col-md-6">
@@ -99,17 +99,17 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Teléfono</label>
-                                <input type="number" id="phone" name="phone"
+                                <input type="number" id="phone" name="phone" pattern="[^0-9]*"
                                     class="form-control modal-edit-marca-id" placeholder="Teléfono"/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="address">Dirección</label>
-                                <input type="text" id="address" name="address"
+                                <input type="text" id="address" name="address" 
                                     class="form-control modal-edit-marca-id" placeholder="Dirección" required/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="code_postal">Código postal</label>
-                                <input type="number" id="code_postal" name="code_postal"
+                                <input type="number" id="code_postal" name="code_postal" pattern="[^0-9]*"
                                     class="form-control modal-edit-marca-id" placeholder="Código postal" required/>
                             </div>
 
@@ -138,12 +138,12 @@
                         <form id="showClientForm" class="row g-3">
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Nombres</label>
-                                <input type="text" id="showName" name="showName"
+                                <input type="text" id="showName" name="showName" pattern="[A-Za-z\s]*"
                                     class="form-control modal-edit-marca-id" value="{{ $client->name }}" placeholder="Nombres" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Apellido Paterno</label>
-                                <input type="text" id="showLastname" name="showLastname"
+                                <input type="text" id="showLastname" name="showLastname" pattern="[A-Za-z\s]*"
                                     class="form-control modal-edit-marca-id" value="{{ $client->lastname }}" placeholder="Apellido Paterno" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
@@ -153,17 +153,17 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Teléfono</label>
-                                <input type="number" id="showPhone" name="showPhone"
+                                <input type="number" id="showPhone" name="showPhone" pattern="[^0-9]*"
                                     class="form-control modal-edit-marca-id" value="{{ $client->phone }}" placeholder="Teléfono" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Dirección</label>
-                                <input type="text" id="showAddress" name="showAddress"
+                                <input type="text" id="showAddress" name="showAddress" 
                                     class="form-control modal-edit-marca-id" value="{{ $client->idAddress->address }}" placeholder="Dirección" disabled/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Código postal</label>
-                                <input type="number" id="showCodePostal" name="showCodePostal"
+                                <input type="number" id="showCodePostal" name="showCodePostal" pattern="[^0-9]*"
                                     class="form-control modal-edit-marca-id" value="{{ $client->idAddress->code_postal }}" placeholder="Código postal" disabled/>
                             </div>
 
@@ -192,12 +192,12 @@
                             @method('PUT')
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Nombres</label>
-                                <input type="text" id="nameEdit" name="nameEdit"
+                                <input type="text" id="nameEdit" name="nameEdit" pattern="[A-Za-z\s]*"
                                     class="form-control modal-edit-marca-id" placeholder="Nombres"/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Apellido Paterno</label>
-                                <input type="text" id="lastnameEdit" name="lastnameEdit"
+                                <input type="text" id="lastnameEdit" name="lastnameEdit" pattern="[A-Za-z\s]*"
                                     class="form-control modal-edit-marca-id" placeholder="Apellido Paterno"/>
                             </div>
                             <div class="col-12 col-md-6">
@@ -207,17 +207,17 @@
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Teléfono</label>
-                                <input type="number" id="phoneEdit" name="phoneEdit"
+                                <input type="number" id="phoneEdit" name="phoneEdit" pattern="[^0-9]*"
                                     class="form-control modal-edit-marca-id" placeholder="Teléfono"/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Dirección</label>
-                                <input type="text" id="addressEdit" name="addressEdit"
+                                <input type="text" id="addressEdit" name="addressEdit" pattern="[A-Za-z\s]*"
                                     class="form-control modal-edit-marca-id" placeholder="Dirección"/>
                             </div>
                             <div class="col-12 col-md-6">
                                 <label class="form-label" for="modalShowMarca">Código postal</label>
-                                <input type="number" id="code_postalEdit" name="code_postalEdit"
+                                <input type="number" id="code_postalEdit" name="code_postalEdit" pattern="[^0-9]*"
                                     class="form-control modal-edit-marca-id" placeholder="Código postal"/>
                             </div>
 

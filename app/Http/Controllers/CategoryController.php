@@ -10,8 +10,9 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function index(){ // Muestra todas las categorias y Marcas en una vista
-        $categories = Category::all();
-        return view('categories.index', compact('categories'));
+        $categories = Category::all();    
+        $trademarks = Trademark::all();
+        return view('categories.index', compact('categories', 'trademarks'));
     }
 
     public function store(Request $request)
