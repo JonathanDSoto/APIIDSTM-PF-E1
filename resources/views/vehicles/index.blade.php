@@ -19,7 +19,6 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th># id</th>
                             <th>Modelo</th>
                             <th>Marca</th>
                             <th>Categoría</th>
@@ -31,7 +30,6 @@
                     <tbody>
                         <?php foreach ($data['cars'] as $car): ?>
                         <tr>
-                            <th scope="row"><?= $car->id ?></th>
                             <td><?= $car->nombre ?></td>
                             <td><?= $car->marca ?></td>
                             <td><?= $car->categoria ?></td>
