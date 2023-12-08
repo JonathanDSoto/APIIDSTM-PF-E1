@@ -66,8 +66,8 @@ class ClientController extends Controller
         $client->phone = $request->phoneEdit;
         $client->id_address = $address->id;
         $client->save();
-        
-        return view('clients.index', compact('client'))->with([
+        $clients = Client::all();
+        return redirect()->route('clients.index', compact('client', 'clients'))->with([
             'toast' => [
                 'type' => 'success',
                 'message' => 'Cliente actualizado exitosamente',
@@ -86,3 +86,4 @@ class ClientController extends Controller
     }
 
 }
+
