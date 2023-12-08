@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Http\Controllers\Controller;
-use App\Models\Car;
+use App\Models\Trademark;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function index(){ // Muestra todas las categorias en una vista
+    public function index(){ // Muestra todas las categorias y Marcas en una vista
         $categories = Category::all();
-        return view('categories.index', compact('categories'));
+        $trademarks = Trademark::all();
+        return view('categories.index', compact('categories', 'trademarks'));
     }
 
     public function store(Request $request)
@@ -23,30 +24,39 @@ class CategoryController extends Controller
         return redirect()->route('categories.index');
     }
 
-/*     public function show(Category $category){ // Muestra una categoria en específico en una vista
-        return redirect()->route('categories.show', compact('category'));
-    } */
-
-/*     public function edit(Category $category){ // Redirige a la vista de editar un categoria
-        return redirect()->route('categories.edit', compact('category'));
-    } */
+    public function create(Request $request){ // Redirige a la vista de crear una marca
+        $trademark = new Trademark();
+        $trademark->marca = $request->name;
+        $trademark->image = $request->image;
+        $trademark->save();
+        return redirect()->route('categories.index');
+    }
 
     public function update(Request $request,  $id){ // Actualiza una categoria en específico y regresa a la vista con la categoria actualizada
         Category::where('id', $id)->update([
             'categoria' => $request->categoria,
         ]);
 
-        return view('categories.index');
+        return redirect()->route('categories.index');
+    }
+
+    public function update_trademark(Request $request,  $id){ // Actualiza una categoria en específico y regresa a la vista con la categoria actualizada
+        Trademark::where('id', $id)->update([
+            'marca' => $request->marca,
+            'image' => $request->image,
+        ]);
+
+        return redirect()->route('categories.index');
     }
 
     public function destroy($id){ // Elimina una categoria en específico
         $category = Category::findOrFail($id);
         $category->delete();
-        return view('categories.index');
+        return redirect()->route('categories.index');
     }
-
-/*     public function categoryCars(Category $category){ // Muestra los vehiculos de una categoria en específico
-        $cars = Car::where('categories_id', $category->id)->get();
-        return view('categories.categoryCars', compact('cars', 'category'));
-    } */
+    public function destroy_trademark($id){ // Elimina una categoria en específico
+        $trademark = Trademark::findOrFail($id);
+        $trademark->delete();
+        return redirect()->route('categories.index');
+    }
 }

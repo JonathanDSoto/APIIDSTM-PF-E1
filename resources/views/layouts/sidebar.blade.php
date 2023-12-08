@@ -62,13 +62,7 @@
         <li class="menu-item">
             <a href={{ route('categories.index') }} class="menu-link">
                 <i class="menu-icon fa-solid fa-list-check"></i>
-                <div>Categorías</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href={{ route('brands.index') }} class="menu-link">
-                <i class="menu-icon fa-solid fa-list-check"></i>
-                <div>Marcas</div>
+                <div>Categorías y Marcas</div>
             </a>
         </li>
     </ul>

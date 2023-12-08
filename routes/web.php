@@ -49,21 +49,15 @@ Route::controller(RentalController::class)->group(function(){
     Route::delete('/rentals/{rental}', 'drop')->name('rentals.destroy');
 });
 
-// Categories routes
+// Categories and Trademarks routes
 Route::controller(CategoryController::class)->group(function(){
-    Route::get('/categories', 'index')->name('categories.index');
-    Route::post('/categories', 'store')->name('categories.store');
-    Route::get('/categories/{category}', 'show')->name('categories.show');
-    Route::put('/categories/{category}/edit', 'update')->name('categories.update');
-    Route::delete('/categories', 'drop')->name('categories.drop');
-    Route::delete('/categories/{category}', 'destroy')->name('categories.destroy');
-});
-
-// Brand routes
-Route::controller(TrademarkController::class)->group(function(){
-    Route::get('/brands', 'index')->name('brands.index');
-    Route::post('/brands', 'create')->name('brands.create');
-    Route::get('/brands/view', 'show')->name('brands.view');
-    Route::put('/brands/{trademark}/edit', 'update');
-    Route::delete('/brands/{trademark}', 'drop')->name('brands.destroy');
+    Route::get('/categories_trademarks', 'index')->name('categories.index');
+    Route::post('/categories_trademarks/store', 'store')->name('categories.store');
+    Route::get('/categories_trademarks/{category}', 'show')->name('categories.show');
+    Route::put('/categories_trademarks/{category}/edit', 'update')->name('categories.update');
+    Route::delete('/categories_trademarks', 'drop')->name('categories.drop');
+    Route::delete('/categories_trademarks/{category}', 'destroy')->name('categories.destroy');
+    Route::post('/categories_trademarks', 'create')->name('categories.create');
+    Route::put('/categories_trademarks/{trademark}/edit', 'update_trademark')->name('categories.update_trademark');
+    Route::delete('/categories_trademarks/{trademark}', 'destroy_trademark')->name('categories.destroy_trademark');
 });

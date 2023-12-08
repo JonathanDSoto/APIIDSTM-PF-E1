@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Category;
 
@@ -44,7 +43,7 @@ class CategorySeeder extends Seeder
 
         
         $category = new Category();
-        $category->categoria = 'CLase J: Vehículos SUV con equipamiento deportivo';
+        $category->categoria = 'Clase J: Vehículos SUV con equipamiento deportivo';
         $category->save();
 
         $category = new Category();

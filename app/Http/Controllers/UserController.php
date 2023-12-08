@@ -32,7 +32,7 @@ class UserController extends Controller
         $user->lastname = $request->lastname;
         $user->phone = $request->phone;
         $user->email = $request->email;
-        $user->password = $request->password;
+        $user->password = bcrypt($request->password);
         $user->save();
 
         return redirect()->route('vehicles.index');
