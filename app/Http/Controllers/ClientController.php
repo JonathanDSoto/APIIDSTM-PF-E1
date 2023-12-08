@@ -58,14 +58,12 @@ class ClientController extends Controller
         $address->address = $request->addressEdit;
         $address->code_postal = $request->code_postalEdit;
         $address->residence_number = $request->residence_numberEdit;
-        $address->save();
 
         $client->name = $request->nameEdit;
         $client->lastname = $request->lastnameEdit;
         $client->email = $request->emailEdit;
         $client->phone = $request->phoneEdit;
         $client->id_address = $address->id;
-        $client->save();
         $clients = Client::all();
         return redirect()->route('clients.index', compact('client', 'clients'))->with([
             'toast' => [
