@@ -62,4 +62,13 @@ class UserController extends Controller
 
         return redirect()->route('login');
     }
+    public function showProfile()
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect()->route('login');
+        }
+        return view('userRegister.user', ['user' => $user]);
+    }
 }

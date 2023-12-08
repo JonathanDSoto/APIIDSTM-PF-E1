@@ -15,6 +15,9 @@ Route::controller(UserController::class)->group(function(){
     Route::post('users', 'store')->name('users.store');
     Route::post('rememberPassword', 'store')->name('rememberPassword');
     Route::get('/login', 'logout')->name('logout');
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/profile', 'showProfile')->name('user.profile');
+    });
 });
 
 // Vehicles Routes
