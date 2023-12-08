@@ -27,7 +27,6 @@
                             <th>Teléfono</th>
                             <th>Dirección</th>
                             <th>Código postal</th>
-                            <th>Número Exterior</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -41,7 +40,6 @@
                             
                             <td>{{ $client->idAddress->address }}</td>
                             <td>{{ $client->idAddress->code_postal }}</td>
-                            <td>{{ $client->idAddress->residence_number }}</td>
                             
                             <td>
                                 <div>
@@ -115,11 +113,7 @@
                                     class="form-control modal-edit-marca-id" placeholder="Código postal" required/>
                             </div>
 
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalShowMarca">Número de exterior</label>
-                                <input type="number" id="residence_number" name="residence_number"
-                                    class="form-control modal-edit-marca-id" placeholder="Número de exterior"/>
-                            </div>
+                           
                             <div class="col-12 text-center d-flex gap-2 justify-content-center">
                                 <button type="button" class="btn btn-label-secondary" data-bs-dismiss="modal"
                                     aria-label="Close">Cancelar</button>
@@ -173,14 +167,10 @@
                                     class="form-control modal-edit-marca-id" value="{{ $client->idAddress->code_postal }}" placeholder="Código postal" disabled/>
                             </div>
 
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalShowMarca">Número de exterior</label>
-                                <input type="number" id="showResidenceNumber" name="showResidenceNumber"
-                                    class="form-control modal-edit-marca-id" value="{{ $client->idAddress->residence_number }}" placeholder="Número de exterior" disabled/>
-                            </div>
-                            <!--/div class="col-12 text-center d-flex gap-2 justify-content-center">
+                           
+                            <div class="col-12 text-center d-flex gap-2 justify-content-center">
                                 <button type="submit" class="btn btn-primary me-sm-3 me-1">Aceptar</button>
-                            </div-->
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -231,11 +221,7 @@
                                     class="form-control modal-edit-marca-id" placeholder="Código postal"/>
                             </div>
 
-                            <div class="col-12 col-md-6">
-                                <label class="form-label" for="modalShowMarca">Número de exterior</label>
-                                <input type="number" id="residence_numberEdit" name="residence_numberEdit"
-                                    class="form-control modal-edit-marca-id" placeholder="Número de exterior"/>
-                            </div>
+                           
                             <input type="hidden" name="client_id" value="{{ $client->id }}">
                             <div class="col-12 text-center d-flex gap-2 justify-content-center">
                             <button type="reset" class="btn btn-label-secondary" 
@@ -307,7 +293,6 @@
                         document.getElementById('phone').value = data.phone;
                         document.getElementById('address').value = data.idAddress.address;
                         document.getElementById('code_postal').value = data.idAddress.code_postal;
-                        document.getElementById('residence_number').value = data.idAddress.residence_number;
                     });
                     const row = this.closest('tr');
                     
@@ -317,7 +302,6 @@
                     const phone = row.cells[3].textContent.trim();
                     const address = row.cells[4].textContent.trim();
                     const code_postal = row.cells[5].textContent.trim();
-                    const residence_number = row.cells[6].textContent.trim();
 
                     document.getElementById('nameEdit').value = name;
                     document.getElementById('lastnameEdit').value = lastname;
@@ -325,7 +309,6 @@
                     document.getElementById('phoneEdit').value = phone;
                     document.getElementById('addressEdit').value = address;
                     document.getElementById('code_postalEdit').value = code_postal;
-                    document.getElementById('residence_numberEdit').value = residence_number;
 
                     const editClientModal = new bootstrap.Modal(document.getElementById('editClient'));
                     editClientModal.show();
